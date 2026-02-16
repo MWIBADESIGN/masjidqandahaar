@@ -1,0 +1,3103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Contact - Masjid_Qandahaar</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent-color: #ff9800;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --border-color: #e0e0e0;
+            --text-light: #666;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding-top: 80px;
+        }
+        
+        .text-islamic {
+            color: var(--primary-color);
+        }
+        
+        .bg-islamic {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* ========== ENHANCED NAVIGATION BAR ========== */
+        .navbar-glass {
+            background: rgba(27, 94, 32, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(27, 94, 32, 0.3);
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+        
+        .navbar-glass.scrolled {
+            padding: 0.3rem 0;
+            background: rgba(27, 94, 32, 0.98);
+            box-shadow: 0 8px 32px rgba(27, 94, 32, 0.4);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand i {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand:hover i {
+            transform: rotate(15deg);
+        }
+        
+        .navbar-brand span {
+            background: linear-gradient(45deg, white, #ffd54f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .navbar-nav {
+            gap: 0.3rem;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            padding: 0.75rem 1.2rem !important;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .nav-dot {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link.active .nav-dot {
+            opacity: 1;
+        }
+        
+        .nav-action-btn {
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        .nav-login {
+            color: var(--primary-color) !important;
+            background: white !important;
+            border: 2px solid white;
+        }
+        
+        .nav-login:hover {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: var(--primary-dark) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav-register {
+            background: linear-gradient(45deg, var(--accent-color), #ffb74d) !important;
+            color: white !important;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .nav-register:hover {
+            background: linear-gradient(45deg, #ff9800, #ffa726) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .language-btn i {
+            font-size: 1rem;
+        }
+        
+        .language-dropdown {
+            min-width: 180px;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(27, 94, 32, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-dropdown .dropdown-item {
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .language-dropdown .dropdown-item i {
+            width: 20px;
+            color: var(--accent-color);
+        }
+        
+        .language-dropdown .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .language-dropdown .dropdown-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        /* Prayer Time Indicator */
+        .nav-prayer-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            margin-left: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-prayer-indicator:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .prayer-icon {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .prayer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .current-prayer {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .prayer-countdown {
+            font-size: 0.75rem;
+            color: #ffeb3b;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(27, 94, 32, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 15px;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-prayer-indicator {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+            
+            .nav-action-btn {
+                margin: 0.5rem 0;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .language-switcher {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+        }
+        
+        /* ========== CONTACT HERO SECTION ========== */
+        .contact-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 120px 0 80px;
+            position: relative;
+            overflow: hidden;
+            margin-top: -80px;
+            padding-top: 180px;
+        }
+        
+        .contact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 90%;
+        }
+        
+        .contact-cta {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 3;
+        }
+        
+        .floating-1 {
+            top: 20%;
+            left: -20px;
+            animation-delay: 0s;
+        }
+        
+        .floating-2 {
+            top: 50%;
+            right: -20px;
+            animation-delay: 2s;
+        }
+        
+        .floating-3 {
+            bottom: 30%;
+            left: -10px;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+        }
+        
+        /* ========== CONTACT INFORMATION SECTION ========== */
+        .contact-info-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-info-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+            border-radius: 2px;
+        }
+        
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .contact-info-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-light);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-info-card:hover .contact-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        .contact-info-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .contact-info-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            min-height: 60px;
+        }
+        
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            background: rgba(46, 125, 50, 0.1);
+        }
+        
+        .contact-link:hover {
+            color: white;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+        
+        .contact-link.emergency {
+            color: var(--danger-color);
+            background: rgba(220, 53, 69, 0.1);
+        }
+        
+        .contact-link.emergency:hover {
+            color: white;
+            background: var(--danger-color);
+        }
+        
+        .hours-list {
+            margin-bottom: 1.5rem;
+        }
+        
+        .hour-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .hour-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .hour-item span:first-child {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .hour-item span:last-child {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .prayer-times {
+            margin-bottom: 1.5rem;
+        }
+        
+        .prayer-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .prayer-item:hover {
+            background: rgba(46, 125, 50, 0.05);
+        }
+        
+        .prayer-item span:first-child {
+            color: var(--dark-color);
+            font-weight: 500;
+        }
+        
+        .prayer-time {
+            color: var(--primary-color);
+            font-weight: 600;
+            font-family: 'Courier New', monospace;
+        }
+        
+        /* ========== CONTACT FORM SECTION ========== */
+        .contact-form-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-form-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .contact-form-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .form-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .form-card:hover {
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            padding: 2.5rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.1)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .form-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 576px) {
+            .form-title {
+                font-size: 1.75rem;
+            }
+        }
+        
+        .form-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            margin: 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .form-body {
+            padding: 2.5rem;
+            position: relative;
+        }
+        
+        @media (max-width: 576px) {
+            .form-body {
+                padding: 1.5rem;
+            }
+        }
+        
+        .alert {
+            border-radius: 15px;
+            border: none;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .alert-danger {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            border-left: 4px solid var(--danger-color);
+        }
+        
+        .alert-success {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .alert-header {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .alert-list {
+            margin: 0;
+            padding-left: 1.5rem;
+        }
+        
+        .contact-form {
+            margin-top: 2rem;
+        }
+        
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--dark-color);
+            font-size: 1rem;
+        }
+        
+        .input-group {
+            position: relative;
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 1.2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            z-index: 2;
+            font-size: 1.1rem;
+        }
+        
+        .textarea-icon {
+            top: 1.5rem;
+            transform: none;
+        }
+        
+        .form-control {
+            padding: 1rem 1rem 1rem 3.5rem;
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        @media (max-width: 576px) {
+            .form-control {
+                padding: 0.8rem 0.8rem 0.8rem 3rem;
+                font-size: 0.95rem;
+            }
+        }
+        
+        textarea.form-control {
+            padding: 1.2rem 1.2rem 1.2rem 3.5rem;
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.15);
+            outline: none;
+            transform: translateY(-1px);
+        }
+        
+        .char-count {
+            text-align: right;
+            color: var(--text-light);
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .form-actions {
+                flex-direction: column;
+            }
+        }
+        
+        .btn-send {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            flex: 1;
+        }
+        
+        @media (max-width: 576px) {
+            .btn-send {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        .btn-outline-secondary {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            color: var(--text-color);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-secondary:hover {
+            background-color: var(--border-color);
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 576px) {
+            .btn-outline-secondary {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+        
+        /* ========== MAP SECTION ========== */
+        .map-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .map-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .map-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .map-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .map-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
+        }
+        
+        .map-header {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .map-header {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1.5rem;
+            }
+        }
+        
+        .map-header h5 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .map-header .btn-sm {
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .map-header .btn-sm:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .map-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .map-container {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .map-container {
+                height: 250px;
+            }
+        }
+        
+        .google-map {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .map-footer {
+            padding: 1.5rem 2rem;
+            background: var(--light-color);
+        }
+        
+        .map-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .map-info i {
+            font-size: 1.5rem;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 576px) {
+            .map-info i {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .map-info h6 {
+                font-size: 0.9rem;
+            }
+            
+            .map-info small {
+                font-size: 0.8rem;
+            }
+        }
+        
+        /* ========== FAQ SECTION ========== */
+        .faq-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .faq-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .accordion {
+            --bs-accordion-border-color: var(--border-color);
+            --bs-accordion-border-radius: 12px;
+            --bs-accordion-inner-border-radius: 10px;
+            --bs-accordion-btn-padding-x: 1.5rem;
+            --bs-accordion-btn-padding-y: 1.25rem;
+        }
+        
+        .accordion-button {
+            font-weight: 600;
+            color: var(--dark-color);
+            background: white;
+            border: none;
+            transition: all 0.3s ease;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            color: var(--primary-color);
+            background: rgba(46, 125, 50, 0.05);
+            box-shadow: none;
+        }
+        
+        .accordion-button:focus {
+            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+            border-color: var(--primary-color);
+        }
+        
+        .accordion-body {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        /* ========== FOOTER SECTION ========== */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding-top: 80px;
+            margin-top: 100px;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .footer {
+                padding-top: 60px;
+                margin-top: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer {
+                padding-top: 40px;
+                margin-top: 40px;
+            }
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(27, 94, 32, 0.1));
+        }
+        
+        .footer-wave {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%232E7D32' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        
+        .border-white-20 {
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .bg-white-10 {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .text-white-75 {
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+        
+        .text-white-50 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .footer-brand h3 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 576px) {
+            .footer-brand h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        
+        .hover-lift:hover {
+            color: white !important;
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 16px;
+        }
+        
+        body.rtl .hover-lift:hover {
+            transform: translateX(-8px);
+            padding-left: 8px;
+            padding-right: 16px;
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 576px) {
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .contact-icon:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: scale(1.1);
+        }
+        
+        .newsletter-form .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-form .form-control {
+            border: none;
+            padding: 12px 20px;
+            background: white;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .form-control {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .newsletter-form .btn {
+            padding: 12px 25px;
+            border: none;
+            background: white;
+            transition: all 0.3s ease;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .btn {
+                padding: 10px 20px;
+            }
+        }
+        
+        .newsletter-form .btn:hover {
+            background: rgba(46, 125, 50, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .social-link {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: white;
+        }
+        
+        .social-link.facebook:hover { background: #1877F2; }
+        .social-link.twitter:hover { background: #1DA1F2; }
+        .social-link.instagram:hover { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+        .social-link.youtube:hover { background: #FF0000; }
+        .social-link.whatsapp:hover { background: #25D366; }
+        .social-link.telegram:hover { background: #0088cc; }
+        
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .decoration-item {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.05);
+            font-size: 8rem;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .decoration-item {
+                font-size: 5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .decoration-item {
+                font-size: 3rem;
+            }
+        }
+        
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+        
+        .decoration-2 {
+            top: 30%;
+            right: 10%;
+            transform: rotate(25deg);
+        }
+        
+        .decoration-3 {
+            bottom: 20%;
+            left: 15%;
+            transform: rotate(-10deg);
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        @media (max-width: 576px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* ========== RTL SUPPORT ========== */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        body.rtl .nav-link i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        
+        body.rtl .contact-cta {
+            flex-direction: row-reverse;
+        }
+        
+        body.rtl .input-icon {
+            left: auto;
+            right: 1.2rem;
+        }
+        
+        body.rtl .form-control {
+            padding: 1rem 3.5rem 1rem 1rem;
+        }
+        
+        body.rtl .char-count {
+            text-align: left;
+        }
+        
+        body.rtl .hover-lift:hover {
+            transform: translateX(-8px);
+            padding-left: 8px;
+            padding-right: 16px;
+        }
+        
+        body.rtl .contact-icon {
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+        
+        /* ========== RESPONSIVE HERO ========== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+            
+            .contact-info-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-hero {
+                padding-top: 150px;
+                padding-bottom: 60px;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                max-width: 100%;
+                font-size: 1.1rem;
+            }
+            
+            .contact-cta {
+                justify-content: center;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .form-header, .form-body {
+                padding: 1.5rem;
+            }
+            
+            .contact-cta {
+                flex-direction: column;
+            }
+            
+            .contact-cta .btn {
+                width: 100%;
+            }
+        }
+        
+        /* Contact Card Customization */
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.6rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-card p, .contact-card a {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== ENHANCED NAVIGATION BAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-mosque"></i>
+                <span id="brandName">Masjid_Qandahaar</span>
+            </a>
+            
+            <!-- Prayer Time Indicator -->
+            <div class="nav-prayer-indicator d-none d-lg-flex">
+                <i class="fas fa-clock prayer-icon"></i>
+                <div class="prayer-info">
+                    <div class="current-prayer" id="navCurrentPrayer">Fajr</div>
+                    <div class="prayer-countdown" id="navTimeRemaining">00:00</div>
+                </div>
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher d-none d-lg-flex">
+                <div class="dropdown">
+                    <button class="btn language-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">English</span>
+                    </button>
+                    <ul class="dropdown-menu language-dropdown">
+                        <li>
+                            <a class="dropdown-item active" href="#" onclick="changeLanguage('en'); return false;">
+                                <i class="fas fa-check-circle"></i> English
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('sw'); return false;">
+                                <i class="fas fa-check-circle"></i> Kiswahili
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('ar'); return false;">
+                                <i class="fas fa-check-circle"></i> العربية
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text" id="navHome">Home</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle nav-icon"></i>
+                            <span class="nav-text" id="navAbout">About</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">
+                            <i class="fas fa-envelope nav-icon"></i>
+                            <span class="nav-text" id="navContact">Contact</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile Language Switcher -->
+                <div class="language-switcher d-lg-none d-flex justify-content-center my-3">
+                    <div class="dropdown">
+                        <button class="btn language-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLanguageMobile">English</span>
+                        </button>
+                        <ul class="dropdown-menu language-dropdown">
+                            <li>
+                                <a class="dropdown-item active" href="#" onclick="changeLanguage('en'); return false;">
+                                    <i class="fas fa-check-circle"></i> English
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('sw'); return false;">
+                                    <i class="fas fa-check-circle"></i> Kiswahili
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('ar'); return false;">
+                                    <i class="fas fa-check-circle"></i> العربية
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Mobile Prayer Indicator -->
+                <div class="nav-prayer-indicator d-lg-none d-flex justify-content-center my-3">
+                    <i class="fas fa-clock prayer-icon"></i>
+                    <div class="prayer-info">
+                        <div class="current-prayer" id="navCurrentPrayerMobile">Fajr</div>
+                        <div class="prayer-countdown" id="navTimeRemainingMobile">00:00</div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="d-flex gap-2 mt-2 mt-lg-0">
+                    <a class="nav-link nav-action-btn nav-login" href="weclome.html">
+                        <i class="fas fa-sign-in-alt me-2"></i> <span id="navLogin">Login</span>
+                    </a>
+                    <a class="nav-link nav-action-btn nav-register" href="weclome.html">
+                        <i class="fas fa-user-plus me-2"></i> <span id="navRegister">Register</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h6 class="hero-subtitle" id="heroSubtitle">Get In Touch</h6>
+                        <h1 class="hero-title" id="heroTitle">Contact Us</h1>
+                        <p class="hero-description" id="heroDescription">
+                            We're here to help and answer any questions you might have. 
+                            Feel free to reach out to us through any of the following channels.
+                        </p>
+                        <div class="contact-cta">
+                            <a href="#contact-form" class="btn btn-primary">
+                                <i class="fas fa-paper-plane me-2"></i> <span id="btnSendMessage">Send Message</span>
+                            </a>
+                            <a href="tel:+255750555783" class="btn btn-outline-primary">
+                                <i class="fas fa-phone me-2"></i> <span id="btnCallNow">Call Now</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <div style="background: linear-gradient(45deg, var(--primary-dark), var(--primary-color)); height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; position: relative; overflow: hidden;">
+                            <i class="fas fa-headset" style="font-size: 8rem; opacity: 0.8; position: absolute;"></i>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <h3 style="font-weight: 700; margin-bottom: 1rem;" id="heroImageTitle">Contact Center</h3>
+                                <p style="opacity: 0.9;" id="heroImageDesc">24/7 Support Available</p>
+                            </div>
+                        </div>
+                        <div class="floating-element floating-1">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="floating-element floating-2">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="floating-element floating-3">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 60L48 50C96 40 192 20 288 20C384 20 480 40 576 50C672 60 768 60 864 55C960 50 1056 40 1152 35C1248 30 1344 30 1392 30L1440 30V120H0V60Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info-section py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" id="contactInfoTitle">Contact Information</h2>
+                <p class="section-subtitle" id="contactInfoSubtitle">Multiple Ways to Reach Us</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h5 id="addressTitle">Address</h5>
+                        <p id="addressText">Masjid_Qandahaar CBE Dodoma, Tanzania</p>
+                        <a href="#map-section" class="contact-link">
+                            <i class="fas fa-directions me-2"></i> <span id="getDirections">Get Directions</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h5 id="phoneTitle">Phone</h5>
+                        <p>+255 750 555 783</p>
+                        <a href="tel:+255750555783" class="contact-link">
+                            <i class="fas fa-phone-volume me-2"></i> <span id="callNow">Call Now</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h5 id="emailTitle">Email</h5>
+                        <p>abdillahmwiba@gmail.com</p>
+                        <a href="mailto:abdillahmwiba@gmail.com" class="contact-link">
+                            <i class="fas fa-envelope-open me-2"></i> <span id="sendEmail">Send Email</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h5 id="officeHoursTitle">Office Hours</h5>
+                        <div class="hours-list">
+                            <div class="hour-item">
+                                <span id="sundayThursday">Sunday - Thursday</span>
+                                <span>8:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span id="friday">Friday</span>
+                                <span>9:00 AM - 12:00 PM</span>
+                            </div>
+                            <div class="hour-item">
+                                <span id="saturday">Saturday</span>
+                                <span id="closed">Closed</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h5 id="prayerTimesTitle">Prayer Times</h5>
+                        <div class="prayer-times">
+                            <div class="prayer-item">
+                                <span>Fajr</span>
+                                <span class="prayer-time">5:30 AM</span>
+                            </div>
+                            <div class="prayer-item">
+                                <span>Dhuhr</span>
+                                <span class="prayer-time">1:00 PM</span>
+                            </div>
+                            <div class="prayer-item">
+                                <span>Asr</span>
+                                <span class="prayer-time">4:15 PM</span>
+                            </div>
+                            <div class="prayer-item">
+                                <span>Maghrib</span>
+                                <span class="prayer-time">6:00 PM</span>
+                            </div>
+                            <div class="prayer-item">
+                                <span>Isha</span>
+                                <span class="prayer-time">7:45 PM</span>
+                            </div>
+                        </div>
+                        <a href="prayer_times.html" class="contact-link">
+                            <i class="fas fa-calendar-alt me-2"></i> <span id="viewSchedule">View Schedule</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="contact-info-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h5 id="emergencyTitle">Emergency</h5>
+                        <p id="emergencyText">For urgent matters requiring immediate attention</p>
+                        <a href="tel:+255750555783" class="contact-link emergency">
+                            <i class="fas fa-phone-alt me-2"></i> <span id="emergencyContact">Emergency Contact</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact-form" class="contact-form-section py-5 bg-light">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-card">
+                        <div class="form-header">
+                            <h2 class="form-title" id="formTitle">Send Message</h2>
+                            <p class="form-subtitle" id="formSubtitle">Fill form below to send us a message</p>
+                        </div>
+                        
+                        <div class="form-body" id="formBody">
+                            <!-- Success/Error messages will appear here -->
+                        </div>
+                        
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name" class="form-label">
+                                        <i class="fas fa-user me-2"></i> <span id="fullNameLabel">Full Name</span> *
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fas fa-user"></i>
+                                        </span>
+                                        <input type="text" class="form-control" id="name" name="name" required 
+                                               placeholder="Enter your full name">
+                                    </div>
+                                    <div class="invalid-feedback" id="nameError"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">
+                                        <i class="fas fa-envelope me-2"></i> <span id="emailLabel">Email</span> *
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </span>
+                                        <input type="email" class="form-control" id="email" name="email" required
+                                               placeholder="Enter your email address">
+                                    </div>
+                                    <div class="invalid-feedback" id="emailError"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject" class="form-label">
+                                    <i class="fas fa-tag me-2"></i> <span id="subjectLabel">Subject</span> *
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-icon">
+                                        <i class="fas fa-tag"></i>
+                                    </span>
+                                    <input type="text" class="form-control" id="subject" name="subject" required
+                                           placeholder="Enter message subject">
+                                </div>
+                                <div class="invalid-feedback" id="subjectError"></div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message" class="form-label">
+                                    <i class="fas fa-comment-dots me-2"></i> <span id="messageLabel">Message</span> *
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-icon textarea-icon">
+                                        <i class="fas fa-comment-dots"></i>
+                                    </span>
+                                    <textarea class="form-control" id="message" name="message" rows="6" required
+                                              placeholder="Type your message here..."></textarea>
+                                </div>
+                                <div class="char-count">
+                                    <span id="charCount">0</span> / 1000 <span id="characters">characters</span>
+                                </div>
+                                <div class="invalid-feedback" id="messageError"></div>
+                            </div>
+                            
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary btn-send" id="submitBtn">
+                                    <i class="fas fa-paper-plane me-2"></i> <span id="sendMessageBtn">Send Message</span>
+                                </button>
+                                <button type="reset" class="btn btn-outline-secondary" id="resetBtn">
+                                    <i class="fas fa-redo me-2"></i> <span id="resetBtnText">Reset</span>
+                                </button>
+                            </div>
+                        </form>
+                        
+                        <div class="mt-4 text-center text-muted">
+                            <small><i class="fas fa-envelope me-1"></i> abdillahmwiba@gmail.com | <i class="fas fa-phone me-1"></i> +255 750 555 783</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map-section" class="map-section py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" id="locationTitle">Location</h2>
+                <p class="section-subtitle" id="locationSubtitle">Find Us Here</p>
+            </div>
+            
+            <div class="map-card">
+                <div class="map-header">
+                    <h5><i class="fas fa-map-marker-alt me-2"></i> <span id="mapTitle">Masjid_Qandahaar CBE Dodoma</span></h5>
+                    <a href="https://maps.google.com/?q=Masjid_Qandahaar+CBE+Dodoma" target="_blank" class="btn btn-sm btn-primary">
+                        <i class="fas fa-directions me-1"></i> <span id="openMaps">Open in Maps</span>
+                    </a>
+                </div>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.123456789!2d35.75855!3d-6.17899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNsKwMTcnMzUuMiJTIDM1wrA0NSczMC44IkU!5e0!3m2!1sen!2stz!4v1627891234567!5m2!1sen!2stz"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="google-map">
+                    </iframe>
+                </div>
+                <div class="map-footer">
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="map-info">
+                                <i class="fas fa-car"></i>
+                                <div>
+                                    <h6 id="parkingTitle">Parking</h6>
+                                    <small id="parkingText">Free parking available</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="map-info">
+                                <i class="fas fa-wheelchair"></i>
+                                <div>
+                                    <h6 id="accessibilityTitle">Accessibility</h6>
+                                    <small id="accessibilityText">Wheelchair accessible</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="map-info">
+                                <i class="fas fa-bus"></i>
+                                <div>
+                                    <h6 id="transportTitle">Public Transport</h6>
+                                    <small id="transportText">Bus stops nearby</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" id="faqTitle">Frequently Asked Questions</h2>
+                <p class="section-subtitle" id="faqSubtitle">Quick answers to common questions</p>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    <i class="fas fa-question-circle me-2 text-primary"></i>
+                                    <span id="faq1Question">What are the visiting hours?</span>
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" id="faq1Answer">
+                                    The mosque is open for visits from 8:00 AM to 4:00 PM Sunday through Thursday, and 9:00 AM to 12:00 PM on Fridays. Saturdays are reserved for maintenance and special events.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    <i class="fas fa-question-circle me-2 text-primary"></i>
+                                    <span id="faq2Question">Is parking available?</span>
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" id="faq2Answer">
+                                    Yes, we have free parking available for visitors. The parking area can accommodate both cars and motorcycles, with designated spaces for people with disabilities.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    <i class="fas fa-question-circle me-2 text-primary"></i>
+                                    <span id="faq3Question">How can I make a donation?</span>
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" id="faq3Answer">
+                                    You can make donations through our online portal, in-person at the mosque office, or via mobile payment. All donations are tax-deductible and receipts are provided.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    <i class="fas fa-question-circle me-2 text-primary"></i>
+                                    <span id="faq4Question">Can I book the mosque for events?</span>
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body" id="faq4Answer">
+                                    Yes, the mosque facilities can be booked for weddings, educational events, and community gatherings. Please contact the office at least two weeks in advance to check availability and make arrangements.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer position-relative overflow-hidden">
+        <!-- Wave Design -->
+        <div class="footer-wave"></div>
+        
+        <div class="container py-5 position-relative z-2">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-brand mb-4">
+                        <h3 class="display-6 fw-bold text-white">
+                            <i class="fas fa-mosque me-2"></i> <span id="footerBrand">Masjid_Qandahaar Management System</span>
+                        </h3>
+                    </div>
+                    <p class="text-white-75 mb-4 fs-5" id="footerDesc">
+                        A complete digital solution for mosque administration, community engagement, and spiritual management.
+                    </p>
+                    
+                    <!-- Newsletter Subscription -->
+                    <div class="newsletter-form mt-4">
+                        <h6 class="text-white mb-3" id="footerNewsletterTitle">Subscribe to Newsletter</h6>
+                        <div class="input-group">
+                            <input type="email" class="form-control bg-white border-0" placeholder="Your email address" id="footerNewsletterEmail">
+                            <button class="btn btn-light text-islamic" type="button" id="footerNewsletterButton">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <small class="text-white-50 mt-2 d-block" id="footerNewsletterDesc">Get updates on prayer times, events, and community news</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerQuickLinks">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="index.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-home me-2 text-white-50"></i>
+                                <span id="footerHome">Home</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="about.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-info-circle me-2 text-white-50"></i>
+                                <span id="footerAbout">About</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="prayer_times.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-clock me-2 text-white-50"></i>
+                                <span id="footerPrayerTimes">Prayer Times</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="events.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-calendar-alt me-2 text-white-50"></i>
+                                <span id="footerEvents">Events</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-envelope me-2 text-white-50"></i>
+                                <span id="footerContact">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerServices">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="donations.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-hand-holding-heart me-2 text-white-50"></i>
+                                <span id="footerDonations">Donations</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="qr_code.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-qrcode me-2 text-white-50"></i>
+                                <span id="footerQR">QR Code System</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="sermons.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-book-quran me-2 text-white-50"></i>
+                                <span id="footerSermons">Sermons</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="resources.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-book me-2 text-white-50"></i>
+                                <span id="footerResources">Resources</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="membership.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-users me-2 text-white-50"></i>
+                                <span id="footerMembership">Membership</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerContactInfo">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white mb-1" id="footerAddress">Address</h6>
+                                <p class="text-white-75 mb-0" id="footerAddressText">Masjid_Qandahaar, CBE DODOMA</p>
+                            </div>
+                        </li>
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div class="contact-card">
+                                <h6 class="text-white mb-1" id="footerPhone">Phone</h6>
+                                <p class="text-white-75 mb-0">
+                                    <a href="tel:+255750555783">+255 750 555 783</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="contact-card">
+                                <h6 class="text-white mb-1" id="footerEmail">Email</h6>
+                                <p class="text-white-75 mb-0">
+                                    <a href="mailto:abdillahmwiba@gmail.com">abdillahmwiba@gmail.com</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white mb-1" id="footerPrayer">Prayer Times</h6>
+                                <p class="text-white-75 mb-0" id="footerPrayerText">Open 24 Hours</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="row mt-5 pt-4 border-top border-white-20">
+                <div class="col-md-6">
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="social-link facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <div class="app-download d-flex gap-3 justify-content-md-end">
+                        <a href="#" class="btn btn-outline-light btn-sm px-3 rounded-pill">
+                            <i class="fab fa-apple me-2"></i> <span id="footerAppStore">App Store</span>
+                        </a>
+                        <a href="#" class="btn btn-light btn-sm px-3 rounded-pill text-islamic">
+                            <i class="fab fa-google-play me-2"></i> <span id="footerPlayStore">Play Store</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-4 pt-3">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0" id="copyrightText">
+                        &copy; 2026 Masjid_Qandahaar. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white-50 mb-0">
+                        <span id="developedBy">Developed by</span> <span class="text-white">ABDULLAH MWIBA</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="footer-decoration">
+            <div class="decoration-item decoration-1">
+                <i class="fas fa-star-and-crescent"></i>
+            </div>
+            <div class="decoration-item decoration-2">
+                <i class="fas fa-pray"></i>
+            </div>
+            <div class="decoration-item decoration-3">
+                <i class="fas fa-book-quran"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="btn btn-islamic back-to-top shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // ========== LANGUAGE TRANSLATIONS ==========
+        const translations = {
+            en: {
+                // Navbar
+                brandName: "Masjid_Qandahaar",
+                navHome: "Home",
+                navAbout: "About",
+                navEvents: "Events",
+                navPrayerTimes: "Prayer Times",
+                navDonations: "Donations",
+                navContact: "Contact",
+                navLogin: "Login",
+                navRegister: "Register",
+                
+                // Hero Section
+                heroSubtitle: "Get In Touch",
+                heroTitle: "Contact Us",
+                heroDescription: "We're here to help and answer any questions you might have. Feel free to reach out to us through any of the following channels.",
+                btnSendMessage: "Send Message",
+                btnCallNow: "Call Now",
+                heroImageTitle: "Contact Center",
+                heroImageDesc: "24/7 Support Available",
+                
+                // Contact Information
+                contactInfoTitle: "Contact Information",
+                contactInfoSubtitle: "Multiple Ways to Reach Us",
+                addressTitle: "Address",
+                addressText: "Masjid_Qandahaar CBE Dodoma, Tanzania",
+                getDirections: "Get Directions",
+                phoneTitle: "Phone",
+                callNow: "Call Now",
+                emailTitle: "Email",
+                sendEmail: "Send Email",
+                officeHoursTitle: "Office Hours",
+                sundayThursday: "Sunday - Thursday",
+                friday: "Friday",
+                saturday: "Saturday",
+                closed: "Closed",
+                prayerTimesTitle: "Prayer Times",
+                viewSchedule: "View Schedule",
+                emergencyTitle: "Emergency",
+                emergencyText: "For urgent matters requiring immediate attention",
+                emergencyContact: "Emergency Contact",
+                
+                // Contact Form
+                formTitle: "Send Message",
+                formSubtitle: "Fill form below to send us a message",
+                fullNameLabel: "Full Name",
+                emailLabel: "Email",
+                subjectLabel: "Subject",
+                messageLabel: "Message",
+                characters: "characters",
+                sendMessageBtn: "Send Message",
+                resetBtnText: "Reset",
+                
+                // Map Section
+                locationTitle: "Location",
+                locationSubtitle: "Find Us Here",
+                mapTitle: "Masjid_Qandahaar CBE Dodoma",
+                openMaps: "Open in Maps",
+                parkingTitle: "Parking",
+                parkingText: "Free parking available",
+                accessibilityTitle: "Accessibility",
+                accessibilityText: "Wheelchair accessible",
+                transportTitle: "Public Transport",
+                transportText: "Bus stops nearby",
+                
+                // FAQ Section
+                faqTitle: "Frequently Asked Questions",
+                faqSubtitle: "Quick answers to common questions",
+                faq1Question: "What are the visiting hours?",
+                faq1Answer: "The mosque is open for visits from 8:00 AM to 4:00 PM Sunday through Thursday, and 9:00 AM to 12:00 PM on Fridays. Saturdays are reserved for maintenance and special events.",
+                faq2Question: "Is parking available?",
+                faq2Answer: "Yes, we have free parking available for visitors. The parking area can accommodate both cars and motorcycles, with designated spaces for people with disabilities.",
+                faq3Question: "How can I make a donation?",
+                faq3Answer: "You can make donations through our online portal, in-person at the mosque office, or via mobile payment. All donations are tax-deductible and receipts are provided.",
+                faq4Question: "Can I book the mosque for events?",
+                faq4Answer: "Yes, the mosque facilities can be booked for weddings, educational events, and community gatherings. Please contact the office at least two weeks in advance to check availability and make arrangements.",
+                
+                // Footer
+                footerBrand: "Masjid_Qandahaar Management System",
+                footerDesc: "A complete digital solution for mosque administration, community engagement, and spiritual management.",
+                footerNewsletterTitle: "Subscribe to Newsletter",
+                footerNewsletterDesc: "Get updates on prayer times, events, and community news",
+                footerQuickLinks: "Quick Links",
+                footerHome: "Home",
+                footerAbout: "About",
+                footerPrayerTimes: "Prayer Times",
+                footerEvents: "Events",
+                footerContact: "Contact",
+                footerServices: "Services",
+                footerDonations: "Donations",
+                footerQR: "QR Code System",
+                footerSermons: "Sermons",
+                footerResources: "Resources",
+                footerMembership: "Membership",
+                footerContactInfo: "Contact Info",
+                footerAddress: "Address",
+                footerAddressText: "Masjid_Qandahaar, CBE DODOMA",
+                footerPhone: "Phone",
+                footerEmail: "Email",
+                footerPrayer: "Prayer Times",
+                footerPrayerText: "Open 24 Hours",
+                footerAppStore: "App Store",
+                footerPlayStore: "Play Store",
+                developedBy: "Developed by",
+                copyright: "&copy; 2026 Masjid_Qandahaar. All rights reserved."
+            },
+            sw: {
+                // Navbar
+                brandName: "Masjid_Qandahaar",
+                navHome: "Nyumbani",
+                navAbout: "Kuhusu",
+                navEvents: "Matukio",
+                navPrayerTimes: "Nyakati za Swala",
+                navDonations: "Michango",
+                navContact: "Wasiliana",
+                navLogin: "Ingia",
+                navRegister: "Jisajili",
+                
+                // Hero Section
+                heroSubtitle: "Wasiliana Nasi",
+                heroTitle: "Wasiliana",
+                heroDescription: "Tupo hapa kukusaidia na kujibu maswali yoyote unayoweza kuwa nayo. Jisikie huru kuwasiliana nasi kupitia njia zozote zifuatazo.",
+                btnSendMessage: "Tuma Ujumbe",
+                btnCallNow: "Piga Sasa",
+                heroImageTitle: "Kituo cha Mawasiliano",
+                heroImageDesc: "Msaada 24/7 Unapatikana",
+                
+                // Contact Information
+                contactInfoTitle: "Maelezo ya Mawasiliano",
+                contactInfoSubtitle: "Njia Nyingi za Kutufikia",
+                addressTitle: "Anuani",
+                addressText: "Masjid_Qandahaar CBE Dodoma, Tanzania",
+                getDirections: "Pata Maelekezo",
+                phoneTitle: "Simu",
+                callNow: "Piga Sasa",
+                emailTitle: "Barua Pepe",
+                sendEmail: "Tuma Barua Pepe",
+                officeHoursTitle: "Saa za Kazi",
+                sundayThursday: "Jumapili - Alhamisi",
+                friday: "Ijumaa",
+                saturday: "Jumamosi",
+                closed: "Imefungwa",
+                prayerTimesTitle: "Nyakati za Swala",
+                viewSchedule: "Angalia Ratiba",
+                emergencyTitle: "Dharura",
+                emergencyText: "Kwa mambo ya dharura yanayohitaji uangalizi wa haraka",
+                emergencyContact: "Mawasiliano ya Dharura",
+                
+                // Contact Form
+                formTitle: "Tuma Ujumbe",
+                formSubtitle: "Jaza fomu iliyo hapa chini kututumia ujumbe",
+                fullNameLabel: "Jina Kamili",
+                emailLabel: "Barua Pepe",
+                subjectLabel: "Mada",
+                messageLabel: "Ujumbe",
+                characters: "herufi",
+                sendMessageBtn: "Tuma Ujumbe",
+                resetBtnText: "Weka Upya",
+                
+                // Map Section
+                locationTitle: "Mahali",
+                locationSubtitle: "Tutafute Hapa",
+                mapTitle: "Masjid_Qandahaar CBE Dodoma",
+                openMaps: "Fungua Ramani",
+                parkingTitle: "Maegesho",
+                parkingText: "Maegesho ya bure yanapatikana",
+                accessibilityTitle: "Ufikivu",
+                accessibilityText: "Inafikika kwa viti vya magurudumu",
+                transportTitle: "Usafiri wa Umma",
+                transportText: "Vituo vya mabasi karibu",
+                
+                // FAQ Section
+                faqTitle: "Maswali Yanayoulizwa Mara kwa Mara",
+                faqSubtitle: "Majibu ya haraka kwa maswali ya kawaida",
+                faq1Question: "Saa za kutembelea ni zipi?",
+                faq1Answer: "Msikiti uko wazi kwa ziara kutoka 8:00 Asubuhi hadi 4:00 Mchana Jumapili hadi Alhamisi, na 9:00 Asubuhi hadi 12:00 Mchana Ijumaa. Jumamosi zimetengwa kwa matengenezo na matukio maalum.",
+                faq2Question: "Je, maegesho yanapatikana?",
+                faq2Answer: "Ndio, tuna maegesho ya bure yanayopatikana kwa wageni. Eneo la maegesho linaweza kuchukua magari na pikipiki, pamoja na nafasi maalum kwa watu wenye ulemavu.",
+                faq3Question: "Ninawezaje kutoa mchango?",
+                faq3Answer: "Unaweza kutoa michango kupitia tovuti yetu, ana kwa ana ofisini, au kwa malipo ya simu. Michango yote inakatwa kodi na risiti hutolewa.",
+                faq4Question: "Naweza kukodisha msikiti kwa ajili ya matukio?",
+                faq4Answer: "Ndio, vifaa vya msikiti vinaweza kukodishwa kwa ajili ya harusi, matukio ya elimu, na mikusanyiko ya jamii. Tafadhali wasiliana na ofisi angalau wiki mbili mapema kuangalia upatikanaji na kufanya mipango.",
+                
+                // Footer
+                footerBrand: "Mfumo wa Usimamizi wa Masjid_Qandahaar",
+                footerDesc: "Suluhisho kamili la kidijitali kwa usimamizi wa msikiti, ushirikiano wa jamii, na usimamizi wa kiroho.",
+                footerNewsletterTitle: "Jisajili kwa Jarida",
+                footerNewsletterDesc: "Pata taarifa za nyakati za swala, matukio, na habari za jamii",
+                footerQuickLinks: "Viungo vya Haraka",
+                footerHome: "Nyumbani",
+                footerAbout: "Kuhusu",
+                footerPrayerTimes: "Nyakati za Swala",
+                footerEvents: "Matukio",
+                footerContact: "Wasiliana",
+                footerServices: "Huduma",
+                footerDonations: "Michango",
+                footerQR: "Mfumo wa Msimbo wa QR",
+                footerSermons: "Mahubiri",
+                footerResources: "Nyenzo",
+                footerMembership: "Uanachama",
+                footerContactInfo: "Maelezo ya Mawasiliano",
+                footerAddress: "Anuani",
+                footerAddressText: "Masjid_Qandahaar, CBE DODOMA",
+                footerPhone: "Simu",
+                footerEmail: "Barua Pepe",
+                footerPrayer: "Nyakati za Swala",
+                footerPrayerText: "Fungua 24 Saa",
+                footerAppStore: "Duka la App",
+                footerPlayStore: "Duka la Google",
+                developedBy: "Imetengenezwa na",
+                copyright: "&copy; 2026 Masjid_Qandahaar. Haki zote zimehifadhiwa."
+            },
+            ar: {
+                // Navbar
+                brandName: "مسجد_قندهار",
+                navHome: "الرئيسية",
+                navAbout: "حول",
+                navEvents: "الأحداث",
+                navPrayerTimes: "أوقات الصلاة",
+                navDonations: "التبرعات",
+                navContact: "اتصل",
+                navLogin: "تسجيل الدخول",
+                navRegister: "التسجيل",
+                
+                // Hero Section
+                heroSubtitle: "ابقى على تواصل",
+                heroTitle: "اتصل بنا",
+                heroDescription: "نحن هنا للمساعدة والإجابة على أي أسئلة قد تكون لديك. لا تتردد في التواصل معنا من خلال أي من القنوات التالية.",
+                btnSendMessage: "إرسال رسالة",
+                btnCallNow: "اتصل الآن",
+                heroImageTitle: "مركز الاتصال",
+                heroImageDesc: "دعم 24/7 متوفر",
+                
+                // Contact Information
+                contactInfoTitle: "معلومات الاتصال",
+                contactInfoSubtitle: "طرق متعددة للوصول إلينا",
+                addressTitle: "العنوان",
+                addressText: "مسجد_قندهار CBE دودوما، تنزانيا",
+                getDirections: "احصل على الاتجاهات",
+                phoneTitle: "الهاتف",
+                callNow: "اتصل الآن",
+                emailTitle: "البريد الإلكتروني",
+                sendEmail: "إرسال بريد إلكتروني",
+                officeHoursTitle: "ساعات العمل",
+                sundayThursday: "الأحد - الخميس",
+                friday: "الجمعة",
+                saturday: "السبت",
+                closed: "مغلق",
+                prayerTimesTitle: "أوقات الصلاة",
+                viewSchedule: "عرض الجدول",
+                emergencyTitle: "طوارئ",
+                emergencyText: "للأمور العاجلة التي تتطلب عناية فورية",
+                emergencyContact: "اتصال الطوارئ",
+                
+                // Contact Form
+                formTitle: "إرسال رسالة",
+                formSubtitle: "املأ النموذج أدناه لإرسال رسالة إلينا",
+                fullNameLabel: "الاسم الكامل",
+                emailLabel: "البريد الإلكتروني",
+                subjectLabel: "الموضوع",
+                messageLabel: "الرسالة",
+                characters: "حرف",
+                sendMessageBtn: "إرسال الرسالة",
+                resetBtnText: "إعادة تعيين",
+                
+                // Map Section
+                locationTitle: "الموقع",
+                locationSubtitle: "تجدنا هنا",
+                mapTitle: "مسجد_قندهار CBE دودوما",
+                openMaps: "فتح في الخرائط",
+                parkingTitle: "موقف السيارات",
+                parkingText: "موقف سيارات مجاني متوفر",
+                accessibilityTitle: "إمكانية الوصول",
+                accessibilityText: "يمكن الوصول بواسطة الكراسي المتحركة",
+                transportTitle: "النقل العام",
+                transportText: "محطات الحافلات قريبة",
+                
+                // FAQ Section
+                faqTitle: "الأسئلة الشائعة",
+                faqSubtitle: "إجابات سريعة على الأسئلة الشائعة",
+                faq1Question: "ما هي ساعات الزيارة؟",
+                faq1Answer: "المسجد مفتوح للزيارات من الساعة 8:00 صباحاً حتى 4:00 مساءً الأحد إلى الخميس، ومن 9:00 صباحاً حتى 12:00 ظهراً يوم الجمعة. أيام السبت مخصصة للصيانة والمناسبات الخاصة.",
+                faq2Question: "هل يتوفر موقف سيارات؟",
+                faq2Answer: "نعم، يتوفر موقف سيارات مجاني للزوار. يمكن لموقف السيارات استيعاب السيارات والدراجات النارية، مع أماكن مخصصة للأشخاص ذوي الإعاقة.",
+                faq3Question: "كيف يمكنني التبرع؟",
+                faq3Answer: "يمكنك التبرع من خلال بوابتنا الإلكترونية، شخصياً في مكتب المسجد، أو عبر الدفع عبر الهاتف المحمول. جميع التبرعات معفاة من الضرائب ويتم تقديم الإيصالات.",
+                faq4Question: "هل يمكنني حجز المسجد للمناسبات؟",
+                faq4Answer: "نعم، يمكن حجز مرافق المسجد لحفلات الزفاف والمناسبات التعليمية والتجمعات المجتمعية. يرجى الاتصال بالمكتب قبل أسبوعين على الأقل للتحقق من التوفر والترتيبات.",
+                
+                // Footer
+                footerBrand: "نظام إدارة مسجد_قندهار",
+                footerDesc: "حل رقمي متكامل لإدارة المسجد والمشاركة المجتمعية والإدارة الروحية.",
+                footerNewsletterTitle: "اشترك في النشرة الإخبارية",
+                footerNewsletterDesc: "احصل على تحديثات حول أوقات الصلاة والأحداث وأخبار المجتمع",
+                footerQuickLinks: "روابط سريعة",
+                footerHome: "الرئيسية",
+                footerAbout: "حول",
+                footerPrayerTimes: "أوقات الصلاة",
+                footerEvents: "الأحداث",
+                footerContact: "اتصل",
+                footerServices: "الخدمات",
+                footerDonations: "التبرعات",
+                footerQR: "نظام رمز الاستجابة السريعة",
+                footerSermons: "الخطب",
+                footerResources: "الموارد",
+                footerMembership: "العضوية",
+                footerContactInfo: "معلومات الاتصال",
+                footerAddress: "العنوان",
+                footerAddressText: "مسجد_قندهار، CBE دودوما",
+                footerPhone: "الهاتف",
+                footerEmail: "البريد الإلكتروني",
+                footerPrayer: "أوقات الصلاة",
+                footerPrayerText: "مفتوح 24 ساعة",
+                footerAppStore: "متجر التطبيقات",
+                footerPlayStore: "متجر جوجل",
+                developedBy: "طور بواسطة",
+                copyright: "&copy; 2026 مسجد_قندهار. جميع الحقوق محفوظة."
+            }
+        };
+
+        // ========== LANGUAGE FUNCTIONS ==========
+        let currentLang = localStorage.getItem('masjid_language') || 'en';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('masjid_language', lang);
+            
+            // Update UI text
+            updateUIText(lang);
+            
+            // Update RTL for Arabic
+            if (lang === 'ar') {
+                document.body.classList.add('rtl');
+                document.body.dir = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.classList.remove('rtl');
+                document.body.dir = 'ltr';
+                document.body.style.textAlign = 'left';
+            }
+            
+            // Update language switcher buttons
+            document.getElementById('currentLanguage').textContent = getLanguageName(lang);
+            document.getElementById('currentLanguageMobile').textContent = getLanguageName(lang);
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-dropdown .dropdown-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.innerHTML.includes(getLanguageName(lang))) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        function getLanguageName(lang) {
+            const names = { en: 'English', sw: 'Kiswahili', ar: 'العربية' };
+            return names[lang] || 'English';
+        }
+
+        function updateUIText(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            
+            // Update all elements with IDs
+            for (const [key, value] of Object.entries(t)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (key === 'copyright') {
+                        element.innerHTML = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                }
+            }
+        }
+
+        // ========== PRAYER TIMES CONFIGURATION ==========
+        const prayerTimes = {
+            fajr: { adhan: "5:30", iqama: "5:40", name: "Fajr", ar: "الفجر", sw: "Al_Fajr", icon: "fas fa-sun" },
+            sunrise: { adhan: "6:30", iqama: "-", name: "Sunrise", ar: "الشروق", sw: "Macheo", icon: "fas fa-sunrise" },
+            dhuhr: { adhan: "12:50", iqama: "13:00", name: "Dhuhr", ar: "الظهر", sw: "Adhuhuri", icon: "fas fa-sun" },
+            asr: { adhan: "15:50", iqama: "16:00", name: "Asr", ar: "العصر", sw: "Alasiri", icon: "fas fa-cloud-sun" },
+            maghrib: { adhan: "18:55", iqama: "19:00", name: "Maghrib", ar: "المغرب", sw: "Magharibi", icon: "fas fa-sunset" },
+            isha: { adhan: "20:15", iqama: "20:30", name: "Isha", ar: "العشاء", sw: "Isha", icon: "fas fa-moon" }
+        };
+
+        // ========== UTILITY FUNCTIONS ==========
+        function formatTime(date) {
+            return date.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+        }
+
+        function parseTime(timeStr) {
+            const [time, modifier] = timeStr.split(' ');
+            let [hours, minutes] = time.split(':');
+            
+            hours = parseInt(hours);
+            minutes = parseInt(minutes);
+            
+            if (modifier === 'PM' && hours < 12) hours += 12;
+            if (modifier === 'AM' && hours === 12) hours = 0;
+            
+            const now = new Date();
+            return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+        }
+
+        function getTimeRemaining(targetTime) {
+            const now = new Date();
+            const diff = targetTime - now;
+            
+            if (diff <= 0) return { hours: 0, minutes: 0, seconds: 0 };
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            return { hours, minutes, seconds };
+        }
+
+        function formatTimeRemaining(remaining) {
+            if (remaining.hours > 0) {
+                return `${remaining.hours}h ${remaining.minutes}m`;
+            } else if (remaining.minutes > 0) {
+                return `${remaining.minutes}m ${remaining.seconds}s`;
+            }
+            return `${remaining.seconds}s`;
+        }
+
+        // ========== PRAYER TIMES FUNCTIONS ==========
+        function updatePrayerTimes() {
+            const now = new Date();
+            const prayerOrder = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
+            
+            let currentPrayer = null;
+            let nextPrayer = null;
+            let foundCurrent = false;
+            
+            // Find current and next prayer
+            for (let i = 0; i < prayerOrder.length; i++) {
+                const prayerKey = prayerOrder[i];
+                const prayer = prayerTimes[prayerKey];
+                
+                if (prayer.iqama !== '-') {
+                    const prayerTime = parseTime(prayer.iqama + ' AM');
+                    
+                    if (now < prayerTime) {
+                        if (!foundCurrent) {
+                            currentPrayer = prayerKey;
+                            foundCurrent = true;
+                        }
+                        if (!nextPrayer) {
+                            nextPrayer = prayerKey;
+                        }
+                    }
+                }
+            }
+            
+            // If no next prayer found, set next prayer to tomorrow's fajr
+            if (!nextPrayer) {
+                nextPrayer = 'fajr';
+            }
+            
+            // Update current prayer in nav
+            if (currentPrayer) {
+                const prayerName = currentLang === 'ar' ? prayerTimes[currentPrayer].ar : 
+                                 currentLang === 'sw' ? prayerTimes[currentPrayer].sw : 
+                                 prayerTimes[currentPrayer].name;
+                
+                document.getElementById('navCurrentPrayer').textContent = prayerName;
+                document.getElementById('navCurrentPrayerMobile').textContent = prayerName;
+                
+                const nextPrayerTime = parseTime(prayerTimes[nextPrayer].iqama + ' AM');
+                const remaining = getTimeRemaining(nextPrayerTime);
+                const timeStr = formatTimeRemaining(remaining);
+                document.getElementById('navTimeRemaining').textContent = timeStr;
+                document.getElementById('navTimeRemainingMobile').textContent = timeStr;
+            }
+        }
+
+        // ========== DATE AND TIME FUNCTIONS ==========
+        function updateDateTime() {
+            const now = new Date();
+            
+            // Update copyright year
+            document.getElementById('copyrightText').innerHTML = 
+                `&copy; ${now.getFullYear()} ${currentLang === 'ar' ? 'مسجد_قندهار' : 
+                                                   currentLang === 'sw' ? 'Masjid_Qandahaar' : 
+                                                   'Masjid_Qandahaar'}. ${currentLang === 'ar' ? 'جميع الحقوق محفوظة' : 
+                                                                          currentLang === 'sw' ? 'Haki zote zimehifadhiwa' : 
+                                                                          'All rights reserved.'}`;
+        }
+
+        // ========== NAVBAR SCROLL EFFECT ==========
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar-glass');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // ========== BACK TO TOP BUTTON ==========
+        function setupBackToTop() {
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // ========== CONTACT FORM HANDLING ==========
+        function setupContactForm() {
+            const contactForm = document.getElementById('contactForm');
+            const formBody = document.getElementById('formBody');
+            const submitBtn = document.getElementById('submitBtn');
+            const messageTextarea = document.getElementById('message');
+            const charCount = document.getElementById('charCount');
+            
+            // Character counter
+            if (messageTextarea && charCount) {
+                messageTextarea.addEventListener('input', function() {
+                    charCount.textContent = this.value.length;
+                    
+                    if (this.value.length > 900) {
+                        charCount.style.color = '#dc3545';
+                    } else if (this.value.length > 800) {
+                        charCount.style.color = '#ff9800';
+                    } else {
+                        charCount.style.color = '';
+                    }
+                });
+                
+                charCount.textContent = messageTextarea.value.length;
+            }
+            
+            if (!contactForm) return;
+            
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                formBody.innerHTML = '';
+                
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                let errors = [];
+                
+                // Clear previous error states
+                document.querySelectorAll('.form-control').forEach(input => {
+                    input.classList.remove('is-invalid');
+                });
+                document.querySelectorAll('.invalid-feedback').forEach(feedback => {
+                    feedback.textContent = '';
+                });
+                
+                // Name validation
+                if (!data.name.trim()) {
+                    errors.push(currentLang === 'ar' ? 'الاسم مطلوب' : 
+                               currentLang === 'sw' ? 'Jina linahitajika' : 
+                               'Name is required');
+                    document.getElementById('name').classList.add('is-invalid');
+                    document.getElementById('nameError').textContent = 
+                        currentLang === 'ar' ? 'الرجاء إدخال اسمك' : 
+                        currentLang === 'sw' ? 'Tafadhali ingiza jina lako' : 
+                        'Please enter your name';
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!data.email.trim()) {
+                    errors.push(currentLang === 'ar' ? 'البريد الإلكتروني مطلوب' : 
+                               currentLang === 'sw' ? 'Barua pepe inahitajika' : 
+                               'Email is required');
+                    document.getElementById('email').classList.add('is-invalid');
+                    document.getElementById('emailError').textContent = 
+                        currentLang === 'ar' ? 'الرجاء إدخال بريدك الإلكتروني' : 
+                        currentLang === 'sw' ? 'Tafadhali ingiza barua pepe yako' : 
+                        'Please enter your email';
+                } else if (!emailRegex.test(data.email)) {
+                    errors.push(currentLang === 'ar' ? 'تنسيق البريد الإلكتروني غير صحيح' : 
+                               currentLang === 'sw' ? 'Muundo wa barua pepe si sahihi' : 
+                               'Invalid email format');
+                    document.getElementById('email').classList.add('is-invalid');
+                    document.getElementById('emailError').textContent = 
+                        currentLang === 'ar' ? 'الرجاء إدخال عنوان بريد إلكتروني صحيح' : 
+                        currentLang === 'sw' ? 'Tafadhali ingiza anwani sahihi ya barua pepe' : 
+                        'Please enter a valid email address';
+                }
+                
+                // Subject validation
+                if (!data.subject.trim()) {
+                    errors.push(currentLang === 'ar' ? 'الموضوع مطلوب' : 
+                               currentLang === 'sw' ? 'Mada inahitajika' : 
+                               'Subject is required');
+                    document.getElementById('subject').classList.add('is-invalid');
+                    document.getElementById('subjectError').textContent = 
+                        currentLang === 'ar' ? 'الرجاء إدخال موضوع' : 
+                        currentLang === 'sw' ? 'Tafadhali ingiza mada' : 
+                        'Please enter a subject';
+                }
+                
+                // Message validation
+                if (!data.message.trim()) {
+                    errors.push(currentLang === 'ar' ? 'الرسالة مطلوبة' : 
+                               currentLang === 'sw' ? 'Ujumbe unahitajika' : 
+                               'Message is required');
+                    document.getElementById('message').classList.add('is-invalid');
+                    document.getElementById('messageError').textContent = 
+                        currentLang === 'ar' ? 'الرجاء إدخال رسالتك' : 
+                        currentLang === 'sw' ? 'Tafadhali ingiza ujumbe wako' : 
+                        'Please enter your message';
+                } else if (data.message.length > 1000) {
+                    errors.push(currentLang === 'ar' ? 'الرسالة طويلة جدًا (الحد الأقصى 1000 حرف)' : 
+                               currentLang === 'sw' ? 'Ujumbe ni mrefu sana (kiwango cha juu ni herufi 1000)' : 
+                               'Message is too long (max 1000 characters)');
+                    document.getElementById('message').classList.add('is-invalid');
+                    document.getElementById('messageError').textContent = 
+                        currentLang === 'ar' ? 'يجب أن تكون الرسالة 1000 حرف أو أقل' : 
+                        currentLang === 'sw' ? 'Ujumbe lazima uwe herufi 1000 au chini' : 
+                        'Message must be 1000 characters or less';
+                }
+                
+                if (errors.length > 0) {
+                    const errorHtml = `
+                        <div class="alert alert-danger">
+                            <div class="alert-header">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                ${currentLang === 'ar' ? 'يرجى تصحيح الأخطاء التالية:' : 
+                                  currentLang === 'sw' ? 'Tafadhali sahihisha makosa yafuatayo:' : 
+                                  'Please correct the following errors:'}
+                            </div>
+                            <ul class="alert-list">
+                                ${errors.map(error => `<li>${error}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+                    formBody.innerHTML = errorHtml;
+                    return;
+                }
+                
+                const originalBtnText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>' + 
+                    (currentLang === 'ar' ? ' جاري الإرسال...' : 
+                     currentLang === 'sw' ? ' Inatuma...' : 
+                     ' Sending...');
+                submitBtn.disabled = true;
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    const successHtml = `
+                        <div class="alert alert-success">
+                            <div class="alert-header">
+                                <i class="fas fa-check-circle me-2"></i>
+                                ${currentLang === 'ar' ? 'تم إرسال الرسالة بنجاح!' : 
+                                  currentLang === 'sw' ? 'Ujumbe umetumwa kwa mafanikio!' : 
+                                  'Message sent successfully!'}
+                            </div>
+                            <p>${currentLang === 'ar' ? 'شكرًا لتواصلك معنا. سنعود إليك قريبًا.' : 
+                                  currentLang === 'sw' ? 'Asante kwa kuwasiliana nasi. Tutakujibu hivi karibuni.' : 
+                                  'Thank you for contacting us. We will get back to you soon.'}</p>
+                            <small><i class="fas fa-envelope me-1"></i> abdillahmwiba@gmail.com | <i class="fas fa-phone me-1"></i> +255 750 555 783</small>
+                        </div>
+                    `;
+                    formBody.innerHTML = successHtml;
+                    
+                    contactForm.reset();
+                    charCount.textContent = '0';
+                    charCount.style.color = '';
+                    
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                    
+                    formBody.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    
+                    console.log('Contact form submitted:', data);
+                    
+                }, 2000);
+            });
+            
+            // Reset form button
+            const resetBtn = document.getElementById('resetBtn');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function() {
+                    formBody.innerHTML = '';
+                    
+                    document.querySelectorAll('.form-control').forEach(input => {
+                        input.classList.remove('is-invalid');
+                    });
+                    document.querySelectorAll('.invalid-feedback').forEach(feedback => {
+                        feedback.textContent = '';
+                    });
+                    
+                    if (charCount) {
+                        charCount.textContent = '0';
+                        charCount.style.color = '';
+                    }
+                });
+            }
+        }
+
+        // ========== FOOTER NEWSLETTER ==========
+        function setupFooterNewsletter() {
+            const footerNewsletterBtn = document.getElementById('footerNewsletterButton');
+            
+            if (footerNewsletterBtn) {
+                footerNewsletterBtn.addEventListener('click', function() {
+                    const email = document.getElementById('footerNewsletterEmail').value;
+                    
+                    if (email && email.includes('@')) {
+                        alert(currentLang === 'ar' ? 'شكرًا لك على الاشتراك في النشرة الإخبارية!' :
+                              currentLang === 'sw' ? 'Asante kwa kujisajili kwenye jarida!' :
+                              'Thank you for subscribing to our newsletter!');
+                        document.getElementById('footerNewsletterEmail').value = '';
+                    } else {
+                        alert(currentLang === 'ar' ? 'الرجاء إدخال عنوان بريد إلكتروني صحيح.' :
+                              currentLang === 'sw' ? 'Tafadhali ingiza anwani sahihi ya barua pepe.' :
+                              'Please enter a valid email address.');
+                    }
+                });
+            }
+        }
+
+        // ========== FAQ ACCORDION ANIMATION ==========
+        function setupFAQAccordion() {
+            const faqButtons = document.querySelectorAll('.accordion-button');
+            faqButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    icon.style.transition = 'transform 0.3s ease';
+                    if (this.classList.contains('collapsed')) {
+                        icon.style.transform = 'rotate(0deg)';
+                    } else {
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+        }
+
+        // ========== MAP INTERACTION ==========
+        function setupMapInteractions() {
+            const mapIframe = document.querySelector('.google-map');
+            if (mapIframe) {
+                const mapContainer = document.querySelector('.map-container');
+                mapContainer.addEventListener('mouseenter', () => {
+                    mapContainer.style.transform = 'scale(1.02)';
+                    mapContainer.style.transition = 'transform 0.3s ease';
+                });
+                
+                mapContainer.addEventListener('mouseleave', () => {
+                    mapContainer.style.transform = 'scale(1)';
+                });
+            }
+        }
+
+        // ========== SMOOTH SCROLLING ==========
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            changeLanguage(currentLang);
+            
+            // Initialize components
+            updatePrayerTimes();
+            updateDateTime();
+            setupContactForm();
+            setupFooterNewsletter();
+            setupFAQAccordion();
+            setupMapInteractions();
+            setupBackToTop();
+            setupSmoothScrolling();
+            
+            // Update prayer times every second
+            setInterval(updatePrayerTimes, 1000);
+            
+            // Update date every hour
+            setInterval(updateDateTime, 3600000);
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', handleNavbarScroll);
+            
+            // Set active navigation link
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Initialize with scroll check
+            handleNavbarScroll();
+        });
+
+        // ========== INITIALIZE ON LOAD ==========
+        window.onload = function() {
+            handleNavbarScroll();
+            updateDateTime();
+            updatePrayerTimes();
+        };
+    </script>
+</body>
+</html>

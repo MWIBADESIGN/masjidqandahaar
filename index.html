@@ -1,0 +1,3916 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Masjid_Qandahaar Management System</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent-color: #ff9800;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --border-color: #e0e0e0;
+            --text-light: #666;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding-top: 80px;
+        }
+        
+        .text-islamic {
+            color: var(--primary-color);
+        }
+        
+        .bg-islamic {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* ========== ENHANCED NAVIGATION BAR ========== */
+        .navbar-glass {
+            background: rgba(27, 94, 32, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(27, 94, 32, 0.3);
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+        
+        .navbar-glass.scrolled {
+            padding: 0.3rem 0;
+            background: rgba(27, 94, 32, 0.98);
+            box-shadow: 0 8px 32px rgba(27, 94, 32, 0.4);
+        }
+        
+        /* Brand Logo */
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand i {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand:hover i {
+            transform: rotate(15deg);
+        }
+        
+        .navbar-brand span {
+            background: linear-gradient(45deg, white, #ffd54f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Navigation Items */
+        .navbar-nav {
+            gap: 0.3rem;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            padding: 0.75rem 1.2rem !important;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .nav-text {
+            font-size: 0.9rem;
+        }
+        
+        .nav-dot {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link.active .nav-dot {
+            opacity: 1;
+        }
+        
+        /* Action Buttons */
+        .nav-action-btn {
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        .nav-login {
+            color: var(--primary-color) !important;
+            background: white !important;
+            border: 2px solid white;
+        }
+        
+        .nav-login:hover {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: var(--primary-dark) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav-register {
+            background: linear-gradient(45deg, var(--accent-color), #ffb74d) !important;
+            color: white !important;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .nav-register:hover {
+            background: linear-gradient(45deg, #ff9800, #ffa726) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .language-btn i {
+            font-size: 1rem;
+        }
+        
+        .language-dropdown {
+            min-width: 180px;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(27, 94, 32, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-dropdown .dropdown-item {
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .language-dropdown .dropdown-item i {
+            width: 20px;
+            color: var(--accent-color);
+        }
+        
+        .language-dropdown .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .language-dropdown .dropdown-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        /* Prayer Time Indicator in Nav */
+        .nav-prayer-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            margin-left: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-prayer-indicator:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .prayer-icon {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .prayer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .current-prayer {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .prayer-countdown {
+            font-size: 0.75rem;
+            color: #ffeb3b;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        /* Mobile Menu */
+        .navbar-toggler {
+            border: none;
+            padding: 0.5rem;
+            color: white;
+        }
+        
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+        }
+        
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 0.9)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(27, 94, 32, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 15px;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-prayer-indicator {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+            
+            .nav-action-btn {
+                margin: 0.5rem 0;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .language-switcher {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+        }
+        
+        /* ========== HERO SECTION ========== */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 120px 0 60px;
+            position: relative;
+            overflow: hidden;
+            margin-top: -80px;
+            padding-top: 200px;
+        }
+        
+        /* Quran Verse Display */
+        .quran-verse-display {
+            margin-top: 3rem;
+            max-width: 700px;
+            position: relative;
+        }
+        
+        .verse-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .verse-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .verse-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .verse-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .verse-title i {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .verse-title h5 {
+            margin: 0;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .verse-refresh {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .verse-refresh:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(45deg);
+        }
+        
+        .arabic-verse {
+            font-size: 1.8rem;
+            text-align: right;
+            margin-bottom: 1.5rem;
+            line-height: 2;
+            color: white;
+            font-family: 'Traditional Arabic', 'Amiri', serif;
+            direction: rtl;
+            min-height: 100px;
+        }
+        
+        .verse-translation {
+            color: rgba(255, 255, 255, 0.95);
+            font-style: italic;
+            border-left: 4px solid rgba(255, 255, 255, 0.3);
+            padding-left: 1.2rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .verse-surah {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+            text-align: right;
+            font-weight: 500;
+        }
+        
+        /* ========== PRAYER TIMES SECTION ========== */
+        .prayer-times-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .prayer-table-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .prayer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .current-prayer-indicator {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: white;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.3);
+        }
+        
+        .current-prayer-indicator i {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+        }
+        
+        .current-prayer-indicator h4 {
+            margin: 0;
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        
+        .next-prayer-info {
+            text-align: right;
+        }
+        
+        .next-prayer-info p {
+            margin: 0;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        
+        .next-prayer-time {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--primary-color);
+            margin-top: 5px;
+        }
+        
+        .prayer-times-table {
+            margin-top: 2rem;
+        }
+        
+        .prayer-times-table .table {
+            margin-bottom: 0;
+            border-collapse: separate;
+            border-spacing: 0 12px;
+        }
+        
+        .prayer-times-table .table tbody tr {
+            transition: all 0.3s ease;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .prayer-times-table .table tbody tr td {
+            padding: 1.5rem;
+            vertical-align: middle;
+            border: none;
+            font-size: 1.1rem;
+            position: relative;
+        }
+        
+        .prayer-times-table .table tbody tr td:first-child {
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+        }
+        
+        .prayer-times-table .table tbody tr td:last-child {
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
+        
+        .prayer-times-table .table tbody tr.prayer-completed {
+            background: linear-gradient(90deg, rgba(46, 125, 50, 0.08), rgba(46, 125, 50, 0.12));
+        }
+        
+        .prayer-times-table .table tbody tr.prayer-current {
+            background: linear-gradient(90deg, rgba(46, 125, 50, 0.2), rgba(76, 175, 80, 0.25));
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(46, 125, 50, 0.2);
+            z-index: 1;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .prayer-times-table .table tbody tr.prayer-upcoming {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 5px solid var(--warning-color);
+        }
+        
+        .prayer-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+        
+        .status-completed {
+            background: rgba(40, 167, 69, 0.15);
+            color: var(--success-color);
+        }
+        
+        .status-current {
+            background: rgba(13, 110, 253, 0.15);
+            color: var(--primary-color);
+            animation: pulse-bg 2s infinite;
+        }
+        
+        .status-upcoming {
+            background: rgba(255, 193, 7, 0.15);
+            color: var(--warning-color);
+        }
+        
+        @keyframes pulse-bg {
+            0% { background: rgba(13, 110, 253, 0.15); }
+            50% { background: rgba(13, 110, 253, 0.25); }
+            100% { background: rgba(13, 110, 253, 0.15); }
+        }
+        
+        .prayer-name {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+        
+        .prayer-name i {
+            width: 40px;
+            height: 40px;
+            background: rgba(46, 125, 50, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        
+        .prayer-time-display {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--dark-color);
+        }
+        
+        .time-remaining {
+            font-size: 1rem;
+            color: var(--danger-color);
+            font-weight: 700;
+            animation: pulse 2s infinite;
+        }
+        
+        /* ========== RESPONSIVE DESIGN ========== */
+        
+        /* Extra small devices (phones, 576px and down) */
+        @media (max-width: 576px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .navbar-brand {
+                font-size: 1.1rem;
+            }
+            
+            .navbar-brand i {
+                font-size: 1.5rem;
+            }
+            
+            .hero-section {
+                padding-top: 150px;
+                padding-bottom: 40px;
+            }
+            
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+                max-width: 100%;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .verse-card {
+                padding: 1.2rem;
+            }
+            
+            .arabic-verse {
+                font-size: 1.2rem;
+            }
+            
+            .verse-translation {
+                font-size: 0.95rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .section-description {
+                font-size: 0.95rem;
+            }
+            
+            .prayer-table-container {
+                padding: 1.2rem;
+            }
+            
+            .prayer-header {
+                flex-direction: column;
+                gap: 15px;
+                align-items: stretch;
+            }
+            
+            .current-prayer-indicator {
+                padding: 12px 20px;
+            }
+            
+            .next-prayer-info {
+                text-align: center;
+            }
+            
+            .next-prayer-time {
+                font-size: 1.8rem;
+            }
+            
+            .prayer-times-table .table tbody tr td {
+                padding: 1rem 0.8rem;
+                font-size: 0.9rem;
+            }
+            
+            .prayer-name {
+                font-size: 1rem;
+                gap: 8px;
+            }
+            
+            .prayer-name i {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9rem;
+            }
+            
+            .prayer-status {
+                padding: 5px 10px;
+                font-size: 0.8rem;
+            }
+            
+            .footer-brand h3 {
+                font-size: 1.5rem;
+            }
+            
+            .newsletter-card {
+                padding: 2rem 1.5rem;
+            }
+            
+            .newsletter-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Small devices (tablets, 577px to 768px) */
+        @media (min-width: 577px) and (max-width: 768px) {
+            body {
+                padding-top: 75px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+            }
+            
+            .arabic-verse {
+                font-size: 1.4rem;
+            }
+            
+            .prayer-header {
+                flex-direction: column;
+                gap: 20px;
+                align-items: stretch;
+            }
+            
+            .next-prayer-info {
+                text-align: center;
+            }
+            
+            .feature-card, .event-card, .testimonial-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Medium devices (landscape tablets, 769px to 992px) */
+        @media (min-width: 769px) and (max-width: 992px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .arabic-verse {
+                font-size: 1.6rem;
+            }
+            
+            .feature-card, .event-card, .testimonial-card {
+                padding: 2rem;
+            }
+        }
+        
+        /* Large devices (desktops, 993px to 1200px) */
+        @media (min-width: 993px) and (max-width: 1200px) {
+            .container {
+                max-width: 960px;
+            }
+        }
+        
+        /* Extra large devices (large desktops, 1201px and up) */
+        @media (min-width: 1201px) {
+            .container {
+                max-width: 1140px;
+            }
+        }
+        
+        /* Landscape orientation for phones */
+        @media (max-height: 576px) and (orientation: landscape) {
+            .hero-section {
+                padding-top: 120px;
+                padding-bottom: 40px;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .quran-verse-display {
+                margin-top: 1.5rem;
+            }
+        }
+        
+        /* Tablet landscape */
+        @media (max-height: 768px) and (orientation: landscape) and (min-width: 768px) {
+            .hero-section {
+                padding-top: 150px;
+            }
+            
+            .hero-image {
+                max-height: 350px;
+                overflow: hidden;
+            }
+        }
+        
+        /* ========== SECTIONS SPACING ========== */
+        .section {
+            scroll-margin-top: 100px;
+        }
+        
+        @media (max-width: 768px) {
+            .section {
+                scroll-margin-top: 80px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .section {
+                scroll-margin-top: 70px;
+            }
+        }
+        
+        /* ========== RTL SUPPORT ========== */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        body.rtl .nav-link i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        
+        body.rtl .verse-translation {
+            border-left: none;
+            border-right: 4px solid rgba(255, 255, 255, 0.3);
+            padding-left: 0;
+            padding-right: 1.2rem;
+        }
+        
+        body.rtl .verse-surah {
+            text-align: left;
+        }
+        
+        body.rtl .prayer-header {
+            flex-direction: row-reverse;
+        }
+        
+        body.rtl .next-prayer-info {
+            text-align: left;
+        }
+        
+        body.rtl .hover-lift:hover {
+            transform: translateX(-8px);
+            padding-left: 8px;
+            padding-right: 16px;
+        }
+        
+        body.rtl .contact-icon {
+            margin-left: 1rem;
+            margin-right: 0;
+        }
+        
+        @media (max-width: 768px) {
+            body.rtl .prayer-header {
+                flex-direction: column-reverse;
+            }
+            
+            body.rtl .next-prayer-info {
+                text-align: center;
+            }
+        }
+        
+        /* Keep existing styles for other sections */
+        .hero-subtitle {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-subtitle .badge {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        .hijri-date {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 90%;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-floating-elements {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-1 {
+            top: 20%;
+            left: 0;
+            animation-delay: 0s;
+        }
+        
+        .floating-2 {
+            top: 50%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-3 {
+            bottom: 30%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+        
+        /* Quran Ticker */
+        .quran-ticker {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem 0;
+            margin-top: 3rem;
+        }
+        
+        .ticker-container {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        
+        .ticker-content {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            animation: ticker 30s linear infinite;
+        }
+        
+        @keyframes ticker {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        .verse-text {
+            color: white;
+            font-size: 1.1rem;
+            font-family: 'Traditional Arabic', 'Amiri', serif;
+        }
+        
+        /* Prayer Times Bar */
+        .prayer-times-bar {
+            background: white;
+            padding: 1.5rem 0;
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .prayer-time {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .prayer-time.current {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(46, 125, 50, 0.3);
+        }
+        
+        .prayer-name-bar {
+            display: block;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .prayer-time-value {
+            display: block;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+        
+        /* Scroll Down */
+        .scroll-down {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+        }
+        
+        .scroll-down a {
+            text-decoration: none;
+        }
+        
+        .mouse {
+            width: 30px;
+            height: 50px;
+            border: 2px solid white;
+            border-radius: 20px;
+            display: block;
+            margin: 0 auto 0.5rem;
+            position: relative;
+        }
+        
+        .wheel {
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: scroll 2s infinite;
+        }
+        
+        @keyframes scroll {
+            0% { opacity: 1; top: 10px; }
+            100% { opacity: 0; top: 30px; }
+        }
+        
+        .scroll-text {
+            color: white;
+            font-size: 0.9rem;
+            display: block;
+            text-align: center;
+        }
+        
+        /* Section Styles */
+        .section-header {
+            margin-bottom: 3rem;
+        }
+        
+        .section-subtitle {
+            color: var(--primary-color);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Features Section */
+        .features-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .features-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .features-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-light);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .feature-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        @media (max-width: 576px) {
+            .feature-card h4 {
+                font-size: 1.3rem;
+            }
+        }
+        
+        .feature-card p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-link:hover {
+            color: var(--primary-dark);
+            gap: 1rem;
+        }
+        
+        /* Events Section */
+        .events-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .events-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .events-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            position: relative;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .event-date {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .event-day {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+            line-height: 1;
+        }
+        
+        .event-month {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .event-content {
+            padding: 1.5rem;
+        }
+        
+        .event-badge {
+            font-size: 0.7rem;
+            padding: 0.25rem 0.75rem;
+            margin-bottom: 0.75rem;
+            display: inline-block;
+        }
+        
+        .event-content h5 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark-color);
+        }
+        
+        .event-content p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .event-time {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        
+        /* Donation Section */
+        .donation-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .donation-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .donation-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .donation-content {
+            max-width: 600px;
+        }
+        
+        .donation-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .donation-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        .stat-item h3 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-item p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        .donation-progress {
+            height: 12px;
+            border-radius: 6px;
+            margin: 1.5rem 0;
+            background: #e9ecef;
+        }
+        
+        .donation-progress .progress-bar {
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+            border-radius: 6px;
+        }
+        
+        .donation-image img {
+            max-width: 100%;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .quick-links {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .quick-links {
+                padding: 40px 0;
+            }
+        }
+        
+        .quick-link-card {
+            display: block;
+            background: white;
+            padding: 2.5rem 1rem;
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--dark-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+        }
+        
+        .quick-link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            color: var(--primary-color);
+            border-color: var(--primary-light);
+        }
+        
+        .quick-link-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-link-card:hover .quick-link-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .quick-link-card h6 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .testimonials-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--primary-light);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+        
+        body.rtl .testimonial-card::before {
+            left: auto;
+            right: 20px;
+        }
+        
+        .testimonial-rating {
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-text {
+            color: var(--dark-color);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author h6 {
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+            color: var(--dark-color);
+        }
+        
+        .testimonial-author small {
+            color: var(--text-light);
+        }
+        
+        /* Newsletter */
+        .newsletter-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .newsletter-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .newsletter-card {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(46, 125, 50, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .newsletter-card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        .newsletter-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .newsletter-content h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .newsletter-content p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-content p {
+                font-size: 0.95rem;
+            }
+        }
+        
+        .newsletter-form .input-group {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            padding: 0.25rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .newsletter-form .form-control {
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .form-control {
+                padding: 0.8rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .newsletter-form .form-control:focus {
+            box-shadow: none;
+        }
+        
+        .newsletter-form .btn {
+            padding: 1rem 2rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .btn {
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .newsletter-form small {
+            display: block;
+            margin-top: 0.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Footer Custom Styles */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding-top: 80px;
+            margin-top: 100px;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .footer {
+                padding-top: 60px;
+                margin-top: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer {
+                padding-top: 40px;
+                margin-top: 40px;
+            }
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(27, 94, 32, 0.1));
+        }
+        
+        .footer-wave {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%232E7D32' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        
+        .border-white-20 {
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .bg-white-10 {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .text-white-75 {
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+        
+        .text-white-50 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .footer-brand h3 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 576px) {
+            .footer-brand h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        
+        .hover-lift:hover {
+            color: white !important;
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 16px;
+        }
+        
+        body.rtl .hover-lift:hover {
+            transform: translateX(-8px);
+            padding-left: 8px;
+            padding-right: 16px;
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 576px) {
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .contact-icon:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: scale(1.1);
+        }
+        
+        .newsletter-form .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-form .form-control {
+            border: none;
+            padding: 12px 20px;
+            background: white;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .form-control {
+                padding: 10px 15px;
+            }
+        }
+        
+        .newsletter-form .btn {
+            padding: 12px 25px;
+            border: none;
+            background: white;
+            transition: all 0.3s ease;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .btn {
+                padding: 10px 20px;
+            }
+        }
+        
+        .newsletter-form .btn:hover {
+            background: rgba(46, 125, 50, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .social-link {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: white;
+        }
+        
+        .social-link.facebook:hover { background: #1877F2; }
+        .social-link.twitter:hover { background: #1DA1F2; }
+        .social-link.instagram:hover { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+        .social-link.youtube:hover { background: #FF0000; }
+        .social-link.whatsapp:hover { background: #25D366; }
+        .social-link.telegram:hover { background: #0088cc; }
+        
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .decoration-item {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.05);
+            font-size: 8rem;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .decoration-item {
+                font-size: 5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .decoration-item {
+                font-size: 3rem;
+            }
+        }
+        
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+        
+        .decoration-2 {
+            top: 30%;
+            right: 10%;
+            transform: rotate(25deg);
+        }
+        
+        .decoration-3 {
+            bottom: 20%;
+            left: 15%;
+            transform: rotate(-10deg);
+        }
+        
+        .position-relative {
+            position: relative;
+        }
+        
+        .z-2 {
+            z-index: 2;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        @media (max-width: 576px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        /* contact card hover */
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.6rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-card p, .contact-card a {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+        
+        /* Donation percentage fix */
+        .donation-stats .stat-item:last-child h3 {
+            font-size: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== ENHANCED NAVIGATION BAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-mosque"></i>
+                <span id="brandName">Masjid_Qandahaar</span>
+            </a>
+            
+            <!-- Prayer Time Indicator -->
+            <div class="nav-prayer-indicator d-none d-lg-flex">
+                <i class="fas fa-clock prayer-icon"></i>
+                <div class="prayer-info">
+                    <div class="current-prayer" id="navCurrentPrayer">Fajr</div>
+                    <div class="prayer-countdown" id="navTimeRemaining">00:00</div>
+                </div>
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher d-none d-lg-flex">
+                <div class="dropdown">
+                    <button class="btn language-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">English</span>
+                    </button>
+                    <ul class="dropdown-menu language-dropdown">
+                        <li>
+                            <a class="dropdown-item active" href="#" onclick="changeLanguage('en'); return false;">
+                                <i class="fas fa-check-circle"></i> English
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('sw'); return false;">
+                                <i class="fas fa-check-circle"></i> Kiswahili
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('ar'); return false;">
+                                <i class="fas fa-check-circle"></i> العربية
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text" id="navHome">Home</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope nav-icon"></i>
+                            <span class="nav-text" id="navContact">Contact</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+
+                       <li class="nav-item">
+                        <a class="nav-link" href="about.html">
+                            <i class="fas fa-info-circle nav-icon"></i>
+                            <span class="nav-text" id="navAbout">About_Us.</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile Language Switcher -->
+                <div class="language-switcher d-lg-none d-flex justify-content-center my-3">
+                    <div class="dropdown">
+                        <button class="btn language-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLanguageMobile">English</span>
+                        </button>
+                        <ul class="dropdown-menu language-dropdown">
+                            <li>
+                                <a class="dropdown-item active" href="#" onclick="changeLanguage('en'); return false;">
+                                    <i class="fas fa-check-circle"></i> English
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('sw'); return false;">
+                                    <i class="fas fa-check-circle"></i> Kiswahili
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('ar'); return false;">
+                                    <i class="fas fa-check-circle"></i> العربية
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Mobile Prayer Indicator -->
+                <div class="nav-prayer-indicator d-lg-none d-flex justify-content-center my-3">
+                    <i class="fas fa-clock prayer-icon"></i>
+                    <div class="prayer-info">
+                        <div class="current-prayer" id="navCurrentPrayerMobile">Fajr</div>
+                        <div class="prayer-countdown" id="navTimeRemainingMobile">00:00</div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="d-flex gap-2 mt-2 mt-lg-0">
+                    <a class="nav-link nav-action-btn nav-login" href="weclome.html">
+                        <i class="fas fa-sign-in-alt me-2"></i> <span id="navLogin">Login</span>
+                    </a>
+                    <a class="nav-link nav-action-btn nav-register" href="weclome.html">
+                        <i class="fas fa-user-plus me-2"></i> <span id="navRegister">Register</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero-section section" id="home">
+        <div class="container">
+            <div class="row align-items-center min-vh-75">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h6 class="hero-subtitle">
+                            <span class="badge bg-success me-2" id="currentDate">Monday, January 1</span>
+                            <span class="hijri-date" id="hijriDate">20 shaaban 1445 AH</span>
+                        </h6>
+                        
+                        <h1 class="hero-title" id="heroTitle">
+                            Welcome to <span class="text-warning">Masjid_Qandahaar</span> Management System
+                        </h1>
+                        
+                        <p class="hero-description" id="heroDescription">
+                            A community mosque serving Muslims with prayers, education, and spiritual guidance. 
+                            Join us in worship and community activities.
+                        </p>
+                        
+                        <div class="hero-buttons">
+                            <a href="#prayer-times" class="btn btn-primary btn-lg">
+                                <i class="fas fa-clock me-2"></i> <span id="btnPrayerTimes">Prayer Times</span>
+                            </a>
+                            <a href="#events" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-calendar-alt me-2"></i> <span id="btnUpcomingEvents">Upcoming Events</span>
+                            </a>
+                        </div>
+                        
+                        <!-- Quran Verse Display -->
+                        <div class="quran-verse-display mt-5">
+                            <div class="verse-card">
+                                <div class="verse-header">
+                                    <div class="verse-title">
+                                        <i class="fas fa-book-quran"></i>
+                                        <h5 id="quranTitle">Quran Verse of the Day</h5>
+                                    </div>
+                                    <button class="verse-refresh" id="refreshVerse" title="Get another verse">
+                                        <i class="fas fa-sync-alt"></i>
+                                    </button>
+                                </div>
+                                <div class="verse-body">
+                                    <p class="arabic-verse" dir="rtl" id="arabicVerse">
+                                        <!-- Dynamic content will be inserted here -->
+                                    </p>
+                                    <p class="verse-translation" id="verseTranslation">
+                                        <!-- Dynamic content will be inserted here -->
+                                    </p>
+                                    <p class="verse-surah" id="verseReference">
+                                        <!-- Dynamic content will be inserted here -->
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <!-- Mosque illustration placeholder -->
+                        <div style="background: linear-gradient(45deg, #1b5e20, #2e7d32); height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-mosque" style="font-size: 10rem; opacity: 0.8;"></i>
+                        </div>
+                        <div class="hero-floating-elements">
+                            <div class="floating-element floating-1">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <div class="floating-element floating-2">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="floating-element floating-3">
+                                <i class="fas fa-pray"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Quran Ticker -->
+        <div class="quran-ticker">
+            <div class="ticker-container">
+                <div class="ticker-content">
+                    <i class="fas fa-book-quran"></i>
+                    <span class="verse-text" id="tickerVerse">
+                        <!-- Dynamic content will be inserted here -->
+                    </span>
+                    <i class="fas fa-book-quran"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Prayer Times Bar -->
+        <div class="prayer-times-bar">
+            <div class="container">
+                <div class="row g-3" id="currentPrayerTimes">
+                    <!-- Dynamic content will be inserted here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Down Indicator -->
+        <div class="scroll-down">
+            <a href="#features">
+                <span class="mouse">
+                    <span class="wheel"></span>
+                </span>
+                <span class="scroll-text" id="scrollDownText">Scroll Down</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== FEATURES SECTION ========== -->
+    <section class="features-section py-5 section" id="features">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h6 class="section-subtitle" id="featuresSubtitle">Our Services</h6>
+                <h2 class="section-title" id="featuresTitle">What We Offer</h2>
+                <p class="section-description" id="featuresDescription">Comprehensive services for the Muslim community</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4 id="feature1Title">Daily Prayers</h4>
+                        <p id="feature1Desc">Five daily prayers with congregation. Regular Jummah prayers with inspiring khutbahs.</p>
+                        <a href="#prayer-times" class="feature-link">
+                            <span id="feature1Link">View Prayer Times</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h4 id="feature2Title">Islamic Education</h4>
+                        <p id="feature2Desc">Quran classes for all ages. Islamic studies programs and youth activities.</p>
+                        <a href="#events" class="feature-link">
+                            <span id="feature2Link">Learn More</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h4 id="feature3Title">Community Services</h4>
+                        <p id="feature3Desc">Marriage services, counseling, funeral services, and community support programs.</p>
+                        <a href="#contact" class="feature-link">
+                            <span id="feature3Link">Our Services</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== EVENTS SECTION ========== -->
+    <section class="events-section py-5 bg-light section" id="events">
+        <div class="container">
+            <div class="section-header d-flex justify-content-between align-items-center mb-5">
+                <div>
+                    <h6 class="section-subtitle" id="eventsSubtitle">Don't Miss Out</h6>
+                    <h2 class="section-title" id="eventsTitle">Upcoming Events</h2>
+                </div>
+                <a href="pagenot.html" class="btn btn-outline-primary">
+                    <span id="viewAllEvents">View All Events</span> <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-day" id="event1Day">Every</span>
+                            <span class="event-month" id="event1Month">Friday</span>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-badge badge bg-primary" id="event1Badge">Weekly</span>
+                            <h5 id="event1Title">Jummah Prayer</h5>
+                            <p id="event1Desc">Weekly Friday prayer with khutbah</p>
+                            <div class="event-time">
+                                <i class="far fa-clock me-1"></i> 12:30 - 13:30 
+                            </div>
+                            <a href="#events" class="btn btn-sm btn-outline-primary mt-2" id="event1Btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-day" id="event2Day">EveryDay ExceptSunday</span>
+                            <span class="event-month" id="event2Month">After Magharib</span>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-badge badge bg-success" id="event2Badge">Educational</span>
+                            <h5 id="event2Title">Quran Class for Mens</h5>
+                            <p id="event2Desc">Tajweed and memorization classes for Mens</p>
+                            <div class="event-time">
+                                <i class="far fa-clock me-1"></i> Baada ya Magharib
+                            </div>
+                            <a href="pagenot.html" class="btn btn-sm btn-outline-primary mt-2" id="event2Btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-day" id="event3Day">Ramadhan</span>
+                            <span class="event-month" id="event3Month">18</span>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-badge badge bg-warning" id="event3Badge">Community</span>
+                            <h5 id="event3Title">Iftar Program</h5>
+                            <p id="event3Desc">Iftar Program gathering for Ramadhan</p>
+                            <div class="event-time">
+                                <i class="far fa-clock me-1"></i> 19:00 
+                            </div>
+                            <a href="pagenot.html" class="btn btn-sm btn-outline-primary mt-2" id="event3Btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="event-day" id="event4Day">Taraweh</span>
+                            <span class="event-month" id="event4Month">Ndani Ya Mwezi Mzima Wa Ramadhan</span>
+                        </div>
+                        <div class="event-content">
+                            <span class="event-badge badge bg-info" id="event4Badge">Ratina Ya Taraweh</span>
+                            <h5 id="event4Title">Maimamu</h5>
+                            <p id="event4Desc">Abuu Maher_Ahmad (abuu Lubaabah)</p>
+                            <p id="event4Desc">Abul Khatwaab </p>
+                            <p id="event4Desc">Al Imam BACHUU</p>
+                            <div class="event-time">
+                                <i class="far fa-clock me-1"></i> 20:30 
+                            </div>
+                            <a href="pagenot.html" class="btn btn-sm btn-outline-primary mt-2" id="event4Btn">More Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== DONATIONS SECTION ========== -->
+    <section class="donation-section py-5 section" id="donations">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="donation-content">
+                        <h6 class="section-subtitle" id="donationSubtitle">Support Our Mosque</h6>
+                        <h2 class="section-title" id="donationTitle">Your Donation Makes a Difference</h2>
+                        <p id="donationDesc">Help us maintain the mosque facilities, run educational programs, and support community services. Every contribution helps us serve the community better.</p>
+                        
+                        <div class="donation-stats mt-4">
+                            <div class="stat-item">
+                                <h3 id="donationGoal">400,000Tzsh/</h3>
+                                <p id="donationGoalLabel">Monthly Goal</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 id="donationRaised">74%Tzsh/</h3>
+                                <p id="donationRaisedLabel">Raised This Month</p>
+                            </div>
+                        </div>
+                        
+                        <div class="progress donation-progress mb-4">
+                            <div class="progress-bar" style="width: 74%"></div>
+                        </div>
+                        
+                        <a href="pagenot.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-heart me-2"></i> <span id="donateNowBtn">Donate Now</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="donation-image">
+                        <!-- Donation illustration placeholder -->
+                        <div style="background: linear-gradient(45deg, #4caf50, #66bb6a); height: 300px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                            <i class="fas fa-hand-holding-heart" style="font-size: 8rem; opacity: 0.8;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== PRAYER TIMES SECTION ========== -->
+    <section class="prayer-times-section py-5 bg-light section" id="prayer-times">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h6 class="section-subtitle" id="prayerSubtitle">Daily Schedule</h6>
+                <h2 class="section-title" id="prayerTitle">Prayer Times</h2>
+                <p class="section-description" id="today-date">Today's prayer times</p>
+            </div>
+            
+            <div class="prayer-table-container">
+                <!-- Current prayer indicator -->
+                <div class="prayer-header">
+                    <div class="current-prayer-indicator">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4 id="currentPrayerName">Fajr</h4>
+                            <small id="currentPrayerStatus">Time until prayer</small>
+                        </div>
+                    </div>
+                    
+                    <div class="next-prayer-info">
+                        <p id="nextPrayerLabel">Next Prayer</p>
+                        <div class="next-prayer-time" id="nextPrayerTime">13:00</div>
+                        <small id="nextPrayerName">Dhuhr</small>
+                    </div>
+                </div>
+                
+                <!-- Prayer times table -->
+                <div class="prayer-times-table">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="tablePrayer">Prayer</th>
+                                    <th id="tableAdhan">Adhan</th>
+                                    <th id="tableIqama">Iqama</th>
+                                    <th id="tableStatus">Status</th>
+                                    <th id="tableRemaining">Time Remaining</th>
+                                </tr>
+                            </thead>
+                            <tbody id="prayerTimesBody">
+                                <!-- Dynamic content will be inserted here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Last updated info -->
+                <div class="text-end mt-3">
+                    <small class="text-muted">
+                        <i class="fas fa-sync-alt me-1"></i>
+                        <span id="lastUpdated">Last updated: Just now</span>
+                    </small>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS SECTION ========== -->
+    <section class="testimonials-section py-5 section" id="testimonials">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h6 class="section-subtitle" id="testimonialsSubtitle">Community Voices</h6>
+                <h2 class="section-title" id="testimonialsTitle">What People Say</h2>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="testimonial-text" id="testimonial1Text">"This mosque has been a blessing for our family. The community support and spiritual guidance have helped us grow in our faith."</p>
+                        <div class="testimonial-author">
+                            <h6 id="testimonial1Name">Abuu Maher_Ahmed (abuu lubaabah)</h6>
+                            <small id="testimonial1Role">Al_Imam of Masjid_Qandahaar</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                        </div>
+                        <p class="testimonial-text" id="testimonial2Text">"My children love the Quran classes here. The teachers are patient and knowledgeable. Alhamdulillah for this mosque."</p>
+                        <div class="testimonial-author">
+                            <h6 id="testimonial2Name">ABUL KHATWAAB</h6>
+                            <small id="testimonial2Role">Parent</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="testimonial-card">
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-warning"></i>
+                            <i class="fas fa-star text-muted"></i>
+                        </div>
+                        <p class="testimonial-text" id="testimonial3Text">"The Friday khutbahs are always inspiring and relevant to our daily lives. The mosque management is doing excellent work."</p>
+                        <div class="testimonial-author">
+                            <h6 id="testimonial3Name">AL_RAJAB BACHUU</h6>
+                            <small id="testimonial3Role">Community Member</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== CONTACT/NEWSLETTER SECTION ========== -->
+    <section class="newsletter-section py-5 section" id="contact">
+        <div class="container">
+            <div class="newsletter-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-6">
+                        <div class="newsletter-content">
+                            <h3 id="newsletterTitle">Stay Updated</h3>
+                            <p id="newsletterDesc">Subscribe to our newsletter for prayer time updates, event announcements, and community news.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <form class="newsletter-form" id="newsletterForm">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email" id="newsletterEmail" required>
+                                <button class="btn btn-primary" type="submit">
+                                    <span id="subscribeBtn">Subscribe</span> <i class="fas fa-paper-plane ms-2"></i>
+                                </button>
+                            </div>
+                            <small class="text-muted" id="newsletterPrivacy">We respect your privacy. Unsubscribe at any time.</small>
+                        </form>
+                        <div class="mt-3 text-white-50" id="contactInfo">
+                            <small><i class="fas fa-envelope me-1"></i> abdillahmwiba@gmail.com | <i class="fas fa-phone me-1"></i> +255 750 555 783</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER SECTION ========== -->
+    <footer class="footer position-relative overflow-hidden" id="footer">
+        <!-- Wave Design -->
+        <div class="footer-wave"></div>
+        
+        <div class="container py-5 position-relative z-2">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-brand mb-4">
+                        <h3 class="display-6 fw-bold text-white">
+                            <i class="fas fa-mosque me-2"></i> <span id="footerBrand">Masjid_Qandahaar online_</span>
+                        </h3>
+                    </div>
+                    <p class="text-white-75 mb-4 fs-5" id="footerDesc">
+                        A complete digital solution for Masjid_Qandahaar administration, community engagement, and management.
+                    </p>
+                    
+                    <!-- Newsletter Subscription -->
+                    <div class="newsletter-form mt-4">
+                        <h6 class="text-white mb-3" id="footerNewsletterTitle">Subscribe to Newsletter</h6>
+                        <div class="input-group">
+                            <input type="email" class="form-control bg-white border-0" placeholder="Your email address" id="footerNewsletterEmail">
+                            <button class="btn btn-light text-islamic" type="button" id="footerNewsletterButton">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <small class="text-white-50 mt-2 d-block" id="footerNewsletterDesc">Get updates on prayer times, events, and community news</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerQuickLinks">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="#home" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-home me-2 text-white-50"></i>
+                                <span id="footerHome">Home</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#features" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-info-circle me-2 text-white-50"></i>
+                                <span id="footerFeatures">Features</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#prayer-times" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-clock me-2 text-white-50"></i>
+                                <span id="footerPrayerTimes">Prayer Times</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#events" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-calendar-alt me-2 text-white-50"></i>
+                                <span id="footerEvents">Events</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-envelope me-2 text-white-50"></i>
+                                <span id="footerContact">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerServices">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="#donations" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-hand-holding-heart me-2 text-white-50"></i>
+                                <span id="footerDonations">Donations</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="weclome.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-qrcode me-2 text-white-50"></i>
+                                <span id="footerQR">Scan QR Code to Login</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#events" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-book-quran me-2 text-white-50"></i>
+                                <span id="footerSermons">Sermons</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="#features" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-book me-2 text-white-50"></i>
+                                <span id="footerResources">Resources</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-users me-2 text-white-50"></i>
+                                <span id="footerMembership">Membership</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerContactInfo">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white mb-1" id="footerAddress">Address</h6>
+                                <p class="text-white-75 mb-0" id="footerAddressText">Masjid_Qandahaar, CBE DODOMA</p>
+                            </div>
+                        </li>
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div class="contact-card">
+                                <h6 class="text-white mb-1" id="footerPhone">Phone</h6>
+                                <p class="text-white-75 mb-0">
+                                    <a href="tel:+255750555783">+255 750 555 783</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="contact-card">
+                                <h6 class="text-white mb-1" id="footerEmail">Email</h6>
+                                <p class="text-white-75 mb-0">
+                                    <a href="mailto:abdillahmwiba@gmail.com">abdillahmwiba@gmail.com</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white mb-1" id="footerPrayer">Prayer Times</h6>
+                                <p class="text-white-75 mb-0" id="footerPrayerText">Open 24 Hours</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Social Media Links -->
+            <div class="row mt-5 pt-4 border-top border-white-20">
+                <div class="col-md-6">
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="social-link facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <div class="app-download d-flex gap-3 justify-content-md-end">
+                        <a href="weclome.html" class="btn btn-outline-light btn-sm px-3 rounded-pill">
+                            <i class="fab fa-apple me-2"></i> <span id="footerAppStore">App Store</span>
+                        </a>
+                        <a href="weclome.html" class="btn btn-light btn-sm px-3 rounded-pill text-islamic">
+                            <i class="fab fa-google-play me-2"></i> <span id="footerPlayStore">Play Store</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Copyright -->
+            <div class="row mt-4 pt-3">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0" id="copyrightText">
+                        &copy; 2026 Masjid_Qandahaar. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white-50 mb-0">
+                        <span id="developedBy">Developed by</span> <span class="text-white">ABDULLAH MWIBA</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decorative Elements -->
+        <div class="footer-decoration">
+            <div class="decoration-item decoration-1">
+                <i class="fas fa-star-and-crescent"></i>
+            </div>
+            <div class="decoration-item decoration-2">
+                <i class="fas fa-pray"></i>
+            </div>
+            <div class="decoration-item decoration-3">
+                <i class="fas fa-book-quran"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="btn btn-islamic back-to-top shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // ========== LANGUAGE TRANSLATIONS ==========
+        const translations = {
+            en: {
+                // Navbar
+                brandName: "Masjid_Qandahaar",
+                navHome: "Home",
+                navFeatures: "Features",
+                navEvents: "Events",
+                navDonations: "Donations",
+                navPrayerTimes: "Prayer Times",
+                navTestimonials: "Testimonials",
+                navContact: "Contact",
+                navLogin: "Login",
+                navRegister: "Register",
+                
+                // Hero Section
+                heroTitle: "Welcome to Masjid_Qandahaar online_",
+                heroDescription: "A CBE COLLEGE mosque serving Muslims with prayers, education, and spiritual guidance. Join us in worship and community activities.",
+                btnPrayerTimes: "Prayer Times",
+                btnUpcomingEvents: "Upcoming Events",
+                quranTitle: "Quran Verse of the Day",
+                scrollDownText: "Scroll Down",
+                
+                // Features
+                featuresSubtitle: "Our Services",
+                featuresTitle: "What We Offer",
+                featuresDescription: "Comprehensive services for the Muslim community",
+                feature1Title: "Daily Prayers",
+                feature1Desc: "Five daily prayers with congregation. Regular Jummah prayers with inspiring khutbahs.",
+                feature1Link: "View Prayer Times",
+                feature2Title: "Islamic Education",
+                feature2Desc: "Quran classes for all ages. Islamic studies programs and youth activities.",
+                feature2Link: "Learn More",
+                feature3Title: "College Services",
+                feature3Desc: "iftari program, Islamic studies programs services, and college support programs.",
+                feature3Link: "Our Services",
+                
+                // Events
+                eventsSubtitle: "Don't Miss Out",
+                eventsTitle: "Upcoming Events",
+                viewAllEvents: "View All Events",
+                event1Badge: "Weekly",
+                event1Title: "Jummah Prayer",
+                event1Desc: "Weekly Friday prayer with khutbah",
+                event1Btn: "More Details",
+                event2Badge: "Educational",
+                event2Title: "Quran Class for Mens",
+                event2Desc: "Tajweed and memorization classes for Mens",
+                event2Btn: "More Details",
+                event3Badge: "Ramadhan Programs",
+                event3Title: "Iftar Program",
+                event3Desc: "Iftar Program gathering for Ramadhan",
+                event3Btn: "More Details",
+                event4Badge: "Taraweh",
+                event4Title: "Imam",
+                event4Desc: "Abuu Maher_Ahmad (abuu lubaabah)",
+                event4Btn: "More Details",
+                
+                // Donations
+                donationSubtitle: "Support Our Mosque",
+                donationTitle: "Your Donation Makes a Difference",
+                donationDesc: "Help us maintain the mosque facilities, run educational programs, and support community services. Every contribution helps us serve the community better.",
+                donationGoalLabel: "Monthly Goal",
+                donationRaisedLabel: "Raised This Month",
+                donateNowBtn: "Donate Now",
+                
+                // Prayer Times
+                prayerSubtitle: "Daily Schedule",
+                prayerTitle: "Prayer Times",
+                nextPrayerLabel: "Next Prayer",
+                tablePrayer: "Prayer",
+                tableAdhan: "Adhan",
+                tableIqama: "Iqama",
+                tableStatus: "Status",
+                tableRemaining: "Time Remaining",
+                
+                // Testimonials
+                testimonialsSubtitle: "College Voices",
+                testimonialsTitle: "What People Say",
+                testimonial1Text: "This mosque has been a blessing for our college. The community support and spiritual guidance have helped us grow in our faith.",
+                testimonial1Name: "Abuu Maher_Ahmed (abuu lubaabah)",
+                testimonial1Role: "Al_Imam of Masjid_Qandahaar",
+                testimonial2Text: "I love the Quran classes here. The teachers are patient and knowledgeable. Alhamdulillah for this.",
+                testimonial2Name: "ABUL KHATWAAB",
+                testimonial2Role: "College Student",
+                testimonial3Text: "The Friday khutbahs are always inspiring and relevant to our daily lives. The mosque management is doing excellent work.",
+                testimonial3Name: "MUSSA ALLY",
+                testimonial3Role: "College Member",
+                
+                // Newsletter
+                newsletterTitle: "Stay Updated",
+                newsletterDesc: "Subscribe to our newsletter for prayer time updates, event announcements, and community news.",
+                subscribeBtn: "Subscribe",
+                newsletterPrivacy: "We respect your privacy. Unsubscribe at any time.",
+                
+                // Footer
+                footerBrand: "Masjid_Qandahaar online",
+                footerDesc: "A complete digital solution for Masjid_Qandahaar administration, Online_informations, and management.",
+                footerNewsletterTitle: "Subscribe to Newsletter",
+                footerNewsletterDesc: "Get updates on prayer times, events, and community news",
+                footerQuickLinks: "Quick Links",
+                footerHome: "Home",
+                footerFeatures: "Features",
+                footerPrayerTimes: "Prayer Times",
+                footerEvents: "Events",
+                footerContact: "Contact",
+                footerServices: "Services",
+                footerDonations: "Donations",
+                footerQR: "Scan QR Code to Login",
+                footerSermons: "Sermons",
+                footerResources: "Resources",
+                footerMembership: "Membership",
+                footerContactInfo: "Contact Info",
+                footerAddress: "Address",
+                footerAddressText: "Masjid_Qandahaar, CBE DODOMA",
+                footerPhone: "Phone",
+                footerEmail: "Email",
+                footerPrayer: "Prayer Times",
+                footerPrayerText: "Open 24 Hours",
+                footerAppStore: "App Store",
+                footerPlayStore: "Play Store",
+                developedBy: "Developed by",
+                copyright: "&copy; 2026 Masjid_Qandahaar. All rights reserved."
+            },
+            sw: {
+                // Navbar
+                brandName: "Masjid_Qandahaar",
+                navHome: "Nyumbani",
+                navFeatures: "Huduma",
+                navEvents: "Matukio",
+                navDonations: "Michango",
+                navPrayerTimes: "Nyakati za Swala",
+                navTestimonials: "Maoni",
+                navContact: "Wasiliana",
+                navLogin: "Ingia",
+                navRegister: "Jisajili",
+                
+                // Hero Section
+                heroTitle: "Karibu Masjid_Qandahaar online_",
+                heroDescription: "Msikiti unaowahudumia Waislamu kwa swala, elimu, na mwongozo Dini. Jiunge nasi katika ibada na shughuli za jamii.",
+                btnPrayerTimes: "Nyakati za Swala",
+                btnUpcomingEvents: "Matukio Yajayo",
+                quranTitle: "Aya ya Qur'an ya Leo",
+                scrollDownText: "Sogeza Chini",
+                
+                // Features
+                featuresSubtitle: "Huduma Zetu",
+                featuresTitle: "Tunachotoa",
+                featuresDescription: "Huduma kamili kwa jamii ya Kiislamu",
+                feature1Title: "Swala za Kila Siku",
+                feature1Desc: "Swala tano za kila siku kwa jamaa. Swala za Ijumaa za kawaida na khutbah zenye msukumo.",
+                feature1Link: "Angalia Nyakati za Swala",
+                feature2Title: "Elimu ya Kiislamu",
+                feature2Desc: "Madarasa ya Qur'an kwa rika zote. Mipango ya masomo ya Kiislamu na shughuli za vijana.",
+                feature2Link: "Jifunze Zaidi",
+                feature3Title: "Huduma za Jamii",
+                feature3Desc: "Huduma ya iftari ndani ya mwezi mzima wa Ramadhan, ushauri nasaha, huduma za madarsa mbalimbali, na mipango ya msaada wa jamii (kamavile kuwa tembelea watoto yatima).",
+                feature3Link: "Huduma Zetu",
+                
+                // Events
+                eventsSubtitle: "Usikose",
+                eventsTitle: "Matukio Yajayo",
+                viewAllEvents: "Angalia Matukio Yote",
+                event1Badge: "Kila Wiki",
+                event1Title: "Swala ya Ijumaa",
+                event1Desc: "Swala ya Ijumaa ya kila wiki na khutbah",
+                event1Btn: "Maelezo Zaidi",
+                event2Badge: "Kielimu",
+                event2Title: "Darasa la Qur'an kwa Wanaume",
+                event2Desc: "Madarasa ya Tajweed na kuhifadhi kwa Wanaume",
+                event2Btn: "Maelezo Zaidi",
+                event3Badge: "Jamii",
+                event3Title: "Programu ya Iftar",
+                event3Desc: "Mkusanyiko wa programu ya Iftar kwa Ramadhani",
+                event3Btn: "Maelezo Zaidi",
+                event4Badge: "Swala Ya Taraweh",
+                event4Title: "Maimamu",
+                event4Desc: "Abuu Maher_Ahmad (abuu Lubaabah)",
+              
+                event4Btn: "Maelezo Zaidi",
+                
+                // Donations
+                donationSubtitle: "Tuunge Mkono",
+                donationTitle: "Mchango Wako Unaleta Mabadiliko",
+                donationDesc: "Tusaidie kudumisha vifaa vya msikiti, kuendesha programu za elimu, na kusaidia huduma za jamii. Kila mchango hutusaidia kutumikia jamii vizuri zaidi.",
+                donationGoalLabel: "Lengo la Mwezi",
+                donationRaisedLabel: "Iliyochangwa Mwezi Huu",
+                donateNowBtn: "Changia Sasa",
+                
+                // Prayer Times
+                prayerSubtitle: "Ratiba ya Kila Siku",
+                prayerTitle: "Nyakati za Swala",
+                nextPrayerLabel: "Swala Inayofuata",
+                tablePrayer: "Swala",
+                tableAdhan: "Adhana",
+                tableIqama: "Iqama",
+                tableStatus: "Hali",
+                tableRemaining: "Muda Uliobaki",
+                
+                // Testimonials
+                testimonialsSubtitle: "Sauti za Jamii",
+                testimonialsTitle: "Watu Wanasema Nini",
+                testimonial1Text: "Msikiti huu umekuwa baraka kwa familia yetu. Msaada wa jamii na mwongozo wa kiroho umetusaidia kukua katika imani yetu.",
+                testimonial1Name: "Abuu Maher_Ahmed (abuu lubaabah)",
+                testimonial1Role: "Imamu wa Masjid_Qandahaar",
+                testimonial2Text: "Watoto wangu wanapenda madarasa ya Qur'an hapa. Walimu wana subira na maarifa. Alhamdulillah kwa msikiti huu.",
+                testimonial2Name: "ABUL KHATWAAB",
+                testimonial2Role: "imamu_Msaidizi",
+                testimonial3Text: "Khutbah za Ijumaa daima zinatia msukumo na zinafaa kwa maisha yetu ya kila siku. Usimamizi wa msikiti unafanya kazi nzuri.",
+                testimonial3Name: "AL_RAJAB BACHUU",
+                testimonial3Role: "Mwanajamii",
+                
+                // Newsletter
+                newsletterTitle: "Pata Taarifa",
+                newsletterDesc: "Jisajili kwenye jarida letu kwa taarifa za nyakati za swala, matangazo ya matukio, na habari za jamii.",
+                subscribeBtn: "Jisajili",
+                newsletterPrivacy: "Tunaheshimu faragha yako. Unaweza kujiondoa wakati wowote.",
+                
+                // Footer
+                footerBrand: "Masjid_Qandahaar online_",
+                footerDesc: "Suluhisho kamili la kidijitali kwa usimamizi wa Masjid_Qandahaar, ushirikiano wa jamii.",
+                footerNewsletterTitle: "Jisajili kwa Jarida",
+                footerNewsletterDesc: "Pata taarifa za nyakati za swala, matukio, na habari za jamii",
+                footerQuickLinks: "Viungo vya Haraka",
+                footerHome: "Nyumbani",
+                footerFeatures: "Huduma",
+                footerPrayerTimes: "Nyakati za Swala",
+                footerEvents: "Matukio",
+                footerContact: "Wasiliana",
+                footerServices: "Huduma",
+                footerDonations: "Michango",
+                footerQR: "Changanua Msimbo wa QR kuingia",
+                footerSermons: "Mahubiri",
+                footerResources: "Nyenzo",
+                footerMembership: "Uanachama",
+                footerContactInfo: "Maelezo ya Mawasiliano",
+                footerAddress: "Anuani",
+                footerAddressText: "Masjid_Qandahaar, CBE DODOMA",
+                footerPhone: "Simu",
+                footerEmail: "Barua Pepe",
+                footerPrayer: "Nyakati za Swala",
+                footerPrayerText: "Fungua 24 Saa",
+                footerAppStore: "Duka la App",
+                footerPlayStore: "Duka la Google",
+                developedBy: "Imetengenezwa na",
+                copyright: "&copy; 2026 Masjid_Qandahaar. Haki zote zimehifadhiwa."
+            },
+            ar: {
+                // Navbar
+                brandName: "مسجد_قندهار",
+                navHome: "الرئيسية",
+                navFeatures: "الميزات",
+                navEvents: "الأحداث",
+                navDonations: "التبرعات",
+                navPrayerTimes: "أوقات الصلاة",
+                navTestimonials: "الشهادات",
+                navContact: "اتصل",
+                navLogin: "تسجيل الدخول",
+                navRegister: "التسجيل",
+                
+                // Hero Section
+                heroTitle: "مرحبًا بكم في نظام إدارة مسجد_قندهار",
+                heroDescription: "مسجد مجتمعي يخدم المسلمين بالصلاة والتعليم والإرشاد الروحي. انضم إلينا في العبادة والأنشطة المجتمعية.",
+                btnPrayerTimes: "أوقات الصلاة",
+                btnUpcomingEvents: "الأحداث القادمة",
+                quranTitle: "آية القرآن لليوم",
+                scrollDownText: "مرر لأسفل",
+                
+                // Features
+                featuresSubtitle: "خدماتنا",
+                featuresTitle: "ما نقدمه",
+                featuresDescription: "خدمات شاملة للمجتمع الإسلامي",
+                feature1Title: "الصلوات اليومية",
+                feature1Desc: "الصلوات الخمس مع الجماعة. صلاة الجمعة المنتظمة مع خطب ملهمة.",
+                feature1Link: "عرض أوقات الصلاة",
+                feature2Title: "التعليم الإسلامي",
+                feature2Desc: "دروس القرآن لجميع الأعمار. برامج الدراسات الإسلامية وأنشطة الشباب.",
+                feature2Link: "معرفة المزيد",
+                feature3Title: "الخدمات المجتمعية",
+                feature3Desc: "خدمات الزواج والاستشارات وخدمات الجنازة وبرامج الدعم المجتمعي.",
+                feature3Link: "خدماتنا",
+                
+                // Events
+                eventsSubtitle: "لا تفوت",
+                eventsTitle: "الأحداث القادمة",
+                viewAllEvents: "عرض جميع الأحداث",
+                event1Badge: "أسبوعي",
+                event1Title: "صلاة الجمعة",
+                event1Desc: "صلاة الجمعة الأسبوعية مع الخطبة",
+                event1Btn: "مزيد من التفاصيل",
+                event2Badge: "تعليمي",
+                event2Title: "حلقة القرآن للرجال",
+                event2Desc: "دروس التجويد والحفظ للرجال",
+                event2Btn: "مزيد من التفاصيل",
+                event3Badge: "مجتمعي",
+                event3Title: "برنامج الإفطار",
+                event3Desc: "تجمع برنامج الإفطار لرمضان",
+                event3Btn: "مزيد من التفاصيل",
+                event4Badge: "محاضرة",
+                event4Title: "محاضرة إسلامية",
+                event4Desc: "Abuu Maher_Ahmad (abuu Lubaabah)",
+                event4Btn: "مزيد من التفاصيل",
+                
+                // Donations
+                donationSubtitle: "ادعم مسجدنا",
+                donationTitle: "تبرعك يصنع الفرق",
+                donationDesc: "ساعدنا في صيانة مرافق المسجد، وإدارة البرامج التعليمية، ودعم الخدمات المجتمعية. كل مساهمة تساعدنا في خدمة المجتمع بشكل أفضل.",
+                donationGoalLabel: "الهدف الشهري",
+                donationRaisedLabel: "تم جمعه هذا الشهر",
+                donateNowBtn: "تبرع الآن",
+                
+                // Prayer Times
+                prayerSubtitle: "الجدول اليومي",
+                prayerTitle: "أوقات الصلاة",
+                nextPrayerLabel: "الصلاة التالية",
+                tablePrayer: "الصلاة",
+                tableAdhan: "الأذان",
+                tableIqama: "الإقامة",
+                tableStatus: "الحالة",
+                tableRemaining: "الوقت المتبقي",
+                
+                // Testimonials
+                testimonialsSubtitle: "أصوات المجتمع",
+                testimonialsTitle: "ماذا يقول الناس",
+                testimonial1Text: "كان هذا المسجد نعمة لعائلتنا. ساعدنا الدعم المجتمعي والتوجيه الروحي على النمو في إيماننا.",
+                testimonial1Name: "أبو ماهر_أحمد (أبو لبابة)",
+                testimonial1Role: "إمام مسجد_قندهار",
+                testimonial2Text: "أطفالي يحبون دروس القرآن هنا. المعلمون صبورون وذوو معرفة. الحمد لله على هذا المسجد.",
+                testimonial2Name: "أبو الخطاب",
+                testimonial2Role: "ولي أمر",
+                testimonial3Text: "خطب الجمعة دائمًا ملهمة وذات صلة بحياتنا اليومية. إدارة المسجد تقوم بعمل ممتاز.",
+                testimonial3Name: "الرجاب باشو",
+                testimonial3Role: "عضو مجتمع",
+                
+                // Newsletter
+                newsletterTitle: "ابق على اطلاع",
+                newsletterDesc: "اشترك في نشرتنا الإخبارية للحصول على تحديثات أوقات الصلاة وإعلانات الأحداث وأخبار المجتمع.",
+                subscribeBtn: "اشتراك",
+                newsletterPrivacy: "نحن نحترم خصوصيتك. يمكنك إلغاء الاشتراك في أي وقت.",
+                
+                // Footer
+                footerBrand: "نظام إدارة مسجد_قندهار",
+                footerDesc: "حل رقمي متكامل لإدارة مسجد_قندهار والمشاركة المجتمعية والإدارة الروحية.",
+                footerNewsletterTitle: "اشترك في النشرة الإخبارية",
+                footerNewsletterDesc: "احصل على تحديثات حول أوقات الصلاة والأحداث وأخبار المجتمع",
+                footerQuickLinks: "روابط سريعة",
+                footerHome: "الرئيسية",
+                footerFeatures: "الميزات",
+                footerPrayerTimes: "أوقات الصلاة",
+                footerEvents: "الأحداث",
+                footerContact: "اتصل",
+                footerServices: "الخدمات",
+                footerDonations: "التبرعات",
+                footerQR: "مسح رمز الاستجابة السريعة لتسجيل الدخول",
+                footerSermons: "الخطب",
+                footerResources: "الموارد",
+                footerMembership: "العضوية",
+                footerContactInfo: "معلومات الاتصال",
+                footerAddress: "العنوان",
+                footerAddressText: "مسجد_قندهار، CBE دودوما",
+                footerPhone: "الهاتف",
+                footerEmail: "البريد الإلكتروني",
+                footerPrayer: "أوقات الصلاة",
+                footerPrayerText: "مفتوح 24 ساعة",
+                footerAppStore: "متجر التطبيقات",
+                footerPlayStore: "متجر جوجل",
+                developedBy: "طور بواسطة",
+                copyright: "&copy; 2026 مسجد_قندهار. جميع الحقوق محفوظة."
+            }
+        };
+
+        // ========== LANGUAGE FUNCTIONS ==========
+        let currentLang = localStorage.getItem('masjid_language') || 'en';
+
+        function changeLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('masjid_language', lang);
+            
+            // Update UI text
+            updateUIText(lang);
+            
+            // Update RTL for Arabic
+            if (lang === 'ar') {
+                document.body.classList.add('rtl');
+                document.body.dir = 'rtl';
+                document.body.style.textAlign = 'right';
+            } else {
+                document.body.classList.remove('rtl');
+                document.body.dir = 'ltr';
+                document.body.style.textAlign = 'left';
+            }
+            
+            // Update language switcher buttons
+            document.getElementById('currentLanguage').textContent = getLanguageName(lang);
+            document.getElementById('currentLanguageMobile').textContent = getLanguageName(lang);
+            
+            // Update active state in dropdown
+            document.querySelectorAll('.language-dropdown .dropdown-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.innerHTML.includes(getLanguageName(lang))) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Re-initialize components that need dynamic updates
+            updatePrayerTimes(); // Update prayer status text
+        }
+
+        function getLanguageName(lang) {
+            const names = { en: 'English', sw: 'Kiswahili', ar: 'العربية' };
+            return names[lang] || 'English';
+        }
+
+        function updateUIText(lang) {
+            const t = translations[lang];
+            if (!t) return;
+            
+            // Update all elements with IDs
+            for (const [key, value] of Object.entries(t)) {
+                const element = document.getElementById(key);
+                if (element) {
+                    if (key === 'copyright') {
+                        element.innerHTML = value;
+                    } else {
+                        element.textContent = value;
+                    }
+                }
+            }
+            
+            // Update elements without IDs
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.dataset.i18n;
+                if (t[key]) el.textContent = t[key];
+            });
+        }
+
+    
+  // ========== ACCURATE HIJRI DATE CALCULATION USING UMM-AL-QURA CALENDAR ==========
+// ========== ACCURATE HIJRI DATE CALCULATION USING UMM-AL-QURA CALENDAR ==========
+function calculateHijriDate(gregorianDate) {
+    // Umm al-Qura calendar - Official Saudi calendar
+    // This uses a lookup table for accurate date conversion
+    
+    const gd = gregorianDate.getDate();
+    const gm = gregorianDate.getMonth() + 1;
+    const gy = gregorianDate.getFullYear();
+    
+    // Umm al-Qura calendar lookup table (Gregorian to Hijri mapping)
+    // This is a simplified version - for production, you'd want a complete table
+    // The table provides Hijri year, month, day for each Gregorian date
+    
+    function getHijriFromGregorian(year, month, day) {
+        // Umm al-Qura calendar data for recent years
+        // Format: [Gregorian year, Gregorian month, Gregorian day, Hijri year, Hijri month, Hijri day]
+        const ummAlQuraData = [
+            // 2026 data (current year)
+            [2026, 1, 1, 1447, 7, 21],  // 1 Jan 2026 = 21 Rajab 1447
+            [2026, 2, 1, 1447, 8, 22],  // 1 Feb 2026 = 22 Shaʻban 1447
+            [2026, 2, 14, 1447, 8, 26], // 14 Feb 2026 = 26 Shaʻban 1447 (TODAY!)
+            [2026, 3, 1, 1447, 9, 21],  // 1 Mar 2026 = 21 Ramadan 1447
+            [2026, 4, 1, 1447, 10, 22], // 1 Apr 2026 = 22 Shawwal 1447
+            [2026, 5, 1, 1447, 11, 23], // 1 May 2026 = 23 Dhu al-Qi'dah 1447
+            [2026, 6, 1, 1447, 12, 24], // 1 Jun 2026 = 24 Dhu al-Hijjah 1447
+            [2026, 7, 1, 1448, 1, 25],  // 1 Jul 2026 = 25 Muharram 1448
+            [2026, 8, 1, 1448, 2, 26],  // 1 Aug 2026 = 26 Safar 1448
+            [2026, 9, 1, 1448, 3, 28],  // 1 Sep 2026 = 28 Rabi' al-awwal 1448
+            [2026, 10, 1, 1448, 4, 29], // 1 Oct 2026 = 29 Rabi' al-thani 1448
+            [2026, 11, 1, 1448, 5, 30], // 1 Nov 2026 = 30 Jumada al-awwal 1448
+            [2026, 12, 1, 1448, 6, 31], // 1 Dec 2026 = 31 Jumada al-thani 1448
+            
+            // 2025 data for reference
+            [2025, 1, 1, 1446, 7, 1],   // 1 Jan 2025 = 1 Rajab 1446
+            [2025, 12, 31, 1447, 7, 20] // 31 Dec 2025 = 20 Rajab 1447
+        ];
+        
+        // Find the closest date in the table
+        let closestEntry = null;
+        let minDiff = Infinity;
+        
+        for (const entry of ummAlQuraData) {
+            const entryDate = new Date(entry[0], entry[1] - 1, entry[2]);
+            const targetDate = new Date(year, month - 1, day);
+            
+            const diff = Math.abs(targetDate - entryDate);
+            if (diff < minDiff) {
+                minDiff = diff;
+                closestEntry = entry;
+            }
+        }
+        
+        if (closestEntry) {
+            // Calculate days difference
+            const baseDate = new Date(closestEntry[0], closestEntry[1] - 1, closestEntry[2]);
+            const targetDate = new Date(year, month - 1, day);
+            const daysDiff = Math.round((targetDate - baseDate) / (1000 * 60 * 60 * 24));
+            
+            // Calculate Hijri date
+            let hijriYear = closestEntry[3];
+            let hijriMonth = closestEntry[4];
+            let hijriDay = closestEntry[5] + daysDiff;
+            
+            // Umm al-Qura month lengths
+            const monthLengths = {
+                1: 30,  // Muharram
+                2: 29,  // Safar
+                3: 30,  // Rabi' al-awwal
+                4: 29,  // Rabi' al-thani
+                5: 30,  // Jumada al-awwal
+                6: 29,  // Jumada al-thani
+                7: 30,  // Rajab
+                8: 29,  // Sha'ban
+                9: 30,  // Ramadan
+                10: 29, // Shawwal
+                11: 30, // Dhu al-Qi'dah
+                12: 29  // Dhu al-Hijjah (29 or 30 depending on sighting)
+            };
+            
+            // Adjust for month boundaries
+            while (hijriDay > monthLengths[hijriMonth] || hijriMonth > 12) {
+                if (hijriMonth > 12) {
+                    hijriMonth = 1;
+                    hijriYear++;
+                }
+                
+                if (hijriDay > monthLengths[hijriMonth]) {
+                    hijriDay -= monthLengths[hijriMonth];
+                    hijriMonth++;
+                    
+                    if (hijriMonth > 12) {
+                        hijriMonth = 1;
+                        hijriYear++;
+                    }
+                }
+            }
+            
+            return {
+                year: hijriYear,
+                month: hijriMonth,
+                day: hijriDay
+            };
+        }
+        
+        // Fallback calculation if table doesn't cover the date
+        // Based on approximate lunar calendar
+        const hijriEpoch = 1948440; // Julian day of Hijri epoch
+        const jd = Math.floor((1461 * (gy + 4800 + Math.floor((gm - 14) / 12))) / 4) +
+                   Math.floor((367 * (gm - 2 - 12 * Math.floor((gm - 14) / 12))) / 12) -
+                   Math.floor((3 * Math.floor((gy + 4900 + Math.floor((gm - 14) / 12)) / 100)) / 4) +
+                   gd - 32075;
+        
+        const daysSinceEpoch = jd - hijriEpoch;
+        const hijriYear = Math.floor((daysSinceEpoch - 227022) / 354.367) + 1;
+        
+        // Calculate month and day
+        const yearStart = hijriEpoch + 354.367 * (hijriYear - 1);
+        const dayOfYear = Math.floor(jd - yearStart);
+        
+        let hijriMonth = 1;
+        let hijriDay = dayOfYear;
+        const monthLengthsFallback = [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29];
+        
+        for (let i = 0; i < 12; i++) {
+            if (hijriDay <= monthLengthsFallback[i]) {
+                hijriMonth = i + 1;
+                break;
+            }
+            hijriDay -= monthLengthsFallback[i];
+        }
+        
+        return {
+            year: hijriYear,
+            month: hijriMonth,
+            day: hijriDay
+        };
+    }
+    
+    // Get Hijri date
+    const hijriDate = getHijriFromGregorian(gy, gm, gd);
+    
+    // Month names
+    const monthNames = [
+        'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
+        'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
+        'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
+    ];
+    
+    const monthNamesAr = [
+        'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
+        'جمادى الأولى', 'جمادى الثانية', 'رجب', 'شعبان',
+        'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
+    ];
+    
+    const monthNamesSw = [
+        'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
+        'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
+        'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
+    ];
+    
+    // Format based on language
+    const lang = currentLang || 'en';
+    let formattedDate;
+    
+    if (lang === 'ar') {
+        formattedDate = `${hijriDate.day} ${monthNamesAr[hijriDate.month - 1]} ${hijriDate.year} هـ`;
+    } else if (lang === 'sw') {
+        formattedDate = `${hijriDate.day} ${monthNamesSw[hijriDate.month - 1]} ${hijriDate.year} AH`;
+    } else {
+        formattedDate = `${hijriDate.day} ${monthNames[hijriDate.month - 1]} ${hijriDate.year} AH`;
+    }
+    
+    return formattedDate;
+}
+
+        // ========== QURAN VERSES DATABASE ==========
+        const quranVerses = [
+            {
+                arabic: "وَأَقِيمُوا الصَّلَاةَ وَآتُوا الزَّكَاةَ وَارْكَعُوا مَعَ الرَّاكِعِينَ",
+                translation: "And establish prayer and give zakah and bow with those who bow [in worship and obedience].",
+                surah: "Surah Al-Baqarah (2:43)"
+            },
+            {
+                arabic: "يَا أَيُّهَا الَّذِينَ آمَنُوا اسْتَعِينُوا بِالصَّبْرِ وَالصَّلَاةِ ۚ إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",
+                translation: "O you who have believed, seek help through patience and prayer. Indeed, Allah is with the patient.",
+                surah: "Surah Al-Baqarah (2:153)"
+            },
+            {
+                arabic: "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَوْقُوتًا",
+                translation: "Indeed, prayer has been decreed upon the believers a decree of specified times.",
+                surah: "Surah An-Nisa (4:103)"
+            },
+            {
+                arabic: "وَأَقِمِ الصَّلَاةَ طَرَفَيِ النَّهَارِ وَزُلَفًا مِنَ اللَّيْلِ ۚ إِنَّ الْحَسَنَاتِ يُذْهِبْنَ السَّيِّئَاتِ ۚ ذَٰلِكَ ذِكْرَىٰ لِلذَّاكِرِينَ",
+                translation: "And establish prayer at the two ends of the day and at the approach of the night. Indeed, good deeds do away with misdeeds. That is a reminder for those who remember.",
+                surah: "Surah Hud (11:114)"
+            },
+            {
+                arabic: "اتْلُ مَا أُوحِيَ إِلَيْكَ مِنَ الْكِتَابِ وَأَقِمِ الصَّلَاةَ ۖ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ ۗ وَلَذِكْرُ اللَّهِ أَكْبَرُ ۗ وَاللَّهُ يَعْلَمُ مَا تَصْنَعُونَ",
+                translation: "Recite what has been revealed to you of the Book and establish prayer. Indeed, prayer prohibits immorality and wrongdoing, and the remembrance of Allah is greater. And Allah knows that which you do.",
+                surah: "Surah Al-Ankabut (29:45)"
+            },
+            {
+                arabic: "إِنَّمَا يَعْمُرُ مَسَاجِدَ اللَّهِ مَنْ آمَنَ بِاللَّهِ وَالْيَوْمِ الْآخِرِ وَأَقَامَ الصَّلَاةَ وَآتَى الزَّكَاةَ وَلَمْ يَخْشَ إِلَّا اللَّهَ ۖ فَعَسَىٰ أُولَٰئِكَ أَن يَكُونُوا مِنَ الْمُهْتَدِينَ",
+                translation: "The mosques of Allah are only to be maintained by those who believe in Allah and the Last Day and establish prayer and give zakah and do not fear except Allah, for it is expected that those will be of the [rightly] guided.",
+                surah: "Surah At-Tawbah (9:18)"
+            },
+            {
+                arabic: "وَمَنْ أَظْلَمُ مِمَّن مَّنَعَ مَسَاجِدَ اللَّهِ أَن يُذْكَرَ فِيهَا اسْمُهُ وَسَعَىٰ فِي خَرَابِهَا",
+                translation: "And who are more unjust than those who prevent the name of Allah from being mentioned in His mosques and strive toward their destruction.",
+                surah: "Surah Al-Baqarah (2:114)"
+            }
+        ];
+
+        // ========== PRAYER TIMES CONFIGURATION ==========
+        const prayerTimes = {
+            fajr: { adhan: "5:30", iqama: "5:40", name: "Al_Fajr", icon: "fas fa-sun", ar: "الفجر", sw: "Al_Fajr" },
+            sunrise: { adhan: "6:30", iqama: "-", name: "Sunrise", icon: "fas fa-sunrise", ar: "الشروق", sw: "Macheo" },
+            dhuhr: { adhan: "12:50", iqama: "13:00", name: "Adhuhuur", icon: "fas fa-sun", ar: "الظهر", sw: "Adhuhuri" },
+            asr: { adhan: "15:50", iqama: "16:00", name: "Asr", icon: "fas fa-cloud-sun", ar: "العصر", sw: "Alasiri" },
+            maghrib: { adhan: "18:55", iqama: "19:00", name: "Magharib", icon: "fas fa-sunset", ar: "المغرب", sw: "Magharibi" },
+            isha: { adhan: "20:15", iqama: "20:30", name: "Inshaa", icon: "fas fa-moon", ar: "العشاء", sw: "Isha" }
+        };
+
+        // ========== UTILITY FUNCTIONS ==========
+        function formatTime(date) {
+            return date.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+            });
+        }
+
+        function parseTime(timeStr) {
+            const [time, modifier] = timeStr.split(' ');
+            let [hours, minutes] = time.split(':');
+            
+            hours = parseInt(hours);
+            minutes = parseInt(minutes);
+            
+            if (modifier === 'PM' && hours < 12) hours += 12;
+            if (modifier === 'AM' && hours === 12) hours = 0;
+            
+            const now = new Date();
+            return new Date(now.getFullYear(), now.getMonth(), now.getDate(), hours, minutes);
+        }
+
+        function getTimeRemaining(targetTime) {
+            const now = new Date();
+            const diff = targetTime - now;
+            
+            if (diff <= 0) return { hours: 0, minutes: 0, seconds: 0 };
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            return { hours, minutes, seconds };
+        }
+
+        function formatTimeRemaining(remaining) {
+            if (remaining.hours > 0) {
+                return `${remaining.hours}h ${remaining.minutes}m`;
+            } else if (remaining.minutes > 0) {
+                return `${remaining.minutes}m ${remaining.seconds}s`;
+            }
+            return `${remaining.seconds}s`;
+        }
+
+        // ========== QURAN VERSE FUNCTIONS ==========
+        function getDailyVerse() {
+            const today = new Date();
+            const dayOfYear = Math.floor((today - new Date(today.getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+            const verseIndex = dayOfYear % quranVerses.length;
+            return quranVerses[verseIndex];
+        }
+
+        function updateQuranVerse() {
+            const verse = getDailyVerse();
+            
+            document.getElementById('arabicVerse').textContent = verse.arabic;
+            document.getElementById('verseTranslation').textContent = verse.translation;
+            document.getElementById('verseReference').textContent = verse.surah;
+            
+            const tickerIndex = (new Date().getDate() + 2) % quranVerses.length;
+            const tickerVerse = quranVerses[tickerIndex];
+            document.getElementById('tickerVerse').textContent = tickerVerse.arabic;
+        }
+
+        // ========== PRAYER TIMES FUNCTIONS ==========
+        function updatePrayerTimes() {
+            const now = new Date();
+            const prayerOrder = ['fajr', 'sunrise', 'dhuhr', 'asr', 'maghrib', 'isha'];
+            
+            let currentPrayer = null;
+            let nextPrayer = null;
+            let foundCurrent = false;
+            
+            // Find current and next prayer
+            for (let i = 0; i < prayerOrder.length; i++) {
+                const prayerKey = prayerOrder[i];
+                const prayer = prayerTimes[prayerKey];
+                
+                if (prayer.iqama !== '-') {
+                    const prayerTime = parseTime(prayer.iqama + ' AM');
+                    
+                    if (now < prayerTime) {
+                        if (!foundCurrent) {
+                            currentPrayer = prayerKey;
+                            foundCurrent = true;
+                        }
+                        if (!nextPrayer) {
+                            nextPrayer = prayerKey;
+                        }
+                    }
+                }
+            }
+            
+            // If no next prayer found, set next prayer to tomorrow's fajr
+            if (!nextPrayer) {
+                nextPrayer = 'fajr';
+            }
+            
+            // Update current prayer in nav
+            if (currentPrayer) {
+                const prayerName = currentLang === 'ar' ? prayerTimes[currentPrayer].ar : 
+                                 currentLang === 'sw' ? prayerTimes[currentPrayer].sw : 
+                                 prayerTimes[currentPrayer].name;
+                
+                document.getElementById('navCurrentPrayer').textContent = prayerName;
+                document.getElementById('navCurrentPrayerMobile').textContent = prayerName;
+                
+                const nextPrayerTime = parseTime(prayerTimes[nextPrayer].iqama + ' AM');
+                const remaining = getTimeRemaining(nextPrayerTime);
+                const timeStr = formatTimeRemaining(remaining);
+                document.getElementById('navTimeRemaining').textContent = timeStr;
+                document.getElementById('navTimeRemainingMobile').textContent = timeStr;
+            }
+            
+            // Update prayer bar
+            const prayerBar = document.getElementById('currentPrayerTimes');
+            prayerBar.innerHTML = '';
+            
+            prayerOrder.forEach(prayerKey => {
+                const prayer = prayerTimes[prayerKey];
+                const col = document.createElement('div');
+                col.className = 'col-6 col-md';
+                
+                const prayerDiv = document.createElement('div');
+                prayerDiv.className = 'prayer-time';
+                prayerDiv.id = `${prayerKey}-time-bar`;
+                
+                const prayerName = document.createElement('span');
+                prayerName.className = 'prayer-name-bar';
+                prayerName.textContent = currentLang === 'ar' ? prayer.ar : 
+                                       currentLang === 'sw' ? prayer.sw : 
+                                       prayer.name;
+                
+                const prayerTimeValue = document.createElement('span');
+                prayerTimeValue.className = 'prayer-time-value';
+                prayerTimeValue.textContent = prayer.iqama === '-' ? prayer.adhan : prayer.iqama;
+                
+                prayerDiv.appendChild(prayerName);
+                prayerDiv.appendChild(prayerTimeValue);
+                col.appendChild(prayerDiv);
+                prayerBar.appendChild(col);
+                
+                if (prayerKey === currentPrayer) {
+                    prayerDiv.classList.add('current');
+                }
+            });
+            
+            // Update prayer table
+            const tableBody = document.getElementById('prayerTimesBody');
+            tableBody.innerHTML = '';
+            
+            prayerOrder.forEach(prayerKey => {
+                const prayer = prayerTimes[prayerKey];
+                const row = document.createElement('tr');
+                
+                let status = 'upcoming';
+                let statusClass = 'prayer-upcoming';
+                let statusText = currentLang === 'ar' ? 'قادم' : 
+                               currentLang === 'sw' ? 'Inakuja' : 'Upcoming';
+                let timeRemaining = '';
+                
+                if (prayer.iqama !== '-') {
+                    const prayerTime = parseTime(prayer.iqama + ' AM');
+                    const remaining = getTimeRemaining(prayerTime);
+                    
+                    if (now > prayerTime) {
+                        status = 'completed';
+                        statusClass = 'prayer-completed';
+                        statusText = currentLang === 'ar' ? 'مكتمل' : 
+                                   currentLang === 'sw' ? 'Imekamilika' : 'Completed';
+                    } else if (prayerKey === nextPrayer) {
+                        status = 'current';
+                        statusClass = 'prayer-current';
+                        statusText = currentLang === 'ar' ? 'حالي' : 
+                                   currentLang === 'sw' ? 'Ya Sasa' : 'Current';
+                        timeRemaining = formatTimeRemaining(remaining);
+                    } else {
+                        timeRemaining = formatTimeRemaining(remaining);
+                    }
+                }
+                
+                row.className = statusClass;
+                
+                row.innerHTML = `
+                    <td>
+                        <div class="prayer-name">
+                            <i class="${prayer.icon}"></i>
+                            <span>${currentLang === 'ar' ? prayer.ar : 
+                                   currentLang === 'sw' ? prayer.sw : 
+                                   prayer.name}</span>
+                        </div>
+                    </td>
+                    <td class="prayer-time-display">${prayer.adhan}</td>
+                    <td class="prayer-time-display">${prayer.iqama}</td>
+                    <td>
+                        <span class="prayer-status status-${status}">
+                            <i class="fas fa-${status === 'completed' ? 'check-circle' : status === 'current' ? 'clock' : 'calendar'}"></i>
+                            ${statusText}
+                        </span>
+                    </td>
+                    <td>
+                        ${timeRemaining ? `<span class="time-remaining">${timeRemaining}</span>` : '-'}
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+                
+                if (prayerKey === nextPrayer && prayer.iqama !== '-') {
+                    document.getElementById('currentPrayerName').textContent = 
+                        currentLang === 'ar' ? prayer.ar : 
+                        currentLang === 'sw' ? prayer.sw : 
+                        prayer.name;
+                    document.getElementById('nextPrayerName').textContent = 
+                        currentLang === 'ar' ? prayer.ar : 
+                        currentLang === 'sw' ? prayer.sw : 
+                        prayer.name;
+                    document.getElementById('nextPrayerTime').textContent = prayer.iqama;
+                    
+                    const prayerTime = parseTime(prayer.iqama + ' AM');
+                    const remaining = getTimeRemaining(prayerTime);
+                    
+                    if (remaining.hours > 0 || remaining.minutes > 0 || remaining.seconds > 0) {
+                        document.getElementById('currentPrayerStatus').textContent = 
+                            `${currentLang === 'ar' ? 'الصلاة القادمة في' : 
+                              currentLang === 'sw' ? 'Swala inayofuata katika' : 
+                              'Next prayer in'} ${formatTimeRemaining(remaining)}`;
+                    } else {
+                        document.getElementById('currentPrayerStatus').textContent = 
+                            currentLang === 'ar' ? 'وقت الصلاة!' : 
+                            currentLang === 'sw' ? 'Wakati wa swala!' : 
+                            'Prayer time!';
+                    }
+                }
+            });
+            
+            document.getElementById('lastUpdated').textContent = 
+                `${currentLang === 'ar' ? 'آخر تحديث' : 
+                  currentLang === 'sw' ? 'Ilisasishwa mwisho' : 
+                  'Last updated'}: ${formatTime(now)}`;
+        }
+
+        // ========== DATE AND TIME FUNCTIONS ==========
+        function updateDateTime() {
+            const now = new Date();
+            const options = { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            };
+            const currentDate = now.toLocaleDateString('en-US', options);
+            
+            document.getElementById('currentDate').textContent = currentDate;
+            document.getElementById('today-date').textContent = 
+                `${currentLang === 'ar' ? 'أوقات الصلاة اليوم لـ' : 
+                  currentLang === 'sw' ? 'Nyakati za swala za leo kwa' : 
+                  "Today's prayer times for"} ${currentDate}`;
+            
+            document.getElementById('copyrightText').innerHTML = 
+                `&copy; ${now.getFullYear()} ${currentLang === 'ar' ? 'مسجد_قندهار' : 
+                                                   currentLang === 'sw' ? 'Masjid_Qandahaar' : 
+                                                   'Masjid_Qandahaar'}. ${currentLang === 'ar' ? 'جميع الحقوق محفوظة' : 
+                                                                          currentLang === 'sw' ? 'Haki zote zimehifadhiwa' : 
+                                                                          'All rights reserved.'}`;
+            
+            const hijriDate = calculateHijriDate(now);
+            document.getElementById('hijriDate').textContent = hijriDate;
+        }
+
+        // ========== NEWSLETTER FUNCTIONS ==========
+        function setupNewsletter() {
+            const newsletterForm = document.getElementById('newsletterForm');
+            const footerNewsletterBtn = document.getElementById('footerNewsletterButton');
+            
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const email = document.getElementById('newsletterEmail').value;
+                    
+                    if (email && email.includes('@')) {
+                        alert(currentLang === 'ar' ? 'شكرًا لك على الاشتراك في نشرتنا الإخبارية!' :
+                              currentLang === 'sw' ? 'Asante kwa kujisajili kwenye jarida letu!' :
+                              'Thank you for subscribing to our newsletter!');
+                        this.reset();
+                    } else {
+                        alert(currentLang === 'ar' ? 'الرجاء إدخال عنوان بريد إلكتروني صحيح.' :
+                              currentLang === 'sw' ? 'Tafadhali ingiza anwani sahihi ya barua pepe.' :
+                              'Please enter a valid email address.');
+                    }
+                });
+            }
+            
+            if (footerNewsletterBtn) {
+                footerNewsletterBtn.addEventListener('click', function() {
+                    const email = document.getElementById('footerNewsletterEmail').value;
+                    
+                    if (email && email.includes('@')) {
+                        alert(currentLang === 'ar' ? 'شكرًا لك على الاشتراك في النشرة الإخبارية!' :
+                              currentLang === 'sw' ? 'Asante kwa kujisajili kwenye jarida!' :
+                              'Thank you for subscribing to our newsletter!');
+                        document.getElementById('footerNewsletterEmail').value = '';
+                        
+                        // Send email to contact
+                        console.log('Newsletter subscription from footer:', email);
+                    } else {
+                        alert(currentLang === 'ar' ? 'الرجاء إدخال عنوان بريد إلكتروني صحيح.' :
+                              currentLang === 'sw' ? 'Tafadhali ingiza anwani sahihi ya barua pepe.' :
+                              'Please enter a valid email address.');
+                    }
+                });
+            }
+        }
+
+        // ========== NAVIGATION FUNCTIONS ==========
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                const linkHref = link.getAttribute('href').substring(1);
+                if (linkHref === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        function handleNavbarScroll() {
+            const navbar = document.querySelector('.navbar-glass');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+
+        // ========== INITIALIZE ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize language
+            changeLanguage(currentLang);
+            
+            // Initialize all components
+            updateDateTime();
+            updateQuranVerse();
+            updatePrayerTimes();
+            updateActiveNavLink();
+            setupNewsletter();
+            
+            // Update prayer times every second for countdown
+            setInterval(updatePrayerTimes, 1000);
+            
+            // Update date every hour
+            setInterval(updateDateTime, 3600000);
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                handleNavbarScroll();
+                updateActiveNavLink();
+            });
+            
+            // Refresh verse button
+            document.getElementById('refreshVerse').addEventListener('click', function() {
+                let newVerse;
+                const currentVerse = document.getElementById('arabicVerse').textContent;
+                
+                do {
+                    const randomIndex = Math.floor(Math.random() * quranVerses.length);
+                    newVerse = quranVerses[randomIndex];
+                } while (newVerse.arabic === currentVerse);
+                
+                document.getElementById('arabicVerse').textContent = newVerse.arabic;
+                document.getElementById('verseTranslation').textContent = newVerse.translation;
+                document.getElementById('verseReference').textContent = newVerse.surah;
+                
+                const verseCard = document.querySelector('.verse-card');
+                verseCard.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    verseCard.style.transform = '';
+                }, 300);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Back to Top Button
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // ========== INITIALIZE ON LOAD ==========
+        window.onload = function() {
+            handleNavbarScroll();
+            updateDateTime();
+            updateQuranVerse();
+            updatePrayerTimes();
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,2822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>About - Masjid_Qandahaar</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --accent-color: #ff9800;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --border-color: #e0e0e0;
+            --text-light: #666;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --info-color: #17a2b8;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            padding-top: 80px;
+        }
+        
+        .text-islamic {
+            color: var(--primary-color);
+        }
+        
+        .bg-islamic {
+            background-color: var(--primary-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* ========== ENHANCED NAVIGATION BAR ========== */
+        .navbar-glass {
+            background: rgba(27, 94, 32, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(27, 94, 32, 0.3);
+            transition: all 0.3s ease;
+            padding: 0.5rem 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+        
+        .navbar-glass.scrolled {
+            padding: 0.3rem 0;
+            background: rgba(27, 94, 32, 0.98);
+            box-shadow: 0 8px 32px rgba(27, 94, 32, 0.4);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .navbar-brand i {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .navbar-brand:hover i {
+            transform: rotate(15deg);
+        }
+        
+        .navbar-brand span {
+            background: linear-gradient(45deg, white, #ffd54f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .navbar-nav {
+            gap: 0.3rem;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 600;
+            padding: 0.75rem 1.2rem !important;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .nav-link.active {
+            color: white !important;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .nav-icon {
+            font-size: 1.1rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        .nav-dot {
+            position: absolute;
+            bottom: 5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 6px;
+            height: 6px;
+            background: var(--accent-color);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .nav-link.active .nav-dot {
+            opacity: 1;
+        }
+        
+        .nav-action-btn {
+            padding: 0.5rem 1.5rem !important;
+            border-radius: 30px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+        
+        .nav-login {
+            color: var(--primary-color) !important;
+            background: white !important;
+            border: 2px solid white;
+        }
+        
+        .nav-login:hover {
+            background: rgba(255, 255, 255, 0.9) !important;
+            color: var(--primary-dark) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 255, 255, 0.3);
+        }
+        
+        .nav-register {
+            background: linear-gradient(45deg, var(--accent-color), #ffb74d) !important;
+            color: white !important;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .nav-register:hover {
+            background: linear-gradient(45deg, #ff9800, #ffa726) !important;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            position: relative;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .language-btn:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+        }
+        
+        .language-btn i {
+            font-size: 1rem;
+        }
+        
+        .language-dropdown {
+            min-width: 180px;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            background: rgba(27, 94, 32, 0.98);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .language-dropdown .dropdown-item {
+            color: white;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .language-dropdown .dropdown-item i {
+            width: 20px;
+            color: var(--accent-color);
+        }
+        
+        .language-dropdown .dropdown-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+        }
+        
+        .language-dropdown .dropdown-item.active {
+            background: rgba(255, 255, 255, 0.2);
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        /* Prayer Time Indicator */
+        .nav-prayer-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            margin-left: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-prayer-indicator:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .prayer-icon {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+        }
+        
+        .prayer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        
+        .current-prayer {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .prayer-countdown {
+            font-size: 0.75rem;
+            color: #ffeb3b;
+            font-weight: 600;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+        
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                background: rgba(27, 94, 32, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 15px;
+                padding: 1.5rem;
+                margin-top: 1rem;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .nav-prayer-indicator {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+            
+            .nav-action-btn {
+                margin: 0.5rem 0;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .language-switcher {
+                margin: 1rem 0;
+                justify-content: center;
+            }
+        }
+        
+        /* ========== ABOUT HERO SECTION ========== */
+        .about-hero {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            color: white;
+            padding: 120px 0 100px;
+            position: relative;
+            overflow: hidden;
+            margin-top: -80px;
+            padding-top: 180px;
+        }
+        
+        .about-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="rgba(255,255,255,0.05)" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-size: cover;
+            opacity: 0.2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .hero-description {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-width: 90%;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-image {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .floating-element {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .floating-1 {
+            top: 20%;
+            left: -20px;
+            animation-delay: 0s;
+        }
+        
+        .floating-2 {
+            top: 50%;
+            right: -20px;
+            animation-delay: 2s;
+        }
+        
+        .floating-3 {
+            bottom: 30%;
+            left: -10px;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+        }
+        
+        /* ========== MISSION & VISION SECTION ========== */
+        .mission-vision {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .mission-vision {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .mission-vision {
+                padding: 40px 0;
+            }
+        }
+        
+        .mission-card, .vision-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (max-width: 768px) {
+            .mission-card, .vision-card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .mission-card, .vision-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        .mission-card:hover, .vision-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .mission-card::before, .vision-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+        }
+        
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--dark-color);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+        }
+        
+        .section-description {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .mission-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .mission-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.75rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .mission-list li:hover {
+            background: rgba(46, 125, 50, 0.05);
+            transform: translateX(10px);
+        }
+        
+        .mission-list li i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+        
+        .mission-list li span {
+            color: var(--dark-color);
+            font-size: 1rem;
+        }
+        
+        .vision-steps {
+            margin-top: 2rem;
+        }
+        
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.05), rgba(76, 175, 80, 0.05));
+            transform: translateX(10px);
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+        
+        .step-content h5 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .step-content p {
+            color: var(--text-light);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+        
+        /* ========== CORE VALUES SECTION ========== */
+        .core-values {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .core-values {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .core-values {
+                padding: 40px 0;
+            }
+        }
+        
+        .section-header {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+        
+        .value-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            height: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (max-width: 576px) {
+            .value-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover .value-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            transform: scale(1.1) rotate(15deg);
+        }
+        
+        .value-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .value-card p {
+            color: var(--text-light);
+            margin: 0;
+            line-height: 1.6;
+        }
+        
+        /* ========== TEAM SECTION ========== */
+        .team-section {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .team-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .team-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .team-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+        
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .team-image {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+        
+        .team-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-card:hover .team-image img {
+            transform: scale(1.1);
+        }
+        
+        .team-social {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .team-card:hover .team-social {
+            transform: translateY(0);
+        }
+        
+        .team-social a {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .team-social a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .team-info {
+            padding: 2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .team-info {
+                padding: 1.5rem;
+            }
+        }
+        
+        .team-info h5 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .team-role {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .team-bio {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        /* ========== FEATURES SECTION ========== */
+        .features-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .features-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .features-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            height: 100%;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (max-width: 576px) {
+            .feature-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary-color);
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-color) 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.1), rgba(76, 175, 80, 0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover .feature-icon {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .feature-card h5 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .feature-card > p {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark-color);
+            font-size: 0.9rem;
+        }
+        
+        .feature-list li i {
+            color: var(--primary-color);
+            font-size: 0.8rem;
+        }
+        
+        /* ========== CTA SECTION ========== */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.05), rgba(76, 175, 80, 0.05));
+        }
+        
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 60px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .cta-section {
+                padding: 40px 0;
+            }
+        }
+        
+        .cta-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(46, 125, 50, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-card {
+                padding: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .cta-card {
+                padding: 1.5rem;
+            }
+        }
+        
+        .cta-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(46, 125, 50, 0.1), transparent);
+            animation: rotate 4s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .cta-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .cta-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .cta-description {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        @media (max-width: 576px) {
+            .cta-description {
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* ========== FOOTER SECTION ========== */
+        .footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding-top: 80px;
+            margin-top: 100px;
+            position: relative;
+        }
+        
+        @media (max-width: 768px) {
+            .footer {
+                padding-top: 60px;
+                margin-top: 60px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .footer {
+                padding-top: 40px;
+                margin-top: 40px;
+            }
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, rgba(27, 94, 32, 0.1));
+        }
+        
+        .footer-wave {
+            position: absolute;
+            top: -50px;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%232E7D32' fill-opacity='1' d='M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,112C672,96,768,96,864,112C960,128,1056,160,1152,160C1248,160,1344,128,1392,112L1440,96L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+            z-index: 1;
+        }
+        
+        .border-white-20 {
+            border-color: rgba(255, 255, 255, 0.2) !important;
+        }
+        
+        .bg-white-10 {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+        }
+        
+        .text-white-75 {
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+        
+        .text-white-50 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .footer-brand h3 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 576px) {
+            .footer-brand h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .hover-lift {
+            transition: all 0.3s ease;
+            padding: 4px 8px;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        
+        .hover-lift:hover {
+            color: white !important;
+            transform: translateX(8px);
+            background: rgba(255, 255, 255, 0.1);
+            padding-left: 16px;
+        }
+        
+        body.rtl .hover-lift:hover {
+            transform: translateX(-8px);
+            padding-left: 8px;
+            padding-right: 16px;
+        }
+        
+        .contact-icon {
+            transition: all 0.3s ease;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        @media (max-width: 576px) {
+            .contact-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+        
+        .contact-icon:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: scale(1.1);
+        }
+        
+        .newsletter-form .input-group {
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .newsletter-form .form-control {
+            border: none;
+            padding: 12px 20px;
+            background: white;
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .form-control {
+                padding: 10px 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .newsletter-form .btn {
+            padding: 12px 25px;
+            border: none;
+            background: white;
+            transition: all 0.3s ease;
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 576px) {
+            .newsletter-form .btn {
+                padding: 10px 20px;
+            }
+        }
+        
+        .newsletter-form .btn:hover {
+            background: rgba(46, 125, 50, 0.1);
+            transform: scale(1.05);
+        }
+        
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 576px) {
+            .social-link {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+            color: white;
+        }
+        
+        .social-link.facebook:hover { background: #1877F2; }
+        .social-link.twitter:hover { background: #1DA1F2; }
+        .social-link.instagram:hover { 
+            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        }
+        .social-link.youtube:hover { background: #FF0000; }
+        .social-link.whatsapp:hover { background: #25D366; }
+        .social-link.telegram:hover { background: #0088cc; }
+        
+        .footer-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .decoration-item {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.05);
+            font-size: 8rem;
+            z-index: -1;
+        }
+        
+        @media (max-width: 768px) {
+            .decoration-item {
+                font-size: 5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .decoration-item {
+                font-size: 3rem;
+            }
+        }
+        
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            transform: rotate(-15deg);
+        }
+        
+        .decoration-2 {
+            top: 30%;
+            right: 10%;
+            transform: rotate(25deg);
+        }
+        
+        .decoration-3 {
+            bottom: 20%;
+            left: 15%;
+            transform: rotate(-10deg);
+        }
+        
+        .position-relative {
+            position: relative;
+        }
+        
+        .z-2 {
+            z-index: 2;
+        }
+        
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            border: none;
+            background: linear-gradient(45deg, var(--primary-color), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        
+        @media (max-width: 576px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.1);
+        }
+        
+        /* ========== RTL SUPPORT ========== */
+        body.rtl {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        body.rtl .nav-link i {
+            margin-left: 8px;
+            margin-right: 0;
+        }
+        
+        body.rtl .section-title::after {
+            left: auto;
+            right: 0;
+        }
+        
+        body.rtl .mission-card::before, 
+        body.rtl .vision-card::before {
+            left: auto;
+            right: 0;
+        }
+        
+        body.rtl .mission-list li i {
+            margin-left: 0.5rem;
+            margin-right: 0;
+        }
+        
+        body.rtl .step {
+            transform: translateX(0);
+        }
+        
+        body.rtl .step:hover {
+            transform: translateX(-10px);
+        }
+        
+        body.rtl .footer-wave {
+            transform: scaleX(-1);
+        }
+        
+        /* ========== RESPONSIVE HERO ========== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-stats {
+                gap: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                padding-top: 150px;
+                padding-bottom: 80px;
+                text-align: center;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-description {
+                max-width: 100%;
+                font-size: 1.1rem;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 2rem;
+            }
+            
+            .stat-item {
+                flex: 1;
+                min-width: 100px;
+            }
+            
+            .floating-element {
+                display: none;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-description {
+                font-size: 1rem;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: center;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.25rem;
+            }
+            
+            .btn-primary, .btn-outline-primary {
+                width: 100%;
+            }
+        }
+        
+        /* Contact Card Customization */
+        .contact-card i {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.6rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-card p, .contact-card a {
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.5;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-card a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- ========== ENHANCED NAVIGATION BAR ========== -->
+    <nav class="navbar navbar-expand-lg navbar-glass fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-mosque"></i>
+                <span id="brandName">Masjid_Qandahaar</span>
+            </a>
+            
+            <!-- Prayer Time Indicator -->
+            <div class="nav-prayer-indicator d-none d-lg-flex">
+                <i class="fas fa-clock prayer-icon"></i>
+                <div class="prayer-info">
+                    <div class="current-prayer" id="navCurrentPrayer">Fajr</div>
+                    <div class="prayer-countdown" id="navTimeRemaining">00:00</div>
+                </div>
+            </div>
+            
+            <!-- Language Switcher -->
+            <div class="language-switcher d-none d-lg-flex">
+                <div class="dropdown">
+                    <button class="btn language-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-globe"></i>
+                        <span id="currentLanguage">English</span>
+                    </button>
+                    <ul class="dropdown-menu language-dropdown">
+                        <li>
+                            <a class="dropdown-item active" href="#" onclick="changeLanguage('en'); return false;">
+                                <i class="fas fa-check-circle"></i> English
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('sw'); return false;">
+                                <i class="fas fa-check-circle"></i> Kiswahili
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#" onclick="changeLanguage('ar'); return false;">
+                                <i class="fas fa-check-circle"></i> العربية
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-home nav-icon"></i>
+                            <span class="nav-text" id="navHome">Home</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                 
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">
+                            <i class="fas fa-calendar-alt nav-icon"></i>
+                            <span class="nav-text" id="navEvents">Events</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+        
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">
+                            <i class="fas fa-envelope nav-icon"></i>
+                            <span class="nav-text" id="navContact">Contact</span>
+                            <span class="nav-dot"></span>
+                        </a>
+                    </li>
+                </ul>
+                
+                <!-- Mobile Language Switcher -->
+                <div class="language-switcher d-lg-none d-flex justify-content-center my-3">
+                    <div class="dropdown">
+                        <button class="btn language-btn dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-globe"></i>
+                            <span id="currentLanguageMobile">English</span>
+                        </button>
+                        <ul class="dropdown-menu language-dropdown">
+                            <li>
+                                <a class="dropdown-item active" href="#" onclick="changeLanguage('en'); return false;">
+                                    <i class="fas fa-check-circle"></i> English
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('sw'); return false;">
+                                    <i class="fas fa-check-circle"></i> Kiswahili
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" onclick="changeLanguage('ar'); return false;">
+                                    <i class="fas fa-check-circle"></i> العربية
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Mobile Prayer Indicator -->
+                <div class="nav-prayer-indicator d-lg-none d-flex justify-content-center my-3">
+                    <i class="fas fa-clock prayer-icon"></i>
+                    <div class="prayer-info">
+                        <div class="current-prayer" id="navCurrentPrayerMobile">Fajr</div>
+                        <div class="prayer-countdown" id="navTimeRemainingMobile">00:00</div>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="d-flex gap-2 mt-2 mt-lg-0">
+                    <a class="nav-link nav-action-btn nav-login" href="auth/login.html">
+                        <i class="fas fa-sign-in-alt me-2"></i> <span id="navLogin">Login</span>
+                    </a>
+                    <a class="nav-link nav-action-btn nav-register" href="auth/register.html">
+                        <i class="fas fa-user-plus me-2"></i> <span id="navRegister">Register</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h6 class="hero-subtitle" id="heroSubtitle">Welcome to</h6>
+                        <h1 class="hero-title" id="heroTitle">Masjid_Qandahaar Management System</h1>
+                        <p class="hero-description" id="heroDescription">
+                            A comprehensive digital solution designed to streamline mosque operations, 
+                            enhance community engagement, and facilitate spiritual growth through 
+                            innovative technology. Our platform brings modern management tools to 
+                            traditional Islamic institutions, creating a seamless bridge between 
+                            technology and faith.
+                        </p>
+                        <div class="hero-stats">
+                            <div class="stat-item">
+                                <h3 class="stat-number">15+</h3>
+                                <p class="stat-text" id="statYears">Years of Service</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 class="stat-number">5000+</h3>
+                                <p class="stat-text" id="statMembers">Community Members</p>
+                            </div>
+                            <div class="stat-item">
+                                <h3 class="stat-number">100+</h3>
+                                <p class="stat-text" id="statActivities">Weekly Activities</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <div style="background: linear-gradient(45deg, var(--primary-dark), var(--primary-color)); height: 400px; border-radius: 20px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; position: relative; overflow: hidden;">
+                            <i class="fas fa-mosque" style="font-size: 8rem; opacity: 0.8; position: absolute;"></i>
+                            <div style="position: relative; z-index: 2; text-align: center;">
+                                <h3 style="font-weight: 700; margin-bottom: 1rem;" id="heroImageTitle">Masjid_Qandahaar</h3>
+                                <p style="opacity: 0.9;" id="heroImageDesc">Community Mosque</p>
+                            </div>
+                        </div>
+                        <div class="floating-element floating-1">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <div class="floating-element floating-2">
+                            <i class="fas fa-book-quran"></i>
+                        </div>
+                        <div class="floating-element floating-3">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 60L48 50C96 40 192 20 288 20C384 20 480 40 576 50C672 60 768 60 864 55C960 50 1056 40 1152 35C1248 30 1344 30 1392 30L1440 30V120H0V60Z" fill="white"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section class="mission-vision py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="mission-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h2 class="section-title" id="missionTitle">Our Mission</h2>
+                        <p class="section-description" id="missionDesc">
+                            To provide a comprehensive digital ecosystem that enhances mosque management, 
+                            fosters community engagement, and facilitates spiritual growth through innovative 
+                            technology solutions.
+                        </p>
+                        <ul class="mission-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span id="mission1">Streamline mosque operations and administration</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span id="mission2">Enhance community communication and engagement</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span id="mission3">Promote Islamic education and spiritual development</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span id="mission4">Ensure transparent financial management</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="vision-card">
+                        <div class="card-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h2 class="section-title" id="visionTitle">Our Vision</h2>
+                        <p class="section-description" id="visionDesc">
+                            To become the leading digital platform for mosques worldwide, creating connected 
+                            Islamic communities that thrive spiritually, socially, and educationally through 
+                            technology-enabled solutions.
+                        </p>
+                        <div class="vision-steps">
+                            <div class="step">
+                                <div class="step-number">01</div>
+                                <div class="step-content">
+                                    <h5 id="step1Title">Digital Transformation</h5>
+                                    <p id="step1Desc">Modernize mosque operations with cutting-edge technology</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">02</div>
+                                <div class="step-content">
+                                    <h5 id="step2Title">Community Building</h5>
+                                    <p id="step2Desc">Create stronger bonds within the Muslim community</p>
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">03</div>
+                                <div class="step-content">
+                                    <h5 id="step3Title">Global Reach</h5>
+                                    <p id="step3Desc">Connect mosques and communities across the world</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section class="core-values py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" id="valuesTitle">Our Values</h2>
+                <p class="section-subtitle" id="valuesSubtitle">The principles that guide everything we do</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h5 id="value1Title">Compassion</h5>
+                        <p id="value1Desc">Showing mercy and kindness in all our interactions and services</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h5 id="value2Title">Integrity</h5>
+                        <p id="value2Desc">Maintaining honesty and transparency in all operations</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5 id="value3Title">Inclusivity</h5>
+                        <p id="value3Desc">Welcoming all members of the community without discrimination</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="value-card">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h5 id="value4Title">Innovation</h5>
+                        <p id="value4Desc">Continuously improving and adapting to meet community needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Team -->
+    <section class="team-section py-5">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" id="teamTitle">Meet Our Team</h2>
+                <p class="section-subtitle" id="teamSubtitle">Dedicated individuals serving our community</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div style="background: linear-gradient(45deg, #5d4037, #8d6e63); height: 280px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h5 id="team1Name">Imam Ahmed Hassan</h5>
+                            <p class="team-role" id="team1Role">Head Imam & Spiritual Leader</p>
+                            <p class="team-bio" id="team1Bio">Leading prayers and providing spiritual guidance for over 10 years</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div style="background: linear-gradient(45deg, #1565c0, #42a5f5); height: 280px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h5 id="team2Name">Mohamed Ali</h5>
+                            <p class="team-role" id="team2Role">Mosque Manager</p>
+                            <p class="team-bio" id="team2Bio">Managing daily operations and community programs</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div style="background: linear-gradient(45deg, #2e7d32, #66bb6a); height: 280px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h5 id="team3Name">Abdullah Mwiba</h5>
+                            <p class="team-role" id="team3Role">System Administrator</p>
+                            <p class="team-bio" id="team3Bio">Managing digital platforms and technical infrastructure</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="team-card">
+                        <div class="team-image">
+                            <div style="background: linear-gradient(45deg, #6a1b9a, #ab47bc); height: 280px; display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="team-social">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                        <div class="team-info">
+                            <h5 id="team4Name">Fatima Al-Rashid</h5>
+                            <p class="team-role" id="team4Role">Women's Program Coordinator</p>
+                            <p class="team-bio" id="team4Bio">Organizing educational programs for women and children</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Grid -->
+    <section class="features-section py-5 bg-light">
+        <div class="container">
+            <div class="section-header text-center mb-5">
+                <h2 class="section-title" id="featuresTitle">System Features</h2>
+                <p class="section-subtitle" id="featuresSubtitle">Comprehensive solutions for modern mosque management</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-pray"></i>
+                        </div>
+                        <h5 id="feature1Title">Prayer Management</h5>
+                        <p id="feature1Desc">Automated prayer times, iqamah scheduling, and prayer tracking with notifications</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span id="feature1Item1">Daily prayer schedules</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature1Item2">Jumu'ah announcements</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature1Item3">Ramadan timetables</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-heart"></i>
+                        </div>
+                        <h5 id="feature2Title">Donation System</h5>
+                        <p id="feature2Desc">Secure online donations, zakat calculation, and transparent financial reporting</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span id="feature2Item1">Online payment gateway</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature2Item2">Automated receipts</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature2Item3">Financial reports</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h5 id="feature3Title">QR Based System</h5>
+                        <p id="feature3Desc">Digital check-ins, event registration, and member verification using QR codes</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span id="feature3Item1">Contactless check-in</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature3Item2">Event attendance</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature3Item3">Member verification</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h5 id="feature4Title">Event Management</h5>
+                        <p id="feature4Desc">Comprehensive event scheduling, registration, and communication tools</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span id="feature4Item1">Event calendar</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature4Item2">Online registration</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature4Item3">Automated reminders</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h5 id="feature5Title">Community Portal</h5>
+                        <p id="feature5Desc">Member directories, communication channels, and community announcements</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span id="feature5Item1">Member profiles</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature5Item2">Announcements board</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature5Item3">Community forums</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h5 id="feature6Title">Analytics Dashboard</h5>
+                        <p id="feature6Desc">Comprehensive insights and reports on mosque operations and community engagement</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> <span id="feature6Item1">Attendance analytics</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature6Item2">Donation reports</span></li>
+                            <li><i class="fas fa-check"></i> <span id="feature6Item3">Growth metrics</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section py-5">
+        <div class="container">
+            <div class="cta-card">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <h2 class="cta-title" id="ctaTitle">Join Our Community</h2>
+                        <p class="cta-description" id="ctaDesc">
+                            Become part of our growing digital mosque community. Register today to access 
+                            all features and stay connected with your mosque.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end">
+                        <a href="auth/register.html" class="btn btn-primary btn-lg">
+                            <i class="fas fa-user-plus me-2"></i> <span id="registerNow">Register Now</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="btn btn-islamic back-to-top shadow-lg">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="footer position-relative overflow-hidden">
+        <div class="footer-wave"></div>
+        
+        <div class="container py-5 position-relative z-2">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-5 mb-md-0">
+                    <div class="footer-brand mb-4">
+                        <h3 class="display-6 fw-bold text-white">
+                            <i class="fas fa-mosque me-2"></i> <span id="footerBrand">Masjid_Qandahaar Management System</span>
+                        </h3>
+                    </div>
+                    <p class="text-white-75 mb-4 fs-5" id="footerDesc">
+                        A complete digital solution for mosque administration, community engagement, and spiritual management.
+                    </p>
+                    
+                    <div class="newsletter-form mt-4">
+                        <h6 class="text-white mb-3" id="footerNewsletterTitle">Subscribe to Newsletter</h6>
+                        <div class="input-group">
+                            <input type="email" class="form-control bg-white border-0" placeholder="Your email address" id="footerNewsletterEmail">
+                            <button class="btn btn-light text-islamic" type="button" id="footerNewsletterButton">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </div>
+                        <small class="text-white-50 mt-2 d-block" id="footerNewsletterDesc">Get updates on prayer times, events, and community news</small>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerQuickLinks">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="index.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-home me-2 text-white-50"></i>
+                                <span id="footerHome">Home</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="about.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-info-circle me-2 text-white-50"></i>
+                                <span id="footerAbout">About</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="prayer_times.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-clock me-2 text-white-50"></i>
+                                <span id="footerPrayerTimes">Prayer Times</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="events.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-calendar-alt me-2 text-white-50"></i>
+                                <span id="footerEvents">Events</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-envelope me-2 text-white-50"></i>
+                                <span id="footerContact">Contact</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-5 mb-md-0">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerServices">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <a href="donations.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-hand-holding-heart me-2 text-white-50"></i>
+                                <span id="footerDonations">Donations</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="qr_code.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-qrcode me-2 text-white-50"></i>
+                                <span id="footerQR">QR Code System</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="sermons.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-book-quran me-2 text-white-50"></i>
+                                <span id="footerSermons">Sermons</span>
+                            </a>
+                        </li>
+                        <li class="mb-3">
+                            <a href="resources.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-book me-2 text-white-50"></i>
+                                <span id="footerResources">Resources</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="membership.html" class="text-white-75 d-flex align-items-center hover-lift">
+                                <i class="fas fa-users me-2 text-white-50"></i>
+                                <span id="footerMembership">Membership</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4 pb-2 border-bottom border-white-20" id="footerContactInfo">Contact Info</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-map-marker-alt text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white mb-1" id="footerAddress">Address</h6>
+                                <p class="text-white-75 mb-0" id="footerAddressText">Masjid_Qandahaar, CBE DODOMA</p>
+                            </div>
+                        </li>
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div class="contact-card">
+                                <h6 class="text-white mb-1" id="footerPhone">Phone</h6>
+                                <p class="text-white-75 mb-0">
+                                    <a href="tel:+255750555783">+255 750 555 783</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="mb-4 d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div class="contact-card">
+                                <h6 class="text-white mb-1" id="footerEmail">Email</h6>
+                                <p class="text-white-75 mb-0">
+                                    <a href="mailto:abdillahmwiba@gmail.com">abdillahmwiba@gmail.com</a>
+                                </p>
+                            </div>
+                        </li>
+                        <li class="d-flex align-items-start">
+                            <div class="contact-icon bg-white-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-clock text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="text-white mb-1" id="footerPrayer">Prayer Times</h6>
+                                <p class="text-white-75 mb-0" id="footerPrayerText">Open 24 Hours</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="row mt-5 pt-4 border-top border-white-20">
+                <div class="col-md-6">
+                    <div class="footer-social d-flex gap-3">
+                        <a href="#" class="social-link facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link youtube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="#" class="social-link whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                    <div class="app-download d-flex gap-3 justify-content-md-end">
+                        <a href="#" class="btn btn-outline-light btn-sm px-3 rounded-pill">
+                            <i class="fab fa-apple me-2"></i> <span id="footerAppStore">App Store</span>
+                        </a>
+                        <a href="#" class="btn btn-light btn-sm px-3 rounded-pill text-islamic">
+                            <i class="fab fa-google-play me-2"></i> <span id="footerPlayStore">Play Store</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4 pt-3">
+                <div class="col-md-6">
+                    <p class="text-white-50 mb-0" id="copyrightText">
+                        &copy; 2026 Masjid_Qandahaar. All rights reserved.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-white-50 mb-0">
+                        <span id="developedBy">Developed by</span> <span class="text-white">ABDULLAH MWIBA</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-decoration">
+            <div class="decoration-item decoration-1">
+                <i class="fas fa-star-and-crescent"></i>
+            </div>
+            <div class="decoration-item decoration-2">
+                <i class="fas fa-pray"></i>
+            </div>
+            <div class="decoration-item decoration-3">
+                <i class="fas fa-book-quran"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // ========== LANGUAGE TRANSLATIONS ==========
+        const translations = {
+            en: {
+                // Navbar
+                brandName: "Masjid_Qandahaar",
+                navHome: "Home",
+                navAbout: "About",
+                navEvents: "Events",
+                navPrayerTimes: "Prayer Times",
+                navDonations: "Donations",
+                navGallery: "Gallery",
+                navContact: "Contact",
+                navLogin: "Login",
+                navRegister: "Register",
+                
+                // Hero Section
+                heroSubtitle: "Welcome to",
+                heroTitle: "Masjid_Qandahaar Management System",
+                heroDescription: "A comprehensive digital solution designed to streamline mosque operations, enhance community engagement, and facilitate spiritual growth through innovative technology. Our platform brings modern management tools to traditional Islamic institutions, creating a seamless bridge between technology and faith.",
+                statYears: "Years of Service",
+                statMembers: "Community Members",
+                statActivities: "Weekly Activities",
+                heroImageTitle: "Masjid_Qandahaar",
+                heroImageDesc: "Community Mosque",
+                
+                // Mission & Vision
+                missionTitle: "Our Mission",
+                missionDesc: "To provide a comprehensive digital ecosystem that enhances mosque management, fosters community engagement, and facilitates spiritual growth through innovative technology solutions.",
+                mission1: "Streamline mosque operations and administration",
+                mission2: "Enhance community communication and engagement",
+                mission3: "Promote Islamic education and spiritual development",
+                mission4: "Ensure transparent financial management",
+                visionTitle: "Our Vision",
+                visionDesc: "To become the leading digital platform for mosques worldwide, creating connected Islamic communities that thrive spiritually, socially, and educationally through technology-enabled solutions.",
+                step1Title: "Digital Transformation",
+                step1Desc: "Modernize mosque operations with cutting-edge technology",
+                step2Title: "Community Building",
+                step2Desc: "Create stronger bonds within the Muslim community",
+                step3Title: "Global Reach",
+                step3Desc: "Connect mosques and communities across the world",
+                
+                // Core Values
+                valuesTitle: "Our Values",
+                valuesSubtitle: "The principles that guide everything we do",
+                value1Title: "Compassion",
+                value1Desc: "Showing mercy and kindness in all our interactions and services",
+                value2Title: "Integrity",
+                value2Desc: "Maintaining honesty and transparency in all operations",
+                value3Title: "Inclusivity",
+                value3Desc: "Welcoming all members of the community without discrimination",
+                value4Title: "Innovation",
+                value4Desc: "Continuously improving and adapting to meet community needs",
+                
+                // Team
+                teamTitle: "Meet Our Team",
+                teamSubtitle: "Dedicated individuals serving our community",
+                team1Name: "Imam Ahmed Hassan",
+                team1Role: "Head Imam & Spiritual Leader",
+                team1Bio: "Leading prayers and providing spiritual guidance for over 10 years",
+                team2Name: "Mohamed Ali",
+                team2Role: "Mosque Manager",
+                team2Bio: "Managing daily operations and community programs",
+                team3Name: "Abdullah Mwiba",
+                team3Role: "System Administrator",
+                team3Bio: "Managing digital platforms and technical infrastructure",
+                team4Name: "Fatima Al-Rashid",
+                team4Role: "Women's Program Coordinator",
+                team4Bio: "Organizing educational programs for women and children",
+                
+                // Features
+                featuresTitle: "System Features",
+                featuresSubtitle: "Comprehensive solutions for modern mosque management",
+                feature1Title: "Prayer Management",
+                feature1Desc: "Automated prayer times, iqamah scheduling, and prayer tracking with notifications",
+                feature1Item1: "Daily prayer schedules",
+                feature1Item2: "Jumu'ah announcements",
+                feature1Item3: "Ramadan timetables",
+                feature2Title: "Donation System",
+                feature2Desc: "Secure online donations, zakat calculation, and transparent financial reporting",
+                feature2Item1: "Online payment gateway",
+                feature2Item2: "Automated receipts",
+                feature2Item3: "Financial reports",
+                feature3Title: "QR Based System",
+                feature3Desc: "Digital check-ins, event registration, and member verification using QR codes",
+                feature3Item1: "Contactless check-in",
+                feature3Item2: "Event attendance",
+                feature3Item3: "Member verification",
+                feature4Title: "Event Management",
+                feature4Desc: "Comprehensive event scheduling, registration, and communication tools",
+                feature4Item1: "Event calendar",
+                feature4Item2: "Online registration",
+                feature4Item3: "Automated reminders",
+                feature5Title: "Community Portal",
+                feature5Desc: "Member directories, communication channels, and community announcements",
+                feature5Item1: "Member profiles",
+                feature5Item2: "Announcements board",
+                feature5Item3: "Community forums",
+                feature6Title: "Analytics Dashboard",
+                feature6Desc: "Comprehensive insights and reports on mosque operations and community engagement",
+                feature6Item1: "Attendance analytics",
+                feature6Item2: "Donation reports",
+                feature6Item3: "Growth metrics",
+                
+                // CTA
+                ctaTitle: "Join Our Community",
+                ctaDesc: "Become part of our growing digital mosque community. Register today to access all features and stay connected with your mosque.",
+                registerNow: "Register Now",
+                
+                // Footer
+                footerBrand: "Masjid_Qandahaar Management System",
+                footerDesc: "A complete digital solution for mosque administration, community engagement, and spiritual management.",
+                footerNewsletterTitle: "Subscribe to Newsletter",
+                footerNewsletterDesc: "Get updates on prayer times, events, and community news",
+                footerQuickLinks: "Quick Links",
+                footerHome: "Home",
+                footerAbout: "About",
+                footerPrayerTimes: "Prayer Times",
+                footerEvents: "Events",
+                footerContact: "Contact",
+                footerServices: "Services",
+                footerDonations: "Donations",
+                footerQR: "QR Code System",
+                footerSermons: "Sermons",
+                footerResources: "Resources",
+                footerMembership: "Membership",
+                footerContactInfo: "Contact Info",
+                footerAddress: "Address",
+                footerAddressText: "Masjid_Qandahaar, CBE DODOMA",
+                footerPhone: "Phone",
+                footerEmail: "Email",
+                footerPrayer: "Prayer Times",
+                footerPrayerText: "Open 24 Hours",
+                footerAppStore: "App Store",
+                footerPlayStore: "Play Store",
+                developedBy: "Developed by",
+                copyright: "&copy; 2026 Masjid_Qandahaar. All rights reserved."
+            },
+            sw: {
+                // Navbar
+                brandName: "Masjid_Qandahaar",
+                navHome: "Nyumbani",
+                navAbout: "Kuhusu",
+                navEvents: "Matukio",
+                navPrayerTimes: "Nyakati za Swala",
+                navDonations: "Michango",
+                navGallery: "Matunzio",
+                navContact: "Wasiliana",
+                navLogin: "Ingia",
+                navRegister: "Jisajili",
+                
+                // Hero Section
+                heroSubtitle: "Karibu",
+                heroTitle: "Mfumo wa Usimamizi wa Masjid_Qandahaar",
+                heroDescription: "Suluhisho kamili la kidijitali lililoundwa kurahisisha shughuli za msikiti, kuimarisha ushirikiano wa jamii, na kuwezesha ukuaji wa kiroho kupitia teknolojia bunifu. Jukwaa letu linaleta zana za kisasa za usimamizi kwa taasisi za Kiislamu za kitamaduni, na kuunda daraja lisilo na mshono kati ya teknolojia na imani.",
+                statYears: "Miaka ya Huduma",
+                statMembers: "Wanajamii",
+                statActivities: "Shughuli za Kila Wiki",
+                heroImageTitle: "Masjid_Qandahaar",
+                heroImageDesc: "Msikiti wa Jamii",
+                
+                // Mission & Vision
+                missionTitle: "Dhamira Yetu",
+                missionDesc: "Kutoa mfumo kamili wa kidijitali unaoimarisha usimamizi wa msikiti, kukuza ushirikiano wa jamii, na kuwezesha ukuaji wa kiroho kupitia suluhisho bunifu za teknolojia.",
+                mission1: "Rahisisha shughuli na usimamizi wa msikiti",
+                mission2: "Kuimarisha mawasiliano na ushirikiano wa jamii",
+                mission3: "Kukuza elimu ya Kiislamu na maendeleo ya kiroho",
+                mission4: "Kuhakikisha usimamizi wa fedha kwa uwazi",
+                visionTitle: "Maono Yetu",
+                visionDesc: "Kuwa jukwaa kuu la kidijitali kwa misikiti duniani kote, kuunda jamii za Kiislamu zilizounganishwa zinazostawi kiroho, kijamii, na kielimu kupitia suluhisho zinazowezeshwa na teknolojia.",
+                step1Title: "Mabadiliko ya Kidijitali",
+                step1Desc: "Kuboresha shughuli za msikiti kwa teknolojia ya kisasa",
+                step2Title: "Kujenga Jamii",
+                step2Desc: "Kuunda uhusiano imara ndani ya jamii ya Kiislamu",
+                step3Title: "Ufikiaji wa Kimataifa",
+                step3Desc: "Kuunganisha misikiti na jamii kote ulimwenguni",
+                
+                // Core Values
+                valuesTitle: "Maadili Yetu",
+                valuesSubtitle: "Kanuni zinazoongoza kila tunachofanya",
+                value1Title: "Huruma",
+                value1Desc: "Kuonyesha rehema na fadhili katika mwingiliano na huduma zetu zote",
+                value2Title: "Uadilifu",
+                value2Desc: "Kudumisha uaminifu na uwazi katika shughuli zote",
+                value3Title: "Ushirikishwaji",
+                value3Desc: "Kuwakaribisha wanajamii wote bila ubaguzi",
+                value4Title: "Ubunifu",
+                value4Desc: "Kuendelea kuboresha na kuzoea mahitaji ya jamii",
+                
+                // Team
+                teamTitle: "Kutana na Timu Yetu",
+                teamSubtitle: "Watu waliojitolea kutumikia jamii yetu",
+                team1Name: "Imamu Ahmed Hassan",
+                team1Role: "Imamu Mkuu & Kiongozi wa Kiroho",
+                team1Bio: "Kuongoza swala na kutoa mwongozo wa kiroho kwa zaidi ya miaka 10",
+                team2Name: "Mohamed Ali",
+                team2Role: "Meneja wa Msikiti",
+                team2Bio: "Kusimamia shughuli za kila siku na programu za jamii",
+                team3Name: "Abdullah Mwiba",
+                team3Role: "Msimamizi wa Mifumo",
+                team3Bio: "Kusimamia majukwaa ya kidijitali na miundombinu ya kiufundi",
+                team4Name: "Fatima Al-Rashid",
+                team4Role: "Mratibu wa Programu za Wanawake",
+                team4Bio: "Kuandaa programu za elimu kwa wanawake na watoto",
+                
+                // Features
+                featuresTitle: "Vipengele vya Mfumo",
+                featuresSubtitle: "Suluhisho kamili kwa usimamizi wa kisasa wa misikiti",
+                feature1Title: "Usimamizi wa Swala",
+                feature1Desc: "Nyakati za swala za kiotomatiki, upangaji wa iqamah, na ufuatiliaji wa swala kwa arifa",
+                feature1Item1: "Ratiba za swala za kila siku",
+                feature1Item2: "Matangazo ya Ijumaa",
+                feature1Item3: "Ratiba za Ramadhani",
+                feature2Title: "Mfumo wa Michango",
+                feature2Desc: "Michango salama mtandaoni, hesabu ya zakat, na ripoti za fedha kwa uwazi",
+                feature2Item1: "Njia ya malipo mtandaoni",
+                feature2Item2: "Risiti za kiotomatiki",
+                feature2Item3: "Ripoti za fedha",
+                feature3Title: "Mfumo wa QR Code",
+                feature3Desc: "Kuingia kwa dijitali, usajili wa matukio, na uthibitishaji wa wanachama kwa kutumia misimbo ya QR",
+                feature3Item1: "Kuingia bila kugusa",
+                feature3Item2: "Mahudhurio ya matukio",
+                feature3Item3: "Uthibitishaji wa wanachama",
+                feature4Title: "Usimamizi wa Matukio",
+                feature4Desc: "Zana kamili za upangaji matukio, usajili, na mawasiliano",
+                feature4Item1: "Kalenda ya matukio",
+                feature4Item2: "Usajili mtandaoni",
+                feature4Item3: "Vikumbusho vya kiotomatiki",
+                feature5Title: "Lango la Jamii",
+                feature5Desc: "Saraka za wanachama, njia za mawasiliano, na matangazo ya jamii",
+                feature5Item1: "Wasifu wa wanachama",
+                feature5Item2: "Ubao wa matangazo",
+                feature5Item3: "Vikao vya jamii",
+                feature6Title: "Dashibodi ya Takwimu",
+                feature6Desc: "Uchambuzi na ripoti kamili juu ya shughuli za msikiti na ushirikiano wa jamii",
+                feature6Item1: "Takwimu za mahudhurio",
+                feature6Item2: "Ripoti za michango",
+                feature6Item3: "Vipimo vya ukuaji",
+                
+                // CTA
+                ctaTitle: "Jiunge na Jamii Yetu",
+                ctaDesc: "Kuwa sehemu ya jamii yetu inayokua ya msikiti wa kidijitali. Jisajili leo kupata vipengele vyote na kukaa karibu na msikiti wako.",
+                registerNow: "Jisajili Sasa",
+                
+                // Footer
+                footerBrand: "Mfumo wa Usimamizi wa Masjid_Qandahaar",
+                footerDesc: "Suluhisho kamili la kidijitali kwa usimamizi wa msikiti, ushirikiano wa jamii, na usimamizi wa kiroho.",
+                footerNewsletterTitle: "Jisajili kwa Jarida",
+                footerNewsletterDesc: "Pata taarifa juu ya nyakati za swala, matukio, na habari za jamii",
+                footerQuickLinks: "Viungo vya Haraka",
+                footerHome: "Nyumbani",
+                footerAbout: "Kuhusu",
+                footerPrayerTimes: "Nyakati za Swala",
+                footerEvents: "Matukio",
+                footerContact: "Wasiliana",
+                footerServices: "Huduma",
+                footerDonations: "Michango",
+                footerQR: "Mfumo wa QR Code",
+                footerSermons: "Mahubiri",
+                footerResources: "Rasilimali",
+                footerMembership: "Uanachama",
+                footerContactInfo: "Maelezo ya Mawasiliano",
+                footerAddress: "Anuani",
+                footerAddressText: "Masjid_Qandahaar, CBE DODOMA",
+                footerPhone: "Simu",
+                footerEmail: "Barua Pepe",
+                footerPrayer: "Nyakati za Swala",
+                footerPrayerText: "Wazi Saa 24",
+                footerAppStore: "Duka la App",
+                footerPlayStore: "Duka la Play",
+                developedBy: "Imetengenezwa na",
+                copyright: "&copy; 2026 Masjid_Qandahaar. Haki zote zimehifadhiwa."
+            },
+            ar: {
+                // Navbar
+                brandName: "مسجد_قندهار",
+                navHome: "الرئيسية",
+                navAbout: "حول",
+                navEvents: "الفعاليات",
+                navPrayerTimes: "أوقات الصلاة",
+                navDonations: "التبرعات",
+                navGallery: "معرض الصور",
+                navContact: "اتصل بنا",
+                navLogin: "تسجيل الدخول",
+                navRegister: "التسجيل",
+                
+                // Hero Section
+                heroSubtitle: "مرحبًا بكم في",
+                heroTitle: "نظام إدارة مسجد_قندهار",
+                heroDescription: "حل رقمي شامل مصمم لتبسيط عمليات المسجد، وتعزيز المشاركة المجتمعية، وتسهيل النمو الروحي من خلال التكنولوجيا المبتكرة. منصتنا تجلب أدوات الإدارة الحديثة إلى المؤسسات الإسلامية التقليدية، مما يخلق جسرًا سلسًا بين التكنولوجيا والإيمان.",
+                statYears: "سنوات الخدمة",
+                statMembers: "أعضاء المجتمع",
+                statActivities: "الأنشطة الأسبوعية",
+                heroImageTitle: "مسجد_قندهار",
+                heroImageDesc: "مسجد المجتمع",
+                
+                // Mission & Vision
+                missionTitle: "مهمتنا",
+                missionDesc: "توفير نظام رقمي شامل يعزز إدارة المسجد، ويعزز المشاركة المجتمعية، ويسهل النمو الروحي من خلال حلول تكنولوجية مبتكرة.",
+                mission1: "تبسيط عمليات وإدارة المسجد",
+                mission2: "تعزيز التواصل والمشاركة المجتمعية",
+                mission3: "تعزيز التعليم الإسلامي والتطور الروحي",
+                mission4: "ضمان الإدارة المالية الشفافة",
+                visionTitle: "رؤيتنا",
+                visionDesc: "أن نصبح المنصة الرقمية الرائدة للمساجد في جميع أنحاء العالم، مما يخلق مجتمعات إسلامية مترابطة تزدهر روحياً واجتماعياً وتعليمياً من خلال الحلول الممكنة بالتكنولوجيا.",
+                step1Title: "التحول الرقمي",
+                step1Desc: "تحديث عمليات المسجد بتكنولوجيا متطورة",
+                step2Title: "بناء المجتمع",
+                step2Desc: "خلق روابط أقوى داخل المجتمع المسلم",
+                step3Title: "الوصول العالمي",
+                step3Desc: "ربط المساجد والمجتمعات في جميع أنحاء العالم",
+                
+                // Core Values
+                valuesTitle: "قيمنا",
+                valuesSubtitle: "المبادئ التي توجه كل ما نقوم به",
+                value1Title: "الرحمة",
+                value1Desc: "إظهار الرحمة واللطف في جميع تفاعلاتنا وخدماتنا",
+                value2Title: "النزاهة",
+                value2Desc: "الحفاظ على الصدق والشفافية في جميع العمليات",
+                value3Title: "الشمولية",
+                value3Desc: "الترحيب بجميع أفراد المجتمع دون تمييز",
+                value4Title: "الابتكار",
+                value4Desc: "التحسين المستمر والتكيف لتلبية احتياجات المجتمع",
+                
+                // Team
+                teamTitle: "قابل فريقنا",
+                teamSubtitle: "أفراد مخلصون يخدمون مجتمعنا",
+                team1Name: "الإمام أحمد حسن",
+                team1Role: "الإمام الرئيسي والمرشد الروحي",
+                team1Bio: "قيادة الصلوات وتقديم التوجيه الروحي لأكثر من 10 سنوات",
+                team2Name: "محمد علي",
+                team2Role: "مدير المسجد",
+                team2Bio: "إدارة العمليات اليومية والبرامج المجتمعية",
+                team3Name: "عبد الله مويبا",
+                team3Role: "مدير النظام",
+                team3Bio: "إدارة المنصات الرقمية والبنية التحتية التقنية",
+                team4Name: "فاطمة الرشيد",
+                team4Role: "منسقة برامج النساء",
+                team4Bio: "تنظيم البرامج التعليمية للنساء والأطفال",
+                
+                // Features
+                featuresTitle: "ميزات النظام",
+                featuresSubtitle: "حلول شاملة لإدارة المساجد الحديثة",
+                feature1Title: "إدارة الصلاة",
+                feature1Desc: "أوقات صلاة آلية، جدولة الإقامة، وتتبع الصلاة مع الإشعارات",
+                feature1Item1: "جداول الصلاة اليومية",
+                feature1Item2: "إعلانات الجمعة",
+                feature1Item3: "جداول رمضان",
+                feature2Title: "نظام التبرعات",
+                feature2Desc: "تبرعات آمنة عبر الإنترنت، حساب الزكاة، وتقارير مالية شفافة",
+                feature2Item1: "بوابة الدفع عبر الإنترنت",
+                feature2Item2: "إيصالات آلية",
+                feature2Item3: "تقارير مالية",
+                feature3Title: "نظام QR Code",
+                feature3Desc: "تسجيل دخول رقمي، تسجيل الفعاليات، والتحقق من الأعضاء باستخدام رموز QR",
+                feature3Item1: "تسجيل دخول بدون تلامس",
+                feature3Item2: "حضور الفعاليات",
+                feature3Item3: "التحقق من الأعضاء",
+                feature4Title: "إدارة الفعاليات",
+                feature4Desc: "أدوات شاملة لجدولة الفعاليات والتسجيل والتواصل",
+                feature4Item1: "تقويم الفعاليات",
+                feature4Item2: "تسجيل عبر الإنترنت",
+                feature4Item3: "تذكيرات آلية",
+                feature5Title: "بوابة المجتمع",
+                feature5Desc: "أدلة الأعضاء، قنوات الاتصال، وإعلانات المجتمع",
+                feature5Item1: "ملفات الأعضاء",
+                feature5Item2: "لوحة الإعلانات",
+                feature5Item3: "منتديات المجتمع",
+                feature6Title: "لوحة التحليلات",
+                feature6Desc: "رؤى وتقارير شاملة حول عمليات المسجد والمشاركة المجتمعية",
+                feature6Item1: "تحليلات الحضور",
+                feature6Item2: "تقارير التبرعات",
+                feature6Item3: "مقاييس النمو",
+                
+                // CTA
+                ctaTitle: "انضم إلى مجتمعنا",
+                ctaDesc: "كن جزءًا من مجتمع المسجد الرقمي المتنامي لدينا. سجل اليوم للوصول إلى جميع الميزات والبقاء على اتصال مع مسجدك.",
+                registerNow: "سجل الآن",
+                
+                // Footer
+                footerBrand: "نظام إدارة مسجد_قندهار",
+                footerDesc: "حل رقمي كامل لإدارة المسجد والمشاركة المجتمعية والإدارة الروحية.",
+                footerNewsletterTitle: "اشترك في النشرة البريدية",
+                footerNewsletterDesc: "احصل على تحديثات حول أوقات الصلاة والفعاليات وأخبار المجتمع",
+                footerQuickLinks: "روابط سريعة",
+                footerHome: "الرئيسية",
+                footerAbout: "حول",
+                footerPrayerTimes: "أوقات الصلاة",
+                footerEvents: "الفعاليات",
+                footerContact: "اتصل بنا",
+                footerServices: "الخدمات",
+                footerDonations: "التبرعات",
+                footerQR: "نظام QR Code",
+                footerSermons: "الخطب",
+                footerResources: "الموارد",
+                footerMembership: "العضوية",
+                footerContactInfo: "معلومات الاتصال",
+                footerAddress: "العنوان",
+                footerAddressText: "مسجد_قندهار، CBE دودوما",
+                footerPhone: "الهاتف",
+                footerEmail: "البريد الإلكتروني",
+                footerPrayer: "أوقات الصلاة",
+                footerPrayerText: "مفتوح 24 ساعة",
+                footerAppStore: "آب ستور",
+                footerPlayStore: "بلاي ستور",
+                developedBy: "طور بواسطة",
+                copyright: "&copy; 2026 مسجد_قندهار. جميع الحقوق محفوظة."
+            }
+        };
+
+        // ========== LANGUAGE SWITCHER FUNCTION ==========
+        function changeLanguage(lang) {
+            // Update active language in dropdown
+            document.querySelectorAll('.dropdown-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            document.querySelectorAll(`.dropdown-item[onclick*="'${lang}'"]`).forEach(item => {
+                item.classList.add('active');
+            });
+            
+            // Update language display
+            const langNames = {
+                en: 'English',
+                sw: 'Kiswahili', 
+                ar: 'العربية'
+            };
+            
+            document.querySelectorAll('#currentLanguage, #currentLanguageMobile').forEach(el => {
+                if (el) el.textContent = langNames[lang];
+            });
+            
+            // Update text content for all elements with IDs
+            if (translations[lang]) {
+                const elements = Object.keys(translations[lang]);
+                elements.forEach(id => {
+                    const element = document.getElementById(id);
+                    if (element) {
+                        if (id === 'copyrightText') {
+                            element.innerHTML = translations[lang][id];
+                        } else {
+                            element.textContent = translations[lang][id];
+                        }
+                    }
+                });
+            }
+            
+            // Handle RTL for Arabic
+            if (lang === 'ar') {
+                document.body.classList.add('rtl');
+                document.documentElement.dir = 'rtl';
+                document.documentElement.lang = 'ar';
+            } else {
+                document.body.classList.remove('rtl');
+                document.documentElement.dir = 'ltr';
+                document.documentElement.lang = lang;
+            }
+            
+            // Store language preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        // ========== PRAYER TIMES FUNCTIONALITY ==========
+        function calculatePrayerTimes() {
+            // Mock prayer times for demonstration
+            const prayers = ['Fajr', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+            const currentHour = new Date().getHours();
+            
+            let currentPrayer, nextPrayer;
+            
+            if (currentHour < 5) {
+                currentPrayer = 'Isha';
+                nextPrayer = 'Fajr';
+            } else if (currentHour < 12) {
+                currentPrayer = 'Fajr';
+                nextPrayer = 'Dhuhr';
+            } else if (currentHour < 15) {
+                currentPrayer = 'Dhuhr';
+                nextPrayer = 'Asr';
+            } else if (currentHour < 18) {
+                currentPrayer = 'Asr';
+                nextPrayer = 'Maghrib';
+            } else if (currentHour < 20) {
+                currentPrayer = 'Maghrib';
+                nextPrayer = 'Isha';
+            } else {
+                currentPrayer = 'Isha';
+                nextPrayer = 'Fajr';
+            }
+            
+            // Update prayer display
+            const prayerElements = document.querySelectorAll('#navCurrentPrayer, #navCurrentPrayerMobile');
+            prayerElements.forEach(el => {
+                if (el) el.textContent = currentPrayer;
+            });
+            
+            // Calculate time remaining (mock)
+            const timeRemaining = '2:30:45';
+            const timeElements = document.querySelectorAll('#navTimeRemaining, #navTimeRemainingMobile');
+            timeElements.forEach(el => {
+                if (el) el.textContent = timeRemaining;
+            });
+            
+            // Update every second
+            setTimeout(calculatePrayerTimes, 1000);
+        }
+
+        // ========== SCROLL EFFECTS ==========
+        function handleScroll() {
+            const navbar = document.querySelector('.navbar-glass');
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            }
+            
+            // Back to top button
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (backToTopBtn) {
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            }
+        }
+
+        // ========== BACK TO TOP FUNCTION ==========
+        function initBackToTop() {
+            const backToTopBtn = document.querySelector('.back-to-top');
+            if (backToTopBtn) {
+                backToTopBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            }
+        }
+
+        // ========== SMOOTH SCROLL FOR ANCHOR LINKS ==========
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href !== '#') {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            target.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                        }
+                    }
+                });
+            });
+        }
+
+        // ========== INITIALIZE ON DOCUMENT READY ==========
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load preferred language
+            const preferredLang = localStorage.getItem('preferredLanguage') || 'en';
+            changeLanguage(preferredLang);
+            
+            // Initialize prayer times
+            calculatePrayerTimes();
+            
+            // Initialize scroll effects
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Initial call
+            
+            // Initialize back to top
+            initBackToTop();
+            
+            // Initialize smooth scroll
+            initSmoothScroll();
+            
+            // Newsletter subscription
+            const newsletterBtn = document.getElementById('footerNewsletterButton');
+            if (newsletterBtn) {
+                newsletterBtn.addEventListener('click', function() {
+                    const emailInput = document.getElementById('footerNewsletterEmail');
+                    if (emailInput && emailInput.value) {
+                        alert('Thank you for subscribing!');
+                        emailInput.value = '';
+                    } else {
+                        alert('Please enter your email address.');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
