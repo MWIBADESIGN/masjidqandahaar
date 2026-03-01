@@ -3252,180 +3252,16 @@
 
     
   // ========== ACCURATE HIJRI DATE CALCULATION USING UMM-AL-QURA CALENDAR ==========
-// ========== ACCURATE HIJRI DATE CALCULATION USING UMM-AL-QURA CALENDAR ==========
-function calculateHijriDate(gregorianDate) {
-    // Umm al-Qura calendar - Official Saudi calendar
-    // This uses a lookup table for accurate date conversion
+
     
-    const gd = gregorianDate.getDate();
-    const gm = gregorianDate.getMonth() + 1;
-    const gy = gregorianDate.getFullYear();
-    
-    // Umm al-Qura calendar lookup table (Gregorian to Hijri mapping)
-    // This is a simplified version - for production, you'd want a complete table
-    // The table provides Hijri year, month, day for each Gregorian date
-    
-    function getHijriFromGregorian(year, month, day) {
-        // Umm al-Qura calendar data for recent years
-        // Format: [Gregorian year, Gregorian month, Gregorian day, Hijri year, Hijri month, Hijri day]
-        const ummAlQuraData = [
-            // 2026 data (current year)
-            [2026, 1, 1, 1447, 7, 21],  // 1 Jan 2026 = 21 Rajab 1447
-            [2026, 2, 1, 1447, 8, 22],  // 1 Feb 2026 = 22 Shaʻban 1447
-            [2026, 2, 14, 1447, 8, 26], // 14 Feb 2026 = 26 Shaʻban 1447 (TODAY!)
-            [2026, 3, 1, 1447, 9, 21],  // 1 Mar 2026 = 21 Ramadan 1447
-            [2026, 4, 1, 1447, 10, 22], // 1 Apr 2026 = 22 Shawwal 1447
-            [2026, 5, 1, 1447, 11, 23], // 1 May 2026 = 23 Dhu al-Qi'dah 1447
-            [2026, 6, 1, 1447, 12, 24], // 1 Jun 2026 = 24 Dhu al-Hijjah 1447
-            [2026, 7, 1, 1448, 1, 25],  // 1 Jul 2026 = 25 Muharram 1448
-            [2026, 8, 1, 1448, 2, 26],  // 1 Aug 2026 = 26 Safar 1448
-            [2026, 9, 1, 1448, 3, 28],  // 1 Sep 2026 = 28 Rabi' al-awwal 1448
-            [2026, 10, 1, 1448, 4, 29], // 1 Oct 2026 = 29 Rabi' al-thani 1448
-            [2026, 11, 1, 1448, 5, 30], // 1 Nov 2026 = 30 Jumada al-awwal 1448
-            [2026, 12, 1, 1448, 6, 31], // 1 Dec 2026 = 31 Jumada al-thani 1448
+  
+        
+       
+        
+           
+              
             
-            // 2025 data for reference
-            [2025, 1, 1, 1446, 7, 1],   // 1 Jan 2025 = 1 Rajab 1446
-            [2025, 12, 31, 1447, 7, 20] // 31 Dec 2025 = 20 Rajab 1447
-        ];
-        
-        // Find the closest date in the table
-        let closestEntry = null;
-        let minDiff = Infinity;
-        
-        for (const entry of ummAlQuraData) {
-            const entryDate = new Date(entry[0], entry[1] - 1, entry[2]);
-            const targetDate = new Date(year, month - 1, day);
-            
-            const diff = Math.abs(targetDate - entryDate);
-            if (diff < minDiff) {
-                minDiff = diff;
-                closestEntry = entry;
-            }
-        }
-        
-        if (closestEntry) {
-            // Calculate days difference
-            const baseDate = new Date(closestEntry[0], closestEntry[1] - 1, closestEntry[2]);
-            const targetDate = new Date(year, month - 1, day);
-            const daysDiff = Math.round((targetDate - baseDate) / (1000 * 60 * 60 * 24));
-            
-            // Calculate Hijri date
-            let hijriYear = closestEntry[3];
-            let hijriMonth = closestEntry[4];
-            let hijriDay = closestEntry[5] + daysDiff;
-            
-            // Umm al-Qura month lengths
-            const monthLengths = {
-                1: 30,  // Muharram
-                2: 29,  // Safar
-                3: 30,  // Rabi' al-awwal
-                4: 29,  // Rabi' al-thani
-                5: 30,  // Jumada al-awwal
-                6: 29,  // Jumada al-thani
-                7: 30,  // Rajab
-                8: 29,  // Sha'ban
-                9: 30,  // Ramadan
-                10: 29, // Shawwal
-                11: 30, // Dhu al-Qi'dah
-                12: 29  // Dhu al-Hijjah (29 or 30 depending on sighting)
-            };
-            
-            // Adjust for month boundaries
-            while (hijriDay > monthLengths[hijriMonth] || hijriMonth > 12) {
-                if (hijriMonth > 12) {
-                    hijriMonth = 1;
-                    hijriYear++;
-                }
-                
-                if (hijriDay > monthLengths[hijriMonth]) {
-                    hijriDay -= monthLengths[hijriMonth];
-                    hijriMonth++;
-                    
-                    if (hijriMonth > 12) {
-                        hijriMonth = 1;
-                        hijriYear++;
-                    }
-                }
-            }
-            
-            return {
-                year: hijriYear,
-                month: hijriMonth,
-                day: hijriDay
-            };
-        }
-        
-        // Fallback calculation if table doesn't cover the date
-        // Based on approximate lunar calendar
-        const hijriEpoch = 1948440; // Julian day of Hijri epoch
-        const jd = Math.floor((1461 * (gy + 4800 + Math.floor((gm - 14) / 12))) / 4) +
-                   Math.floor((367 * (gm - 2 - 12 * Math.floor((gm - 14) / 12))) / 12) -
-                   Math.floor((3 * Math.floor((gy + 4900 + Math.floor((gm - 14) / 12)) / 100)) / 4) +
-                   gd - 32075;
-        
-        const daysSinceEpoch = jd - hijriEpoch;
-        const hijriYear = Math.floor((daysSinceEpoch - 227022) / 354.367) + 1;
-        
-        // Calculate month and day
-        const yearStart = hijriEpoch + 354.367 * (hijriYear - 1);
-        const dayOfYear = Math.floor(jd - yearStart);
-        
-        let hijriMonth = 1;
-        let hijriDay = dayOfYear;
-        const monthLengthsFallback = [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29];
-        
-        for (let i = 0; i < 12; i++) {
-            if (hijriDay <= monthLengthsFallback[i]) {
-                hijriMonth = i + 1;
-                break;
-            }
-            hijriDay -= monthLengthsFallback[i];
-        }
-        
-        return {
-            year: hijriYear,
-            month: hijriMonth,
-            day: hijriDay
-        };
-    }
     
-    // Get Hijri date
-    const hijriDate = getHijriFromGregorian(gy, gm, gd);
-    
-    // Month names
-    const monthNames = [
-        'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
-        'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
-        'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
-    ];
-    
-    const monthNamesAr = [
-        'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
-        'جمادى الأولى', 'جمادى الثانية', 'رجب', 'شعبان',
-        'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
-    ];
-    
-    const monthNamesSw = [
-        'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
-        'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
-        'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
-    ];
-    
-    // Format based on language
-    const lang = currentLang || 'en';
-    let formattedDate;
-    
-    if (lang === 'ar') {
-        formattedDate = `${hijriDate.day} ${monthNamesAr[hijriDate.month - 1]} ${hijriDate.year} هـ`;
-    } else if (lang === 'sw') {
-        formattedDate = `${hijriDate.day} ${monthNamesSw[hijriDate.month - 1]} ${hijriDate.year} AH`;
-    } else {
-        formattedDate = `${hijriDate.day} ${monthNames[hijriDate.month - 1]} ${hijriDate.year} AH`;
-    }
-    
-    return formattedDate;
-}
 
         // ========== QURAN VERSES DATABASE==========
         const quranVerses = [
@@ -3915,6 +3751,7 @@ function calculateHijriDate(gregorianDate) {
 </body>
 
 </html>
+
 
 
 
