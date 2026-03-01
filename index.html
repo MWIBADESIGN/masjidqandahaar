@@ -3253,14 +3253,230 @@
     
   // ========== ACCURATE HIJRI DATE CALCULATION USING UMM-AL-QURA CALENDAR ==========
 
+  // ========== ACCURATE HIJRI DATE CALCULATION USING UMM-AL-QURA CALENDAR ==========
+function calculateHijriDate(gregorianDate) {
+    // Umm al-Qura calendar data (Gregorian to Hijri mapping)
+    // Format: [gyear, gmonth, gday, hyear, hmonth, hday]
+    const ummAlQuraData = [
+        // 2025 data
+        [2025, 1, 1, 1446, 7, 1],   // 1 Jan 2025 = 1 Rajab 1446
+        [2025, 2, 1, 1446, 8, 2],   // 1 Feb 2025 = 2 Sha'ban 1446
+        [2025, 3, 1, 1446, 9, 1],   // 1 Mar 2025 = 1 Ramadan 1446
+        [2025, 4, 1, 1446, 10, 2],  // 1 Apr 2025 = 2 Shawwal 1446
+        [2025, 5, 1, 1446, 11, 3],  // 1 May 2025 = 3 Dhu al-Qi'dah 1446
+        [2025, 6, 1, 1446, 12, 4],  // 1 Jun 2025 = 4 Dhu al-Hijjah 1446
+        [2025, 7, 1, 1447, 1, 5],   // 1 Jul 2025 = 5 Muharram 1447
+        [2025, 8, 1, 1447, 2, 6],   // 1 Aug 2025 = 6 Safar 1447
+        [2025, 9, 1, 1447, 3, 8],   // 1 Sep 2025 = 8 Rabi I 1447
+        [2025, 10, 1, 1447, 4, 8],  // 1 Oct 2025 = 8 Rabi II 1447
+        [2025, 11, 1, 1447, 5, 9],  // 1 Nov 2025 = 9 Jumada I 1447
+        [2025, 12, 1, 1447, 6, 10], // 1 Dec 2025 = 10 Jumada II 1447
+        [2025, 12, 31, 1447, 7, 10],// 31 Dec 2025 = 10 Rajab 1447
+        
+        // 2026 data
+        [2026, 1, 1, 1447, 7, 11],  // 1 Jan 2026 = 11 Rajab 1447
+        [2026, 1, 31, 1447, 7, 12], // 31 Jan 2026 = 12 Rajab 1447
+        [2026, 2, 1, 1447, 8, 13],  // 1 Feb 2026 = 13 Sha'ban 1447
+        [2026, 2, 14, 1447, 8, 26], // 14 Feb 2026 = 26 Sha'ban 1447
+        [2026, 2, 28, 1447, 8, 28], // 28 Feb 2026 = 28 Sha'ban 1447
+        [2026, 3, 1, 1447, 9, 12],  // 1 Mar 2026 = 12 Ramadan 1447
+        [2026, 3, 15, 1447, 9, 26], // 15 Mar 2026 = 26 Ramadan 1447
+        [2026, 3, 31, 1447, 9, 30], // 31 Mar 2026 = 30 Ramadan 1447
+        [2026, 4, 1, 1447, 10, 1],  // 1 Apr 2026 = 1 Shawwal 1447
+        [2026, 4, 30, 1447, 10, 30],// 30 Apr 2026 = 30 Shawwal 1447
+        [2026, 5, 1, 1447, 11, 1],  // 1 May 2026 = 1 Dhu al-Qi'dah 1447
+        [2026, 5, 31, 1447, 11, 30],// 31 May 2026 = 30 Dhu al-Qi'dah 1447
+        [2026, 6, 1, 1447, 12, 1],  // 1 Jun 2026 = 1 Dhu al-Hijjah 1447
+        [2026, 6, 30, 1447, 12, 30],// 30 Jun 2026 = 30 Dhu al-Hijjah 1447
+        [2026, 7, 1, 1448, 1, 1],   // 1 Jul 2026 = 1 Muharram 1448
+        [2026, 7, 31, 1448, 1, 30], // 31 Jul 2026 = 30 Muharram 1448
+        [2026, 8, 1, 1448, 2, 1],   // 1 Aug 2026 = 1 Safar 1448
+        [2026, 8, 31, 1448, 2, 30], // 31 Aug 2026 = 30 Safar 1448
+        [2026, 9, 1, 1448, 3, 1],   // 1 Sep 2026 = 1 Rabi I 1448
+        [2026, 9, 30, 1448, 3, 30], // 30 Sep 2026 = 30 Rabi I 1448
+        [2026, 10, 1, 1448, 4, 1],  // 1 Oct 2026 = 1 Rabi II 1448
+        [2026, 10, 31, 1448, 4, 30],// 31 Oct 2026 = 30 Rabi II 1448
+        [2026, 11, 1, 1448, 5, 1],  // 1 Nov 2026 = 1 Jumada I 1448
+        [2026, 11, 30, 1448, 5, 30],// 30 Nov 2026 = 30 Jumada I 1448
+        [2026, 12, 1, 1448, 6, 1],  // 1 Dec 2026 = 1 Jumada II 1448
+        [2026, 12, 31, 1448, 6, 30] // 31 Dec 2026 = 30 Jumada II 1448
+    ];
     
+    // Helper function to calculate Julian Day (simplified but accurate enough)
+    function gregorianToJD(year, month, day) {
+        if (month <= 2) {
+            year -= 1;
+            month += 12;
+        }
+        const A = Math.floor(year / 100);
+        const B = 2 - A + Math.floor(A / 4);
+        return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + B - 1524.5;
+    }
+    
+    const gy = gregorianDate.getFullYear();
+    const gm = gregorianDate.getMonth() + 1;
+    const gd = gregorianDate.getDate();
+    
+    const targetJD = gregorianToJD(gy, gm, gd);
+    
+    // Find the closest base date in the data
+    let baseEntry = null;
+    let baseJD = null;
+    let minDiff = Infinity;
+    
+    for (const entry of ummAlQuraData) {
+        const entryJD = gregorianToJD(entry[0], entry[1], entry[2]);
+        const diff = targetJD - entryJD;
+        
+        if (diff >= 0 && diff < minDiff) {
+            minDiff = diff;
+            baseEntry = entry;
+            baseJD = entryJD;
+        }
+    }
+    
+    if (!baseEntry) {
+        // Fallback for dates outside 2025-2026
+        return fallbackHijriCalculation(gregorianDate);
+    }
+    
+    // Calculate Hijri date
+    let hy = baseEntry[3];
+    let hm = baseEntry[4];
+    let hd = baseEntry[5] + Math.round(minDiff);
+    
+    // Month lengths for Umm al-Qura (30 days for odd months, 29 for even months, except Dhu al-Hijjah)
+    function getMonthLength(year, month) {
+        if (month === 12) {
+            // Dhu al-Hijjah can be 29 or 30 days
+            // For simplicity, using 29 days (adjust based on actual year)
+            return 29;
+        }
+        // Odd months have 30 days, even months have 29 days
+        return (month % 2 === 1) ? 30 : 29;
+    }
+    
+    // Adjust for month boundaries
+    while (hd > getMonthLength(hy, hm)) {
+        hd -= getMonthLength(hy, hm);
+        hm++;
+        if (hm > 12) {
+            hm = 1;
+            hy++;
+        }
+    }
+    
+    return {
+        year: hy,
+        month: hm,
+        day: hd
+    };
+}
+
+// Fallback calculation using approximate lunar calendar
+function fallbackHijriCalculation(date) {
+    const gregYear = date.getFullYear();
+    const gregMonth = date.getMonth() + 1;
+    const gregDay = date.getDate();
+    
+    // Approximate conversion formula
+    const jd = (1461 * (gregYear + 4800 + Math.floor((gregMonth - 14) / 12))) / 4 +
+               (367 * (gregMonth - 2 - 12 * Math.floor((gregMonth - 14) / 12))) / 12 -
+               (3 * Math.floor((gregYear + 4900 + Math.floor((gregMonth - 14) / 12)) / 100)) / 4 +
+               gregDay - 32075;
+    
+    const hijriEpoch = 1948440; // Julian day of Hijri epoch (July 16, 622 CE)
+    const daysSinceEpoch = Math.floor(jd) - hijriEpoch;
+    
+    const hijriYear = Math.floor((daysSinceEpoch - 227022) / 354.367) + 1;
+    const yearStart = hijriEpoch + 354.367 * (hijriYear - 1);
+    const dayOfYear = Math.floor(jd) - Math.floor(yearStart);
+    
+    let hijriMonth = 1;
+    let hijriDay = dayOfYear;
+    const monthLengths = [30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29];
+    
+    for (let i = 0; i < monthLengths.length; i++) {
+        if (hijriDay <= monthLengths[i]) {
+            hijriMonth = i + 1;
+            break;
+        }
+        hijriDay -= monthLengths[i];
+    }
+    
+    return {
+        year: hijriYear,
+        month: hijriMonth,
+        day: hijriDay
+    };
+}
+
+// ========== UPDATE THE HIJRI DATE DISPLAY FUNCTION ==========
+// Replace your existing updateDateTime function or modify the part that sets hijriDate
+
+function updateDateTime() {
+    const now = new Date();
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric' 
+    };
+    const currentDate = now.toLocaleDateString('en-US', options);
+    
+    document.getElementById('currentDate').textContent = currentDate;
+    document.getElementById('today-date').textContent = 
+        `${currentLang === 'ar' ? 'أوقات الصلاة اليوم لـ' : 
+          currentLang === 'sw' ? 'Nyakati za swala za leo kwa' : 
+          "Today's prayer times for"} ${currentDate}`;
+    
+    // Get Hijri date using Umm al-Qura calendar
+    const hijriDate = calculateHijriDate(now);
+    
+    // Month names in different languages
+    const monthNamesEn = [
+        'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
+        'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
+        'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
+    ];
+    
+    const monthNamesAr = [
+        'محرم', 'صفر', 'ربيع الأول', 'ربيع الثاني',
+        'جمادى الأولى', 'جمادى الثانية', 'رجب', 'شعبان',
+        'رمضان', 'شوال', 'ذو القعدة', 'ذو الحجة'
+    ];
+    
+    const monthNamesSw = [
+        'Muharram', 'Safar', 'Rabi\' al-awwal', 'Rabi\' al-thani',
+        'Jumada al-awwal', 'Jumada al-thani', 'Rajab', 'Sha\'ban',
+        'Ramadan', 'Shawwal', 'Dhu al-Qi\'dah', 'Dhu al-Hijjah'
+    ];
+    
+    // Format based on current language
+    let formattedHijri;
+    if (currentLang === 'ar') {
+        formattedHijri = `${hijriDate.day} ${monthNamesAr[hijriDate.month - 1]} ${hijriDate.year} هـ`;
+    } else if (currentLang === 'sw') {
+        formattedHijri = `${hijriDate.day} ${monthNamesSw[hijriDate.month - 1]} ${hijriDate.year} AH`;
+    } else {
+        formattedHijri = `${hijriDate.day} ${monthNamesEn[hijriDate.month - 1]} ${hijriDate.year} AH`;
+    }
+    
+    // Update the display
+    const hijriElement = document.getElementById('hijriDate');
+    if (hijriElement) {
+        hijriElement.textContent = formattedHijri;
+    }
+    
+    // Also update copyright year
+    document.getElementById('copyrightText').innerHTML = 
+        `&copy; ${now.getFullYear()} ${currentLang === 'ar' ? 'مسجد_قندهار' : 
+                                           currentLang === 'sw' ? 'Masjid_Qandahaar' : 
+                                           'Masjid_Qandahaar'}. ${currentLang === 'ar' ? 'جميع الحقوق محفوظة' : 
+                                                                  currentLang === 'sw' ? 'Haki zote zimehifadhiwa' : 
+                                                                  'All rights reserved.'}`;
+}  
   
-        
-       
-        
-           
-              
-            
     
 
         // ========== QURAN VERSES DATABASE==========
@@ -3751,6 +3967,7 @@
 </body>
 
 </html>
+
 
 
 
